@@ -23,4 +23,10 @@ public class UserController {
         return ResponseEntity.ok(res);
     }
 
+    @PostMapping("login")
+    public ResponseEntity<Common<Boolean>> login(@RequestBody User user) {
+        Common<Boolean> res = this.userService.login(user);
+        return ResponseEntity.ok(res);
+    }
+
 }
