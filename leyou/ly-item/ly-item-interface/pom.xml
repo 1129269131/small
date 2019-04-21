@@ -13,5 +13,13 @@
     <artifactId>ly-item-interface</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
+    <dependencies>
+        <!-- jpa -->
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>persistence-api</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
 
 </project>
