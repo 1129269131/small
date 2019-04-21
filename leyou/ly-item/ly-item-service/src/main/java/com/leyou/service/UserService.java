@@ -26,7 +26,6 @@ public class UserService {
         Common<Boolean> res = new Common<Boolean>();
         Boolean boo = null;
         try {
-            Example example = new Example(User.class);
             // 写入数据库
             boo = this.userMapper.insertSelective(user) == 1;
 
@@ -39,12 +38,16 @@ public class UserService {
         return res;
     }
 
+    /**
+     * 登录
+     * @param user
+     * @return
+     */
     public Common<Boolean> login(User user){
         Logger logger = Logger.getLogger(this.getClass());
         Common<Boolean> res = new Common<Boolean>();
         Boolean boo = null;
         try {
-            Example example = new Example(User.class);
             // 写入数据库
             User getUser = this.userMapper.selectOne(user);
             //判断用户是否存在

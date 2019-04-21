@@ -9,21 +9,21 @@ import javax.persistence.Table;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String address;
     private String createtime;// 创建时间
-    private int deletestatus;
+    private Integer deletestatus;
     private String password;// 密码
     private String phone;// 电话
-    private int role;
+    private Integer role;
     private String truename;
     private String username;// 用户名
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -43,11 +43,11 @@ public class User {
         this.createtime = createtime;
     }
 
-    public int getDeletestatus() {
+    public Integer getDeletestatus() {
         return deletestatus;
     }
 
-    public void setDeletestatus(int deletestatus) {
+    public void setDeletestatus(Integer deletestatus) {
         this.deletestatus = deletestatus;
     }
 
@@ -67,11 +67,11 @@ public class User {
         this.phone = phone;
     }
 
-    public int getRole() {
+    public Integer getRole() {
         return role;
     }
 
-    public void setRole(int role) {
+    public void setRole(Integer role) {
         this.role = role;
     }
 
