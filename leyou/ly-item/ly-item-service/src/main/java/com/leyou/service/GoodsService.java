@@ -1,11 +1,9 @@
 package com.leyou.service;
 
 import com.leyou.common.vo.Common;
-import com.leyou.item.pojo.Goods;
-import com.leyou.item.pojo.Packing;
-import com.leyou.item.pojo.Taste;
-import com.leyou.item.pojo.User;
+import com.leyou.item.pojo.*;
 import com.leyou.item.vo.GoodsDetailList;
+import com.leyou.mapper.CommentMapper;
 import com.leyou.mapper.GoodsMapper;
 import com.leyou.mapper.PackingMapper;
 import com.leyou.mapper.TasteMapper;
@@ -27,6 +25,9 @@ public class GoodsService {
 
     @Autowired
     private PackingMapper packingMapper;
+
+    @Autowired
+    private CommentMapper commentMapper;
     /**
      * 获取商品列表
      * @return
@@ -68,6 +69,11 @@ public class GoodsService {
             example.createCriteria().andEqualTo("goodId",goodsId);
             List<Packing> packings = this.packingMapper.selectByExample(example);
             goodsDetailList.setPacking(packings);
+
+            example = new Example(Comment.class);
+            example.createCriteria().andEqualTo("goodId",goodsId);
+            List<Comment> comments = this.commentMapper.selectByExample(example);
+            goodsDetailList.setComments(comments);
 
             res.setResult(goodsDetailList);
             res.setCode(0);
