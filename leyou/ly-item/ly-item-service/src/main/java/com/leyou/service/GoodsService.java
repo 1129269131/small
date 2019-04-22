@@ -2,10 +2,12 @@ package com.leyou.service;
 
 import com.leyou.common.vo.Common;
 import com.leyou.item.pojo.Goods;
+import com.leyou.item.pojo.Packing;
 import com.leyou.item.pojo.Taste;
 import com.leyou.item.pojo.User;
 import com.leyou.item.vo.GoodsDetailList;
 import com.leyou.mapper.GoodsMapper;
+import com.leyou.mapper.PackingMapper;
 import com.leyou.mapper.TasteMapper;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,8 @@ public class GoodsService {
     @Autowired
     private TasteMapper tasteMapper;
 
+    @Autowired
+    private PackingMapper packingMapper;
     /**
      * 获取商品列表
      * @return
@@ -58,8 +62,12 @@ public class GoodsService {
             Example example = new Example(Taste.class);
             example.createCriteria().andEqualTo("goodId",goodsId);
             List<Taste> tastes = this.tasteMapper.selectByExample(example);
-
             goodsDetailList.setTaste(tastes);
+
+            example = new Example(Packing.class);
+            example.createCriteria().andEqualTo("goodId",goodsId);
+            List<Packing> packings = this.packingMapper.selectByExample(example);
+            goodsDetailList.setPacking(packings);
 
             res.setResult(goodsDetailList);
             res.setCode(0);
