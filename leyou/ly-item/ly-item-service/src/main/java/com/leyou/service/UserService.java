@@ -65,4 +65,24 @@ public class UserService {
         }
         return res;
     }
+
+    /**
+     * 查询用户是否存在
+     * @param username
+     * @param password
+     * @return
+     */
+    public User queryUser(String username, String password) {
+        // 查询
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        User resUser = this.userMapper.selectOne(user);
+        // 校验用户名
+        if (resUser == null) {
+            return null;
+        }
+        // 用户名密码都正确
+        return resUser;
+    }
 }
