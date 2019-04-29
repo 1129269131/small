@@ -4,7 +4,7 @@ import com.leyou.common.vo.Common;
 import com.leyou.item.pojo.Brand;
 import com.leyou.item.pojo.User;
 import com.leyou.mapper.UserMapper;
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
@@ -22,7 +22,7 @@ public class UserService {
      * @return
      */
     public Common<Boolean> regist(User user){
-        Logger logger = Logger.getLogger(this.getClass());
+//        Logger logger = Logger.getLogger(this.getClass());
         Common<Boolean> res = new Common<Boolean>();
         Boolean boo = null;
         try {
@@ -33,7 +33,7 @@ public class UserService {
             res.setCode(0);
             res.setMsg("success");
         } catch (Exception e) {
-            logger.error(this.getClass().getName(),e);
+//            logger.error(this.getClass().getName(),e);
         }
         return res;
     }
@@ -44,7 +44,7 @@ public class UserService {
      * @return
      */
     public Common<Boolean> login(User user){
-        Logger logger = Logger.getLogger(this.getClass());
+//        Logger logger = Logger.getLogger(this.getClass());
         Common<Boolean> res = new Common<Boolean>();
         Boolean boo = null;
         try {
@@ -61,7 +61,7 @@ public class UserService {
             res.setCode(0);
             res.setMsg("success");
         } catch (Exception e) {
-            logger.error(this.getClass().getName(),e);
+//            logger.error(this.getClass().getName(),e);
         }
         return res;
     }

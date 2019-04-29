@@ -17,8 +17,6 @@ zuul:
   retryable: true
   routes:
       item-service: /item/** # 将商品微服务映射到/item/**
-      search-service: /search/** # 搜索微服务
-      user-service: /user/** # 用户微服务
       auth-service: /auth/** # 授权中心微服务
 ribbon:
   ConnectTimeout: 250 # 连接超时时间(ms)
@@ -33,3 +31,14 @@ hystrix:
         isolation:
           thread:
             timeoutInMillisecond: 10000 # 熔断超时时长：10000ms
+leyou:
+  jwt:
+    pubKeyPath:  E:/temp/rsa.pub #公钥地址
+  filter:
+    allowPaths:
+      /api/auth
+      /api/search
+      /api/user/register
+      /api/user/check
+      /api/user/code
+      /api/item
