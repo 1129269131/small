@@ -3,6 +3,7 @@ package com.leyou.auth.config;
 import com.leyou.auth.utils.RsaUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import javax.annotation.PostConstruct;
@@ -16,25 +17,21 @@ public class JwtProperties {
     /**
      * 密钥
      */
-    /*@Value("${leyou.jwt.secret}")*/
     private String secret;
 
     /**
      * 公钥地址
      */
-    /*@Value("${leyou.jwt.pubKeyPath}")*/
     private String pubKeyPath;
 
     /**
      * 私钥地址
      */
-    /*@Value("${leyou.jwt.priKeyPath}")*/
     private String priKeyPath;
 
     /**
      * token过期时间
      */
-    /*@Value("${leyou.jwt.expire}")*/
     private int expire;
 
     /**
@@ -50,14 +47,12 @@ public class JwtProperties {
     /**
      * cookie名字
      */
-    /*@Value("${leyou.jwt.cookieName}")
     private String cookieName;
 
-    *//**
+    /**
      * cookie生命周期
-     *//*
-    @Value("${leyou.jwt.cookieMaxAge}")
-    private Integer cookieMaxAge;*/
+     */
+    private Integer cookieMaxAge;
 
     private static final Logger logger = LoggerFactory.getLogger(JwtProperties.class);
 
@@ -109,7 +104,7 @@ public class JwtProperties {
         this.privateKey = privateKey;
     }
 
-    /*public String getCookieName() {
+    public String getCookieName() {
         return cookieName;
     }
 
@@ -123,7 +118,7 @@ public class JwtProperties {
 
     public void setCookieMaxAge(Integer cookieMaxAge) {
         this.cookieMaxAge = cookieMaxAge;
-    }*/
+    }
 
     /**
      * @PostConstruct :在构造方法执行之后执行该方法

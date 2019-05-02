@@ -4,10 +4,16 @@ import com.leyou.auth.config.JwtProperties;
 import com.leyou.auth.entity.UserInfo;
 import com.leyou.auth.service.AuthService;
 import com.leyou.auth.utils.JwtUtils;
+import com.leyou.common.vo.Common;
+import com.leyou.utils.CookieUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @RestController
 public class AuthController {
@@ -18,13 +24,25 @@ public class AuthController {
     @Autowired
     private JwtProperties properties;
 
+    @Autowired
+    private StringRedisTemplate redisTemplate;
+
     @PostMapping("login")
-    public ResponseEntity<String> login(
-            @RequestParam("username") String username, @RequestParam("password") String password
+    public ResponseEntity<Common<String>> login(
+            @RequestParam("username") String username, @RequestParam("password") String password,
+            HttpServletRequest request,
+            HttpServletResponse response
     ){
         String token = authService.login(username, password);
-//        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-        return ResponseEntity.ok(token);
+
+        //将token写入cookie
+        CookieUtils.setCookie(request,response,properties.getCookieName(),token,properties.getCookieMaxAge(),true);
+
+        Common<String> res = new Common<String>();
+        res.setResult(token);
+        res.setCode(0);
+        res.setMsg("success");
+        return ResponseEntity.ok(res);
     }
 
     /**

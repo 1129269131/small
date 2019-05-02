@@ -3,6 +3,7 @@ package com.leyou.config;
 import com.leyou.auth.utils.RsaUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import javax.annotation.PostConstruct;
@@ -14,6 +15,11 @@ public class JwtProperties {
     private String pubKeyPath;// 公钥
 
     private PublicKey publicKey; // 公钥
+
+    /**
+     * cookie名字
+     */
+    private String cookieName;
 
     private static final Logger logger = LoggerFactory.getLogger(JwtProperties.class);
 
@@ -44,4 +50,11 @@ public class JwtProperties {
         this.publicKey = publicKey;
     }
 
+    public String getCookieName() {
+        return cookieName;
+    }
+
+    public void setCookieName(String cookieName) {
+        this.cookieName = cookieName;
+    }
 }

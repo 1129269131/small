@@ -3,6 +3,7 @@ package com.leyou.filter;
 import com.leyou.auth.utils.JwtUtils;
 import com.leyou.config.FilterProperties;
 import com.leyou.config.JwtProperties;
+import com.leyou.utils.CookieUtils;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
@@ -12,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
+import java.util.List;
 
 @Component
 @EnableConfigurationProperties({JwtProperties.class, FilterProperties.class})
@@ -49,7 +52,8 @@ public class LoginFilter extends ZuulFilter {
         // 定义一个标记
         boolean flag = false;
         // 遍历允许访问的路径
-        for (String path : this.filterProp.getAllowPaths()) {
+        List<String> paths = Arrays.asList(this.filterProp.getAllowPaths().get(0).split(" "));
+        for (String path : paths) {
             // 然后判断是否是符合
             if(requestURI.startsWith(path)){
                 flag = true;
@@ -66,7 +70,7 @@ public class LoginFilter extends ZuulFilter {
         // 获取request
         HttpServletRequest request = context.getRequest();
         // 获取token
-        String token = "999";
+        String token = CookieUtils.getCookieValue(request,properties.getCookieName());
         // 校验
         try {
             // 校验通过什么都不做，即放行
