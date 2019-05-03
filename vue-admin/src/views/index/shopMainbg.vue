@@ -24,7 +24,9 @@
         recommendationMain
         one"
     >
-          <a href="introduction.html"><img src="@/assets/images/tj.png"></a>
+    <router-link :to="{name:'Introduction',params:{goodsId:1}}">
+      <img src="@/assets/images/tj.png"/>
+    </router-link>
         </div>
       </div>
       <div class="am-u-sm-4 am-u-lg-3 ">

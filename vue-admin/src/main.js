@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import $ from 'jquery'
 import './utils/errorLog' // 错误日志
 import App from './App.vue'
 import './icons' // SVG图标库
@@ -60,6 +61,7 @@ import './assets/Amaze/assets/js/jquery.min.js' */
 
 Vue.config.productionTip = false
 Vue.prototype.$echarts = echarts
+Vue.prototype.$ = $
 
 new Vue({
     router,

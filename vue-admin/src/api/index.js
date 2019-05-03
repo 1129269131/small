@@ -12,7 +12,7 @@ const service = axios.create({
 
 // request拦截器  appId, timestamp, sign, nonce
 service.interceptors.request.use(config => {
-    if (store.getters.token) {
+    if (getToken()) {
         config.headers['access_token'] = getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
     }
     return config
@@ -21,7 +21,7 @@ service.interceptors.request.use(config => {
 })
 
 // respone拦截器
-/* service.interceptors.response.use(
+service.interceptors.response.use(
     response => {
         const res = response.data
             // // 字节流结果, 根据接口返回code是否200选用
@@ -90,6 +90,6 @@ service.interceptors.request.use(config => {
         })
         return Promise.reject(error)
     }
-) */
+)
 
 export default service

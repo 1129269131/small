@@ -60,7 +60,8 @@ public class LoginFilter extends ZuulFilter {
                 break;
             }
         }
-        return flag;
+//        return flag;
+        return true;
     }
 
     @Override
@@ -70,7 +71,7 @@ public class LoginFilter extends ZuulFilter {
         // 获取request
         HttpServletRequest request = context.getRequest();
         // 获取token
-        String token = CookieUtils.getCookieValue(request,properties.getCookieName());
+        String token = request.getHeader("access_token");
         // 校验
         try {
             // 校验通过什么都不做，即放行

@@ -175,10 +175,10 @@
 													<div class="theme-options">
 														<div class="cart-title">口味</div>
 														<ul>
-															<li class="sku-line selected">原味<i></i></li>
-															<li class="sku-line">奶油<i></i></li>
-															<li class="sku-line">炭烧<i></i></li>
-															<li class="sku-line">咸香<i></i></li>
+															<li @click="isSelect(index)" class="sku-line" v-for="(item, index) in items">
+																{{ item.type }}
+																<i></i>
+															</li>
 														</ul>
 													</div>
 													<div class="theme-options">
@@ -1086,6 +1086,7 @@
 </template>
 
 <script>
+import { goodsDetailList } from '@/api/item'
 export default {
   name: 'ListMain',
   data () {
@@ -1093,6 +1094,7 @@ export default {
 			value2: null,
 			num1: 1,
 			stock: 1,
+			items: [],
 			options2: [{
           value: '选项1',
           label: '浙江省'
@@ -1113,9 +1115,28 @@ export default {
   },
   methods: {
 		handleChange(value) {
-        console.log(value);
-      }
-  }
+			console.log(value);
+		},
+		goodsDetailList () {
+			let goodsId = this.$route.params.goodsId
+      goodsDetailList(goodsId).then(response => {
+				this.items = response.result.taste
+      })
+		},
+		isSelect(index){
+			this.$('.sku-line').removeClass('selected')
+			this.$('.sku-line').eq(index).addClass('selected')
+			/* this.$('.sku-line').on('click',function(){
+				alert(999)
+				// $('.sku-line').removeClass('selected')
+				// this.addClass('selected')
+			}) */
+		}
+	},
+	mounted(){
+
+		this.goodsDetailList()
+	}
 }
 </script>
 
