@@ -1,24 +1,18 @@
 <template>
 <div>
   <Hmtop></Hmtop>
-  <Banner> </Banner>
-  <ShopNav></ShopNav>
-  <ShopMainbg></ShopMainbg>
+  <ListMain></ListMain>
 </div>
 </template>
 
 <script>
-import Hmtop from './hmtop'
-import Banner from './banner'
-import ShopNav from './shopNav'
-import ShopMainbg from './shopMainbg'
+import Hmtop from '@/views/index/hmtop'
+import ListMain from './listMain'
 export default {
-  name: 'Index',
+  name: 'Introduction',
   components: {
     Hmtop,
-    Banner,
-    ShopNav,
-    ShopMainbg
+    ListMain
   },
   data () {
     return {
@@ -44,4 +38,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
+
 </style>
+

@@ -34,6 +34,7 @@ hystrix:
 leyou:
   jwt:
     pubKeyPath:  E:/temp/rsa.pub #公钥地址
+    cookieName: TOKEN
   filter:
     allowPaths:
       /api/auth/

@@ -27,6 +27,17 @@ const routes = [{
   }
 },
 {
+  name: 'Introduction',
+  path: '/introduction',
+  component: resolve => require(['@/views/introduction/Index'], resolve),
+  meta: {
+    title: 'Introduction',
+    authentication: false,
+    noCache: true,
+    access: true
+  }
+},
+{
   name: 'Regist',
   path: '/regist',
   component: resolve => require(['@/views/regist/Index'], resolve),

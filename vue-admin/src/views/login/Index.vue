@@ -109,6 +109,7 @@ export default {
     loginHandler () {
       login(this.username, this.password).then(response => {
         setToken(response.data)
+        this.$router.push({ path: '/' })
       })
     }
   }

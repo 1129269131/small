@@ -11,7 +11,7 @@
           </a>
           <div class="ibar_login_box status_login ">
             <div class="avatar_box ">
-              <p class="avatar_imgbox "><img src="../images/no-img_mid_.jpg "></p>
+              <p class="avatar_imgbox "><img src="@/assets/images/no-img_mid_.jpg "></p>
               <ul class="user_info ">
                 <li>用户名sl1903</li>
                 <li>级&nbsp;别普通会员</li>
@@ -74,7 +74,7 @@
           class="item "
         >
           <a href="#">
-            <span class="wdsc "><img src="../images/wdsc.png "></span>
+            <span class="wdsc "><img src="@/assets/images/wdsc.png "></span>
           </a>
           <div class="mp_tooltip ">
             我的收藏
@@ -87,7 +87,7 @@
           class="item "
         >
           <a href="# ">
-            <span class="chongzhi "><img src="../images/chongzhi.png "></span>
+            <span class="chongzhi "><img src="@/assets/images/chongzhi.png "></span>
           </a>
           <div class="mp_tooltip ">
             我要充值
@@ -106,7 +106,7 @@
             <div
               class="mp_qrcode "
               style="display:none; "
-            ><img src="../images/weixin_code_145.png "><i class="icon_arrow_white "></i></div>
+            ><img src="@/assets/images/weixin_code_145.png "><i class="icon_arrow_white "></i></div>
           </li>
           <li class="qtitem ">
             <a

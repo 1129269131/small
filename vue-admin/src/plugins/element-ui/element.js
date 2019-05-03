@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { Dropdown, DropdownMenu, DropdownItem, Menu, Submenu, MenuItem, MenuItemGroup, Input, Button, DatePicker, TimePicker, Popover, Breadcrumb, BreadcrumbItem, Tabs, TabPane, Alert, Slider, Row, Col, Progress, Badge, Card, Steps, Step, Form, FormItem, Select, Option, OptionGroup, Radio, RadioGroup, RadioButton, Checkbox, CheckboxButton, CheckboxGroup, Switch, Table, TableColumn, Tooltip, Tree, Message, Notification, MessageBox } from 'element-ui'
+import { Dropdown, DropdownMenu, DropdownItem, Menu, Submenu, MenuItem, MenuItemGroup, Input, Button, DatePicker, TimePicker, Popover, Breadcrumb, BreadcrumbItem, Tabs, TabPane, Alert, Slider, Row, Col, Progress, Badge, Card, Steps, Step, Form, FormItem, Select, Option, OptionGroup, Radio, RadioGroup, RadioButton, Checkbox, CheckboxButton, CheckboxGroup, Switch, Table, TableColumn, Tooltip, Tree, Message, Notification, MessageBox,Carousel,CarouselItem,InputNumber } from 'element-ui'
 
 Vue.use(Dropdown)
 Vue.use(DropdownMenu)
@@ -42,6 +42,9 @@ Vue.use(Table)
 Vue.use(TableColumn)
 Vue.use(Tooltip)
 Vue.use(Tree)
+Vue.use(Carousel)
+Vue.use(CarouselItem)
+Vue.use(InputNumber)
 
 Vue.prototype.$notify = Notification
 Vue.prototype.$message = Message
@@ -49,17 +52,3 @@ Vue.prototype.$msgbox = MessageBox
 Vue.prototype.$alert = MessageBox.alert
 Vue.prototype.$confirm = MessageBox.confirm
 Vue.prototype.$prompt = MessageBox.prompt
-
-// import {
-//   Pagination, Dialog, Autocomplete, Dropdown, DropdownMenu, DropdownItem, Menu, Submenu, MenuItem, MenuItemGroup, Input, InputNumber,
-//   Radio, RadioGroup, RadioButton, Checkbox, CheckboxButton, CheckboxGroup, Switch, Select, Option, OptionGroup, Button, ButtonGroup,
-//   Table, TableColumn, DatePicker, TimeSelect, TimePicker, Popover, Tooltip, Breadcrumb, BreadcrumbItem, Form, FormItem, Tabs, TabPane,
-//   Tag, Tree, Alert, Slider, Icon, Row, Col, Upload, Progress, Badge, Card, Rate, Steps, Step, Carousel, CarouselItem, Collapse,
-//   CollapseItem, Cascader, ColorPicker, Transfer, Container, Header, Aside, Main, Footer, Loading, MessageBox, Message, Notification
-// } from 'element-ui'
-
-// Vue.use(Loading.directive)
-
-// Vue.prototype.$loading = Loading.service
-// Vue.prototype.$notify = Notification
-// Vue.prototype.$message = Message

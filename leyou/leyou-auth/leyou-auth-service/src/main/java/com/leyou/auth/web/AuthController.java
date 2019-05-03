@@ -7,7 +7,6 @@ import com.leyou.auth.utils.JwtUtils;
 import com.leyou.common.vo.Common;
 import com.leyou.utils.CookieUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,9 +22,6 @@ public class AuthController {
 
     @Autowired
     private JwtProperties properties;
-
-    @Autowired
-    private StringRedisTemplate redisTemplate;
 
     @PostMapping("login")
     public ResponseEntity<Common<String>> login(
