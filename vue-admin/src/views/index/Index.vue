@@ -4,6 +4,7 @@
   <Banner> </Banner>
   <ShopNav></ShopNav>
   <ShopMainbg></ShopMainbg>
+  <Footer></Footer>
 </div>
 </template>
 
@@ -12,13 +13,15 @@ import Hmtop from './hmtop'
 import Banner from './banner'
 import ShopNav from './shopNav'
 import ShopMainbg from './shopMainbg'
+import Footer from '../footer/Index'
 export default {
   name: 'Index',
   components: {
     Hmtop,
     Banner,
     ShopNav,
-    ShopMainbg
+    ShopMainbg,
+    Footer
   },
   data () {
     return {

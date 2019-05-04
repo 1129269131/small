@@ -150,25 +150,19 @@
         </div>
       </div>
 
-      <div class="footer ">
-        <div class="footer-hd ">
-          <p>
-            <a href="# ">商城首页</a>
-            <b>|</b>
-            <a href="# ">支付宝</a>
-            <b>|</b>
-            <a href="# ">物流</a>
-          </p>
-        </div>
-      </div>
+      <Footer></Footer>
     </div>
 </div>
 </template>
 
 <script>
 import { register } from '@/api/login'
+import Footer from '../footer/Index'
 export default {
   name: 'Regist',
+  components: {
+    Footer
+  },
   data () {
     return {
       username: '',

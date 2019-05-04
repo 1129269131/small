@@ -1126,11 +1126,6 @@ export default {
 		isSelect(index){
 			this.$('.sku-line').removeClass('selected')
 			this.$('.sku-line').eq(index).addClass('selected')
-			/* this.$('.sku-line').on('click',function(){
-				alert(999)
-				// $('.sku-line').removeClass('selected')
-				// this.addClass('selected')
-			}) */
 		}
 	},
 	mounted(){
