@@ -19,17 +19,17 @@
       </ul>
       <ul class="message-r">
         <div class="topMessage home">
-          <div class="menu-hd"><a
-              href="#"
-              target="_top"
-              class="h"
-            >商城首页</a></div>
+          <div class="menu-hd">
+            <router-link to="/" class="h">商城首页</router-link>
+          </div>
         </div>
         <div class="topMessage my-shangcheng">
-          <div class="menu-hd MyShangcheng"><a
-              href="#"
-              target="_top"
-            ><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
+          <div class="menu-hd MyShangcheng">
+            <router-link to="/user">
+              <i class="am-icon-user am-icon-fw"></i>
+              个人中心
+            </router-link>
+          </div>
         </div>
         <div class="topMessage mini-cart">
           <div class="menu-hd"><a
@@ -88,7 +88,7 @@
 
 <script>
 export default {
-  name: 'Hmtop',
+  name: 'Top',
   data () {
     return {
     }

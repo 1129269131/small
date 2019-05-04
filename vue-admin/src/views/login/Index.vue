@@ -50,11 +50,8 @@
               href="#"
               class="am-fr"
             >忘记密码</a>
-            <router-link to="/regist">
-            <a
-              href="register.html"
-              class="zcnext am-fr am-btn-default"
-            >注册</a>
+            <router-link to="/regist" class="zcnext am-fr am-btn-default">
+              注册
             </router-link>
             <br />
           </div>

@@ -1,6 +1,6 @@
 <template>
 <div>
-  <Hmtop></Hmtop>
+  <Top></Top>
   <Banner> </Banner>
   <ShopNav></ShopNav>
   <ShopMainbg></ShopMainbg>
@@ -9,15 +9,15 @@
 </template>
 
 <script>
-import Hmtop from './hmtop'
-import Banner from './banner'
-import ShopNav from './shopNav'
-import ShopMainbg from './shopMainbg'
+import Top from '../top/Index'
+import Banner from './Banner'
+import ShopNav from './ShopNav'
+import ShopMainbg from './ShopMainbg'
 import Footer from '../footer/Index'
 export default {
   name: 'Index',
   components: {
-    Hmtop,
+    Top,
     Banner,
     ShopNav,
     ShopMainbg,

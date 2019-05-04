@@ -1,29 +1,28 @@
 <template>
-<div>
-  <Top></Top>
-  <ListMain></ListMain>
-</div>
+    <div>
+        <Top></Top>
+        <Footer></Footer>
+    </div>
 </template>
 
 <script>
 import Top from '../top/Index'
-import ListMain from './listMain'
+import Footer from '../footer/Index'
 export default {
-  name: 'Introduction',
+  name: 'User',
   components: {
     Top,
-    ListMain
+    Footer
   },
   data () {
     return {
     }
   },
   methods: {
+
   }
 }
 </script>
 
 <style lang="less" scoped>
-
 </style>
-

@@ -38,6 +38,31 @@ const routes = [{
   }
 },
 {
+  name: 'User',
+  path: '/user',
+  component: resolve => require(['@/views/user/Index'], resolve),
+  meta: {
+    title: 'User',
+    authentication: false,
+    noCache: true,
+    access: true
+  },
+  children: [
+    {
+      name: 'Center',
+      path: '/user/center',
+      component: resolve => require(['@/views/user/Center'], resolve),
+      meta: {
+        title: 'Center'
+      }
+    },
+    {
+      path: '',
+      redirect: '/user/center'/*默认显示*/
+    }
+  ]
+},
+{
   name: 'Regist',
   path: '/regist',
   component: resolve => require(['@/views/regist/Index'], resolve),
