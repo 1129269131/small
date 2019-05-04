@@ -9,10 +9,7 @@ const routes = [{
   path: '/login',
   component: resolve => require(['@/views/login/Index'], resolve),
   meta: {
-    title: 'Login',
-    authentication: false,
-    noCache: true,
-    access: true
+    title: 'Login'
   }
 },
 {
@@ -20,10 +17,7 @@ const routes = [{
   path: '/',
   component: resolve => require(['@/views/index/Index'], resolve),
   meta: {
-    title: 'Index',
-    authentication: false,
-    noCache: true,
-    access: true
+    title: 'Index'
   }
 },
 {
@@ -31,10 +25,7 @@ const routes = [{
   path: '/introduction',
   component: resolve => require(['@/views/introduction/Index'], resolve),
   meta: {
-    title: 'Introduction',
-    authentication: false,
-    noCache: true,
-    access: true
+    title: 'Introduction'
   }
 },
 {
@@ -42,10 +33,7 @@ const routes = [{
   path: '/user',
   component: resolve => require(['@/views/user/Index'], resolve),
   meta: {
-    title: 'User',
-    authentication: false,
-    noCache: true,
-    access: true
+    title: 'User'
   },
   children: [
     {
@@ -54,6 +42,14 @@ const routes = [{
       component: resolve => require(['@/views/user/Center'], resolve),
       meta: {
         title: 'Center'
+      }
+    },
+    {
+      name: 'SetUpSafety',
+      path: '/user/setUpSafety',
+      component: resolve => require(['@/views/user/SetUpSafety'], resolve),
+      meta: {
+        title: 'SetUpSafety'
       }
     },
     {

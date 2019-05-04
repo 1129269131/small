@@ -1129,7 +1129,6 @@ export default {
 		}
 	},
 	mounted(){
-
 		this.goodsDetailList()
 	}
 }
