@@ -10,6 +10,7 @@
         <module>ly-common</module>
         <module>leyou-auth</module>
         <module>leyou-user</module>
+        <module>ly-admin</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
