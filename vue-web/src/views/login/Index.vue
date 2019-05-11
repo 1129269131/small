@@ -1,10 +1,9 @@
 <template>
   <div class="container">
     <div class="login-boxtitle">
-      <a href="home.html"><img  style="width: 133px"
-          alt="logo"
-          src="@/assets/images/logobig.png"
-        /></a>
+      <router-link to="/" class="h">
+        <img style="width: 133px" alt="logo" src="@/assets/images/logobig.png"/>
+      </router-link>
     </div>
 
     <div class="login-banner">

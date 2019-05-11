@@ -1,9 +1,9 @@
 <template>
   <div class="banner">
     <!--轮播 -->
-    <el-carousel height="430px" :interval="8000" arrow="always">
-    <el-carousel-item v-for="item in 4" :key="item">
-      <h3>{{ item }}</h3>
+    <el-carousel height="430px" :interval="8000" arrow="never">
+    <el-carousel-item v-for="item in imgList" :key="item.id">
+      <img ref="imgHeight" :src="item.idView" class="banner_img"/>
     </el-carousel-item>
   </el-carousel>
   </div>
@@ -14,6 +14,12 @@ export default {
   name: 'Banner',
   data() {
     return {
+      imgList:[
+        {id: 0, idView: require('@/assets/images/ad1.jpg')},
+        {id: 1, idView: require('@/assets/images/ad2.jpg')},
+        {id: 2, idView: require('@/assets/images/ad3.jpg')},
+        {id: 3, idView: require('@/assets/images/ad4.jpg')}
+      ]
     }
   },
   methods: {

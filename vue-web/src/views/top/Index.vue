@@ -5,15 +5,8 @@
       <ul class="message-l">
         <div class="topMessage">
           <div class="menu-hd">
-            <a
-              href="#"
-              target="_top"
-              class="h"
-            >亲，请登录</a>
-            <a
-              href="#"
-              target="_top"
-            >免费注册</a>
+            <router-link to="/login" class="h login-tip">亲，请登录</router-link>
+            <router-link to="/regist" class="regist-tip">免费注册</router-link>
           </div>
         </div>
       </ul>
@@ -99,4 +92,11 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.login-tip {
+  color: #f22e00;
+  padding-right: 15px;
+}
+.regist-tip:hover{
+  color: #f22e00;
+}
 </style>
