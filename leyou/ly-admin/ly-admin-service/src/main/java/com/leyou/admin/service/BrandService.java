@@ -50,5 +50,13 @@ public class BrandService {
         }
     }
 
+    public Brand queryById(Long id){
+        Brand brand = brandMapper.selectByPrimaryKey(id);
+        if(brand == null){
+            System.out.println("报错");
+        }
+        return brand;
+    }
+
 }
 

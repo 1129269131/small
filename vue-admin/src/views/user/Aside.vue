@@ -9,36 +9,58 @@
 					<li class="person">
 						<a href="#">个人资料</a>
 						<ul>
-							<li @click="chooseModule()" class="module"> <a href="information.html">个人信息</a></li>
+							<li class="module"> 
+								<router-link to="/user/information">个人信息</router-link>
+							</li>
 							<li class="module"> 
 								<router-link to="/user/setUpSafety">安全设置</router-link>
 							</li>
-							<li class="module"> <a href="address.html">收货地址</a></li>
+							<li class="module"> 
+								<router-link to="/user/address">收货地址</router-link>
+							</li>
 						</ul>
 					</li>
 					<li class="person">
 						<a href="#">我的交易</a>
 						<ul>
-							<li class="module"><a href="order.html">订单管理</a></li>
-							<li class="module"> <a href="change.html">退款售后</a></li>
+							<li class="module">
+								<router-link to="/user/order">订单管理</router-link>
+							</li>
+							<li class="module">
+								<router-link to="/user/change">退款售后</router-link>
+							</li>
 						</ul>
 					</li>
 					<li class="person">
 						<a href="#">我的资产</a>
 						<ul>
-							<li class="module"> <a href="coupon.html">优惠券 </a></li>
-							<li class="module"> <a href="bonus.html">红包</a></li>
-							<li class="module"> <a href="bill.html">账单明细</a></li>
+							<li class="module"> 
+								<router-link to="/user/coupon">优惠券</router-link>
+							</li>
+							<li class="module">
+								<router-link to="/user/bonus">红包</router-link>
+							</li>
+							<li class="module">
+								<router-link to="/user/bill">账单明细</router-link>
+							</li>
 						</ul>
 					</li>
 
 					<li class="person">
 						<a href="#">我的小窝</a>
 						<ul>
-							<li class="module"> <a href="collection.html">收藏</a></li>
-							<li class="module"> <a href="foot.html">足迹</a></li>
-							<li class="module"> <a href="comment.html">评价</a></li>
-							<li class="module"> <a href="news.html">消息</a></li>
+							<li class="module"> 
+								<router-link to="/user/collection">收藏</router-link>
+							</li>
+							<li class="module"> 
+								<router-link to="/user/foot">足迹</router-link>
+							</li>
+							<li class="module"> 
+								<router-link to="/user/comment">评价</router-link>
+							</li>
+							<li class="module"> 
+								<router-link to="/user/news">消息</router-link>
+							</li>
 						</ul>
 					</li>
 

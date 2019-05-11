@@ -45,11 +45,99 @@ const routes = [{
       }
     },
     {
+      name: 'Information',
+      path: '/user/information',
+      component: resolve => require(['@/views/user/Information'], resolve),
+      meta: {
+        title: 'Information'
+      }
+    },
+    {
       name: 'SetUpSafety',
       path: '/user/setUpSafety',
       component: resolve => require(['@/views/user/SetUpSafety'], resolve),
       meta: {
         title: 'SetUpSafety'
+      }
+    },
+    {
+      name: 'Address',
+      path: '/user/address',
+      component: resolve => require(['@/views/user/Address'], resolve),
+      meta: {
+        title: 'Address'
+      }
+    },
+    {
+      name: 'Order',
+      path: '/user/order',
+      component: resolve => require(['@/views/user/Order'], resolve),
+      meta: {
+        title: 'Order'
+      }
+    },
+    {
+      name: 'Change',
+      path: '/user/change',
+      component: resolve => require(['@/views/user/Change'], resolve),
+      meta: {
+        title: 'Change'
+      }
+    },
+    {
+      name: 'Coupon',
+      path: '/user/coupon',
+      component: resolve => require(['@/views/user/Coupon'], resolve),
+      meta: {
+        title: 'Coupon'
+      }
+    },
+    {
+      name: 'Bonus',
+      path: '/user/bonus',
+      component: resolve => require(['@/views/user/Bonus'], resolve),
+      meta: {
+        title: 'Bonus'
+      }
+    },
+    {
+      name: 'Bill',
+      path: '/user/bill',
+      component: resolve => require(['@/views/user/Bill'], resolve),
+      meta: {
+        title: 'Bill'
+      }
+    },
+    {
+      name: 'Collection',
+      path: '/user/collection',
+      component: resolve => require(['@/views/user/Collection'], resolve),
+      meta: {
+        title: 'Collection'
+      }
+    },
+    {
+      name: 'Foot',
+      path: '/user/foot',
+      component: resolve => require(['@/views/user/Foot'], resolve),
+      meta: {
+        title: 'Foot'
+      }
+    },
+    {
+      name: 'Comment',
+      path: '/user/comment',
+      component: resolve => require(['@/views/user/Comment'], resolve),
+      meta: {
+        title: 'Comment'
+      }
+    },
+    {
+      name: 'News',
+      path: '/user/news',
+      component: resolve => require(['@/views/user/News'], resolve),
+      meta: {
+        title: 'News'
       }
     },
     {

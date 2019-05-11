@@ -5,6 +5,7 @@ import com.leyou.admin.pojo.Category;
 import com.leyou.common.vo.Common;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 
@@ -33,5 +34,13 @@ public class CategoryService {
 //            logger.error(this.getClass().getName(),e);
         }
         return res;
+    }
+
+    public List<Category> queryByIds(List<Long> ids){
+        List<Category> list = categoryMapper.selectByIdList(ids);
+        if(CollectionUtils.isEmpty(list)){
+            System.out.println("报错");
+        }
+        return list;
     }
 }

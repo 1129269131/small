@@ -75,18 +75,4 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.am-form-group{
-	position: relative;
-	.am-form-label{
-		float: none;
-		position: absolute;
-		left: 0;
-		top: 0;
-	}
-}
-.am-btn-danger{
-	width: 72px;
-	height: 40px;
-	line-height: 30px;
-}
 </style>

@@ -3,6 +3,9 @@ server:
 spring:
   application:
     name: admin-service
+  servlet:
+      multipart:
+        max-file-size: 5MB # 限制文件上传的大小
   datasource:
     url: jdbc:mysql://localhost:3306/small
     username: root
