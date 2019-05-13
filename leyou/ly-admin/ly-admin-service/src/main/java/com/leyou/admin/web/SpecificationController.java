@@ -4,12 +4,12 @@ import com.leyou.admin.pojo.SpecGroup;
 import com.leyou.admin.pojo.SpecParam;
 import com.leyou.admin.pojo.Specification;
 import com.leyou.admin.service.SpecificationService;
+import com.leyou.common.vo.Common;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.ws.Response;
 import java.util.List;
 
 @RestController
@@ -20,13 +20,13 @@ public class SpecificationController {
     private SpecificationService specificationService;
 
     /**
-     * 获取商品规格组信息
+     * 根据cid获取商品规格组信息
      * @param cid
      * @return
      */
     @GetMapping("groups/{cid}")
-    public ResponseEntity<List<SpecGroup>> queryGroupByCid(@PathVariable("cid")Long cid){
-        return ResponseEntity.ok(specificationService.queryGroupByCid(cid));
+    public ResponseEntity<Common<List<SpecGroup>>> queryGroupByCid(@PathVariable("cid")Long cid){
+        return ResponseEntity.ok(specificationService.queryGroupByCid2(cid));
     }
 
     /**
@@ -55,6 +55,6 @@ public class SpecificationController {
      */
     @GetMapping("group")
     public ResponseEntity<List<SpecGroup>> queryListByCid(@RequestParam("cid") Long cid){
-        return ResponseEntity.ok(specificationService.queryListByCid(cid))
+        return ResponseEntity.ok(specificationService.queryListByCid(cid));
     }
 }

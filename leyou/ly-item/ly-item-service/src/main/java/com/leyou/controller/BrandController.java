@@ -18,7 +18,7 @@ public class BrandController {
     @Autowired
     private BrandService brandService;
 
-    @GetMapping("page")
+    /*@GetMapping("page")
     public ResponseEntity<PageResult<Brand>> queryBrandByPage(
             @RequestParam(value = "page", defaultValue = "1") Integer page,
             @RequestParam(value = "rows", defaultValue = "5") Integer rows,
@@ -30,5 +30,5 @@ public class BrandController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(result);
-    }
+    }*/
 }

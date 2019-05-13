@@ -6,6 +6,7 @@ import com.leyou.admin.mapper.SpecificationMapper;
 import com.leyou.admin.pojo.SpecGroup;
 import com.leyou.admin.pojo.SpecParam;
 import com.leyou.admin.pojo.Specification;
+import com.leyou.common.vo.Common;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -37,6 +38,21 @@ public class SpecificationService {
         return list;
     }
 
+    public Common<List<SpecGroup>> queryGroupByCid2(Long cid){
+        Common<List<SpecGroup>> res = new Common<List<SpecGroup>>();
+        SpecGroup group = new SpecGroup();
+        group.setCid(cid);
+        List<SpecGroup> list = specGroupMapper.select(group);
+        if(CollectionUtils.isEmpty(list)){
+            System.out.println("报错");
+        }
+
+        res.setResult(list);
+        res.setCode(0);
+        res.setMsg("success");
+        return res;
+    }
+
     public List<SpecParam> queryParamByGid(Long gid){
         SpecParam param = new SpecParam();
         param.setGroupId(gid);
@@ -52,7 +68,7 @@ public class SpecificationService {
     }
 
     public List<SpecParam> queryParamList(Long gid,Long cid,Boolean searching){
-        SpecParam param = new SpecParam()();
+        SpecParam param = new SpecParam();
         param.setGroupId(gid);
         param.setCid(cid);
         param.setSearching(searching);

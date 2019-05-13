@@ -4,6 +4,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.leyou.admin.mapper.BrandMapper;
 import com.leyou.admin.pojo.Brand;
+import com.leyou.common.vo.Common;
 import com.leyou.common.vo.PageResult;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,5 +59,16 @@ public class BrandService {
         return brand;
     }
 
+    public Common<Brand> queryBrandById(Long id){
+        Common<Brand> res = new Common<Brand>();
+        Brand brand = brandMapper.selectByPrimaryKey(id);
+        if(brand == null){
+            System.out.println("报错");
+        }
+        res.setResult(brand);
+        res.setCode(0);
+        res.setMsg("success");
+        return res;
+    }
 }
 

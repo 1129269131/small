@@ -7,6 +7,7 @@ import com.leyou.admin.mapper.SpuDetailMapper;
 import com.leyou.admin.mapper.SpuMapper;
 import com.leyou.admin.mapper.StockMapper;
 import com.leyou.admin.pojo.*;
+import com.leyou.common.vo.Common;
 import com.leyou.common.vo.PageResult;
 import com.netflix.discovery.converters.Auto;
 import org.apache.commons.lang3.StringUtils;
@@ -107,7 +108,8 @@ public class GoodsService {
         }
     }
 
-    public Spu querySpuById(Long id){
+    public Common<Spu> querySpuById(Long id){
+        Common<Spu> res = new Common<Spu>();
         //查询spu
         Spu spu = spuMapper.selectByPrimaryKey(id);
         if(spu == null){
@@ -117,7 +119,11 @@ public class GoodsService {
         spu.setSkus(querySkuBySpuId(id));
         //查询detail
         spu.setSpuDetail(queryDetailById(id));
-        return spu;
+
+        res.setResult(spu);
+        res.setCode(0);
+        res.setMsg("success");
+        return res;
     }
 
 }
