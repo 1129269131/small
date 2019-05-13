@@ -82,16 +82,14 @@
 						<!--规格属性-->
 						<!--名称-->
 						<div class="tb-detail-hd">
-							<h1>	
-				 良品铺子 手剥松子218g 坚果炒货 巴西松子
-	          </h1>
+							<h1>{{spu.title}}</h1>
 						</div>
 						<div class="tb-detail-list">
 							<!--价格-->
 							<div class="tb-detail-price">
 								<li class="price iteminfo_price">
 									<dt>促销价</dt>
-									<dd><em>¥</em><b class="sys_item_price">56.90</b>  </dd>                                 
+									<dd><em>¥</em><b class="sys_item_price">{{skus[0].price}}</b>  </dd>                                 
 								</li>
 								<li class="price iteminfo_mktprice">
 									<dt>原价</dt>
@@ -114,18 +112,18 @@
 												:disabled="item.disabled">
 											</el-option>
 										</el-select>
-										<el-select style="width:100px;margin-right:15px" v-model="value2" placeholder="莆田市">
+										<el-select style="width:100px;margin-right:15px" v-model="value3" placeholder="厦门市">
 											<el-option
-												v-for="item in options2"
+												v-for="item in options3"
 												:key="item.value"
 												:label="item.label"
 												:value="item.value"
 												:disabled="item.disabled">
 											</el-option>
 										</el-select>
-										<el-select style="width:100px" v-model="value2" placeholder="秀屿区">
+										<el-select style="width:100px" v-model="value4" placeholder="集美区">
 											<el-option
-												v-for="item in options2"
+												v-for="item in options4"
 												:key="item.value"
 												:label="item.label"
 												:value="item.value"
@@ -175,8 +173,8 @@
 													<div class="theme-options">
 														<div class="cart-title">口味</div>
 														<ul>
-															<li @click="isSelect(index)" class="sku-line" v-for="(item, index) in items">
-																{{ item.type }}
+															<li @click="isSelect(index)" class="sku-line" v-for="(item, index) in skus">
+																{{ item.ownSpec }}
 																<i></i>
 															</li>
 														</ul>
@@ -225,7 +223,7 @@
 								<div class="hot">
 									<dt class="tb-metatit">店铺优惠</dt>
 									<div class="gold-list">
-										<p>购物满2件打8折，满3件7折<span>点击领券<i class="am-icon-sort-down"></i></span></p>
+										<p>{{spu.subTitle}}<span>点击领券<i class="am-icon-sort-down"></i></span></p>
 									</div>
 								</div>
 								<div class="clear"></div>
@@ -411,13 +409,9 @@
 											<h4>商品细节</h4>
 										</div>
 										<div class="twlistNews">
-											<img src="@/assets/images/tw1.jpg">
-											<img src="@/assets/images/tw2.jpg">
-											<img src="@/assets/images/tw3.jpg">
-											<img src="@/assets/images/tw4.jpg">
-											<img src="@/assets/images/tw5.jpg">
-											<img src="@/assets/images/tw6.jpg">
-											<img src="@/assets/images/tw7.jpg">
+											<div v-for="(item, index) in skuImg">
+												<img :src="require('@/assets/images/'+item)" />
+											</div>
 										</div>
 									</div>
 									<div class="clear"></div>
@@ -1092,25 +1086,89 @@ export default {
   data () {
     return {
 			value2: null,
+			value3: null,
+			value4: null,
 			num1: 1,
 			stock: 1,
 			items: [],
+			spu: null,
+			skus: null,
+			detail: null,
+			brand: null,
+			specs: null,
+			skuImg: null,
 			options2: [{
-          value: '选项1',
-          label: '浙江省'
+          value: '北京市',
+          label: '北京市'
         }, {
-          value: '选项2',
-          label: '湖北省'
+          value: '天津市',
+          label: '天津市'
         }, {
-          value: '选项3',
-          label: '蚵仔煎'
+          value: '上海市',
+          label: '上海市'
         }, {
-          value: '选项4',
-          label: '龙须面'
+          value: '重庆市',
+          label: '重庆市'
         }, {
-          value: '选项5',
-          label: '北京烤鸭'
-        }]
+          value: '河北省',
+          label: '河北省'
+        }, {
+          value: '山西省',
+          label: '山西省'
+        }, {
+          value: '辽宁省',
+          label: '辽宁省'
+        }, {
+          value: '吉林省',
+          label: '吉林省'
+        }, {
+          value: '江苏省',
+          label: '江苏省'
+        }, {
+          value: '安徽省',
+          label: '安徽省'
+        }, {
+          value: '福建省',
+          label: '福建省'
+        }, {
+          value: '江西省',
+          label: '江西省'
+        }, {
+          value: '山东省',
+          label: '山东省'
+				}],
+				options3: [{
+          value: '福州市',
+          label: '福州市'
+				}, {
+          value: '厦门市',
+          label: '厦门市'
+				}, {
+          value: '漳州市',
+          label: '漳州市'
+				}, {
+          value: '泉州市',
+          label: '泉州市'
+				}, {
+          value: '三明市',
+          label: '三明市'
+				}],
+				options4: [{
+          value: '思明区',
+          label: '思明区'
+				}, {
+          value: '海沧区',
+          label: '海沧区'
+				}, {
+          value: '湖里区',
+          label: '湖里区'
+				}, {
+          value: '集美区',
+          label: '集美区'
+				}, {
+          value: '同安区',
+          label: '同安区'
+				}]
     }
   },
   methods: {
@@ -1124,18 +1182,24 @@ export default {
       })
 		},
 		querySpuById () {
-      querySpuById(1).then(response => {
+      querySpuById(localStorage.getItem('spuId')).then(response => {
+				let data = response.result
+				
+				this.spu = data
+				this.skus = data.skus
+				this.skuImg = data.skus[0].images.split(',')
+				this.queryBrandById(data.brandId)
+				this.queryGroupByCid(data.cid3)
+      })
+		},
+		queryBrandById (brandId) {
+      queryBrandById(brandId).then(response => {
 				
       })
 		},
-		queryBrandById () {
-      queryBrandById(1115).then(response => {
+		queryGroupByCid (cid) {
+      queryGroupByCid(cid).then(response => {
 				
-      })
-		},
-		queryGroupByCid () {
-      queryGroupByCid(76).then(response => {
-				console.log(response)
       })
 		},
 		isSelect(index){
@@ -1144,10 +1208,7 @@ export default {
 		}
 	},
 	mounted(){
-		// this.goodsDetailList()
 		this.querySpuById()
-		this.queryBrandById()
-		this.queryGroupByCid()
 	}
 }
 </script>

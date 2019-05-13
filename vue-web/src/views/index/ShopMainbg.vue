@@ -17,10 +17,10 @@
               <h3>{{ad.content}}</h3>
               <h4>{{ad.subContent}}</h4>
           </div>
-            <div class="recommendationMain one">
-              <router-link :to="{name:'Introduction',params:{goodsId:1}}">
+            <div @click="toIntroduction(ad.bid)" class="recommendationMain one" style="cursor:pointer">
+              <!-- <router-link :to="{name:'Introduction',params:{goodsId:1}}"> -->
                 <img :src="require('@/assets/images/'+ad.img)" />
-              </router-link>
+              <!-- </router-link> -->
             </div>
         </div>
 
@@ -255,6 +255,10 @@ export default {
         this.adverses = response.result;
         console.log(this.adverses)
       })
+    },
+    toIntroduction(bid){
+      localStorage.setItem('spuId', bid)
+      this.$router.push({ path: '/introduction' })
     }
   },
   mounted(){
