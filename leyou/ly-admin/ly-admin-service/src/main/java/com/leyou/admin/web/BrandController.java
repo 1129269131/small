@@ -1,7 +1,6 @@
 package com.leyou.admin.web;
 
 import com.leyou.admin.pojo.Brand;
-import com.leyou.admin.pojo.Spu;
 import com.leyou.admin.service.BrandService;
 import com.leyou.common.vo.Common;
 import com.leyou.common.vo.PageResult;
@@ -59,7 +58,7 @@ public class BrandController {
      * @return
      */
     @GetMapping("/{id}")
-    public ResponseEntity<Common<Brand>> querySpuById(@PathVariable("id") Long id){
+    public ResponseEntity<Common<Brand>> queryBrandById(@PathVariable("id") Long id){
         return ResponseEntity.ok(brandService.queryBrandById(id));
     }
 }

@@ -1086,7 +1086,7 @@
 </template>
 
 <script>
-import { goodsDetailList } from '@/api/item'
+import { goodsDetailList,querySpuById,queryBrandById,queryGroupByCid } from '@/api/item'
 export default {
   name: 'ListMain',
   data () {
@@ -1123,13 +1123,31 @@ export default {
 				this.items = response.result.taste
       })
 		},
+		querySpuById () {
+      querySpuById(1).then(response => {
+				
+      })
+		},
+		queryBrandById () {
+      queryBrandById(1115).then(response => {
+				
+      })
+		},
+		queryGroupByCid () {
+      queryGroupByCid(76).then(response => {
+				console.log(response)
+      })
+		},
 		isSelect(index){
 			this.$('.sku-line').removeClass('selected')
 			this.$('.sku-line').eq(index).addClass('selected')
 		}
 	},
 	mounted(){
-		this.goodsDetailList()
+		// this.goodsDetailList()
+		this.querySpuById()
+		this.queryBrandById()
+		this.queryGroupByCid()
 	}
 }
 </script>
