@@ -119,5 +119,5 @@ public class Sku {
     public void setStyle(String style) {
         this.style = style;
     }
-    
+
 }
