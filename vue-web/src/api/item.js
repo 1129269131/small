@@ -43,3 +43,15 @@ export function queryGroupByCid(cId) {
     })
     return result
 }
+
+/**
+ * 根据cid查询规格参数信息
+ * @param {*} cId 
+ */
+export function queryParamByCid(cId) {
+    const result = request({
+        url: '/admin/spec/param?cid=' + cId,
+        method: 'get'
+    })
+    return result
+}

@@ -31,12 +31,12 @@ public class SpecificationController {
 
     /**
      * 商品规格参数信息
-     * @param gid
+     * @param cid
      * @return
      */
     @GetMapping("param")
-    public ResponseEntity<List<SpecParam>> queryParamByGid(@RequestParam("gid")Long gid){
-        return ResponseEntity.ok(specificationService.queryParamByGid(gid));
+    public ResponseEntity<Common<List<SpecParam>>> queryParamByCid(@RequestParam("cid")Long cid){
+        return ResponseEntity.ok(specificationService.queryParamByCid(cid));
     }
 
     @GetMapping("{id}")

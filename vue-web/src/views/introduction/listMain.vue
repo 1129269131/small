@@ -390,8 +390,8 @@
 											<h4>产品参数：</h4></div>
 										<div class="clear"></div>
 										<ul id="J_AttrUL">
-											<li title="">产品类型:&nbsp;烘炒类</li>
-											<li title="">原料产地:&nbsp;巴基斯坦</li>
+											<li v-for="(item, index) in parameters" title="">{{item.name}}:&nbsp;{{item.value}}</li>
+											<!-- <li title="">原料产地:&nbsp;巴基斯坦</li>
 											<li title="">产地:&nbsp;湖北省武汉市</li>
 											<li title="">配料表:&nbsp;进口松子、食用盐</li>
 											<li title="">产品规格:&nbsp;210g</li>
@@ -399,7 +399,7 @@
 											<li title="">产品标准号:&nbsp;GB/T 22165</li>
 											<li title="">生产许可证编号：&nbsp;QS4201 1801 0226</li>
 											<li title="">储存方法：&nbsp;请放置于常温、阴凉、通风、干燥处保存 </li>
-											<li title="">食用方法：&nbsp;开袋去壳即食</li>
+											<li title="">食用方法：&nbsp;开袋去壳即食</li> -->
 										</ul>
 										<div class="clear"></div>
 									</div>
@@ -1080,7 +1080,7 @@
 </template>
 
 <script>
-import { goodsDetailList,querySpuById,queryBrandById,queryGroupByCid } from '@/api/item'
+import { goodsDetailList,querySpuById,queryBrandById,queryGroupByCid,queryParamByCid } from '@/api/item'
 export default {
   name: 'ListMain',
   data () {
@@ -1097,6 +1097,7 @@ export default {
 			brand: null,
 			specs: null,
 			skuImg: null,
+			parameters: null,
 			options2: [{
           value: '北京市',
           label: '北京市'
@@ -1199,7 +1200,14 @@ export default {
 		},
 		queryGroupByCid (cid) {
       queryGroupByCid(cid).then(response => {
-				
+				let data = response.result
+				this.parameters = data
+      })
+		},
+		queryParamByCid (cid) {
+      queryParamByCid(cid).then(response => {
+				let data = response.result
+				this.parameters.params = data
       })
 		},
 		isSelect(index){

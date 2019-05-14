@@ -53,14 +53,19 @@ public class SpecificationService {
         return res;
     }
 
-    public List<SpecParam> queryParamByGid(Long gid){
+    public Common<List<SpecParam>> queryParamByCid(Long cid){
+        Common<List<SpecParam>> res = new Common<List<SpecParam>>();
         SpecParam param = new SpecParam();
-        param.setGroupId(gid);
+        param.setCid(cid);
         List<SpecParam> list = specParamMapper.select(param);
         if(CollectionUtils.isEmpty(list)){
             System.out.println("报错");
         }
-        return list;
+
+        res.setResult(list);
+        res.setCode(0);
+        res.setMsg("success");
+        return res;
     }
 
     public Specification queryById(Long id) {

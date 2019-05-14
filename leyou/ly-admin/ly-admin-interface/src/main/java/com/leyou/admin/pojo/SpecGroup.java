@@ -15,6 +15,7 @@ public class SpecGroup {
     private Long id;
     private Long cid;
     private String name;
+    private String value;
 
     @Transient
     private List<SpecParam> params;
@@ -49,5 +50,13 @@ public class SpecGroup {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
     }
 }
