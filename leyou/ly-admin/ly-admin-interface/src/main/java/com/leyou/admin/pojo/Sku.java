@@ -11,6 +11,7 @@ public class Sku {
     @KeySql(useGeneratedKeys = true)
     private Long id;
     private Long spuId;
+    private String style;
     private String title;
     private String images;
     private Long price;
@@ -110,4 +111,13 @@ public class Sku {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
+
+    public String getStyle() {
+        return style;
+    }
+
+    public void setStyle(String style) {
+        this.style = style;
+    }
+    
 }
