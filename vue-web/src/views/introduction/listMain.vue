@@ -318,7 +318,6 @@
             <dd>
               <el-input-number
                 v-model="num1"
-                @change="handleChange"
                 :min="1"
                 :max="10"
                 label="描述文字"
@@ -395,8 +394,10 @@
         <a
           id="LikBasket"
           title="加入购物车"
-          href="#"
-        ><i></i>加入购物车</a>
+          @click="addCar()"
+        >
+        <i></i>加入购物车
+        </a>
       </div>
     </li>
   </div>
@@ -1453,9 +1454,6 @@ export default {
     }
   },
   methods: {
-    handleChange(value) {
-      console.log(value);
-    },
     goodsDetailList() {
       let goodsId = this.$route.params.goodsId
       goodsDetailList(goodsId).then(response => {
@@ -1497,6 +1495,26 @@ export default {
     isPackagesSelect(index) {
       this.$('.packages').removeClass('selected')
       this.$('.packages').eq(index).addClass('selected')
+    },
+    /* 加入购物车 */
+    addCar(){
+      let carts = localStorage.getItem('cars') || []
+      let cart = JSON.parse(localStorage.getItem('cars'))
+      
+      if( cart && cart[0].skuId === 1){
+        cart[0].num += this.num1
+        localStorage.setItem('cars',JSON.stringify(cart))
+      }else{
+        cart = {
+          skuId: 1,
+          title: '商品标题',
+          price: 100,
+          image: 'a.png',
+          num: 1
+        }
+        carts.push(cart)
+        localStorage.setItem('cars',JSON.stringify(carts))
+      }
     }
   },
   mounted() {
