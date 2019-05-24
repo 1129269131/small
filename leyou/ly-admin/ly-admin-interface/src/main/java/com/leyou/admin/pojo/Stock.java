@@ -8,8 +8,6 @@ public class Stock {
 
     @Id
     private Long skuId;
-    private Integer seckillStock;
-    private Integer seckillTotal;
     private Integer stock;
 
     public Long getSkuId() {
@@ -18,22 +16,6 @@ public class Stock {
 
     public void setSkuId(Long skuId) {
         this.skuId = skuId;
-    }
-
-    public Integer getSeckillStock() {
-        return seckillStock;
-    }
-
-    public void setSeckillStock(Integer seckillStock) {
-        this.seckillStock = seckillStock;
-    }
-
-    public Integer getSeckillTotal() {
-        return seckillTotal;
-    }
-
-    public void setSeckillTotal(Integer seckillTotal) {
-        this.seckillTotal = seckillTotal;
     }
 
     public Integer getStock() {

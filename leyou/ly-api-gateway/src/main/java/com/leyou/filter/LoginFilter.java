@@ -3,7 +3,6 @@ package com.leyou.filter;
 import com.leyou.auth.utils.JwtUtils;
 import com.leyou.config.FilterProperties;
 import com.leyou.config.JwtProperties;
-import com.leyou.utils.CookieUtils;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
@@ -60,8 +59,8 @@ public class LoginFilter extends ZuulFilter {
                 break;
             }
         }
-//        return flag;
-        return true;
+        return flag;
+//        return true;
     }
 
     @Override

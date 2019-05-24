@@ -13,11 +13,8 @@ public class Sku {
     private Long spuId;
     private String style;
     private String title;
-    private String images;
     private Long price;
-    private String indexes;
-    private String ownSpec;
-    private Integer enable;
+    private Long old_price;
     private Date createTime;
     private Date lastUpdateTime;
 
@@ -64,44 +61,12 @@ public class Sku {
         this.title = title;
     }
 
-    public String getImages() {
-        return images;
-    }
-
-    public void setImages(String images) {
-        this.images = images;
-    }
-
     public Long getPrice() {
         return price;
     }
 
     public void setPrice(Long price) {
         this.price = price;
-    }
-
-    public String getIndexes() {
-        return indexes;
-    }
-
-    public void setIndexes(String indexes) {
-        this.indexes = indexes;
-    }
-
-    public String getOwnSpec() {
-        return ownSpec;
-    }
-
-    public void setOwnSpec(String ownSpec) {
-        this.ownSpec = ownSpec;
-    }
-
-    public Integer getEnable() {
-        return enable;
-    }
-
-    public void setEnable(Integer enable) {
-        this.enable = enable;
     }
 
     public Date getCreateTime() {
@@ -120,4 +85,11 @@ public class Sku {
         this.style = style;
     }
 
+    public Long getOld_price() {
+        return old_price;
+    }
+
+    public void setOld_price(Long old_price) {
+        this.old_price = old_price;
+    }
 }

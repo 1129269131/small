@@ -1,5 +1,5 @@
 export default {
-  title: '通用后台管理系统',
+  title: '智慧商城后台管理系统',
   login: '登录',
   logout: '退出',
   layoutTools: {

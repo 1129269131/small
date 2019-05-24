@@ -5,7 +5,8 @@
       <ul class="message-l">
         <div class="topMessage">
           <div class="menu-hd">
-            <router-link to="/login" class="h login-tip">亲，请登录</router-link>
+            <span v-if="!isLogin"><router-link to="/login" class="h login-tip">亲，请登录</router-link></span>
+            <span v-else><router-link to="/login" class="h login-tip">欢迎,{{userName}}</router-link></span>
             <router-link to="/regist" class="regist-tip">免费注册</router-link>
           </div>
         </div>
@@ -84,9 +85,20 @@ export default {
   name: 'Top',
   data () {
     return {
+      isLogin: false,
+      userName: ''
     }
   },
   methods: {
+    verifyLogin(){
+      if(localStorage.getItem('user')){
+        this.userName = localStorage.getItem('user')
+        this.isLogin = true
+      }
+    }
+  },
+  mounted(){
+    this.verifyLogin()
   }
 }
 </script>

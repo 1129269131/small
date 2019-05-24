@@ -34,11 +34,11 @@ export function queryBrandById(bId) {
 
 /**
  * 根据cid获取商品规格组信息
- * @param {*} cId 
+ * @param {*} spuId 
  */
-export function queryGroupByCid(cId) {
+export function queryGroupBySpuId(spuId) {
     const result = request({
-        url: '/admin/spec/groups/' + cId,
+        url: '/admin/spec/groups/' + spuId,
         method: 'get'
     })
     return result
@@ -54,4 +54,16 @@ export function queryParamByCid(cId) {
         method: 'get'
     })
     return result
+}
+
+/**
+ * 购物车
+ */
+export function addCart(cart) {
+    debugger
+    return request({
+        url: '/admin/cart/addCart',
+        method: 'post',
+        data: cart
+    })
 }

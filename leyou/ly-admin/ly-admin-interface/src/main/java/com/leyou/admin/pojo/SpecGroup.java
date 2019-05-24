@@ -13,7 +13,7 @@ public class SpecGroup {
     @Id
     @KeySql(useGeneratedKeys = true)
     private Long id;
-    private Long cid;
+    private Long spuId;
     private String name;
     private String value;
 
@@ -36,12 +36,12 @@ public class SpecGroup {
         this.id = id;
     }
 
-    public Long getCid() {
-        return cid;
+    public Long getSpuId() {
+        return spuId;
     }
 
-    public void setCid(Long cid) {
-        this.cid = cid;
+    public void setSpuId(Long spuId) {
+        this.spuId = spuId;
     }
 
     public String getName() {

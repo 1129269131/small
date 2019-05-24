@@ -21,12 +21,12 @@ public class SpecificationController {
 
     /**
      * 根据cid获取商品规格组信息
-     * @param cid
+     * @param spuId
      * @return
      */
-    @GetMapping("groups/{cid}")
-    public ResponseEntity<Common<List<SpecGroup>>> queryGroupByCid(@PathVariable("cid")Long cid){
-        return ResponseEntity.ok(specificationService.queryGroupByCid2(cid));
+    @GetMapping("groups/{spuId}")
+    public ResponseEntity<Common<List<SpecGroup>>> queryGroupByCid(@PathVariable("spuId")Long spuId){
+        return ResponseEntity.ok(specificationService.queryGroupByCid2(spuId));
     }
 
     /**

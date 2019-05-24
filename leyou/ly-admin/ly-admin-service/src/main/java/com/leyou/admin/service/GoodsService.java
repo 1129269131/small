@@ -118,7 +118,7 @@ public class GoodsService {
         //查询sku
         spu.setSkus(querySkuBySpuId(id));
         //查询detail
-        spu.setSpuDetail(queryDetailById(id));
+//        spu.setSpuDetail(queryDetailById(id));
 
         res.setResult(spu);
         res.setCode(0);

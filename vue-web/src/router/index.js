@@ -13,6 +13,22 @@ const routes = [{
   }
 },
 {
+  name: 'Test',
+  path: '/test',
+  component: resolve => require(['@/views/temp/test'], resolve),
+  meta: {
+    title: 'Test'
+  }
+},
+{
+  name: 'Shopcart',
+  path: '/shopcart',
+  component: resolve => require(['@/views/shopcart/Index'], resolve),
+  meta: {
+    title: 'Shopcart'
+  }
+},
+{
   name: 'Index',
   path: '/',
   component: resolve => require(['@/views/index/Index'], resolve),

@@ -12,7 +12,7 @@ public class Advertisement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long bid;
+    private Long spuId;
 
     private Integer classification;
 
@@ -32,12 +32,12 @@ public class Advertisement {
         this.id = id;
     }
 
-    public Long getBid() {
-        return bid;
+    public Long getSpuId() {
+        return spuId;
     }
 
-    public void setBid(Long bid) {
-        this.bid = bid;
+    public void setSpuId(Long spuId) {
+        this.spuId = spuId;
     }
 
     public Integer getClassification() {
@@ -56,6 +56,14 @@ public class Advertisement {
         this.content = content;
     }
 
+    public String getSubContent() {
+        return subContent;
+    }
+
+    public void setSubContent(String subContent) {
+        this.subContent = subContent;
+    }
+
     public String getImg() {
         return img;
     }
@@ -70,13 +78,5 @@ public class Advertisement {
 
     public void setPrice(Integer price) {
         this.price = price;
-    }
-
-    public String getSubContent() {
-        return subContent;
-    }
-
-    public void setSubContent(String subContent) {
-        this.subContent = subContent;
     }
 }

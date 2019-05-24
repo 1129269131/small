@@ -12,13 +12,12 @@ public class Spu {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long brandId;
+    private String title;// 标题
+    private String subTitle;// 子标题
     private Long cid1;// 1级类目
     private Long cid2;// 2级类目
     private Long cid3;// 3级类目
-    private String title;// 标题
-    private String subTitle;// 子标题
-    private Boolean saleable;// 是否上架
-    private Boolean valid;// 是否有效，逻辑删除用
+    private String img;
     private Date createTime;// 创建时间
 
     @JsonIgnore
@@ -105,22 +104,6 @@ public class Spu {
         this.subTitle = subTitle;
     }
 
-    public Boolean getSaleable() {
-        return saleable;
-    }
-
-    public void setSaleable(Boolean saleable) {
-        this.saleable = saleable;
-    }
-
-    public Boolean getValid() {
-        return valid;
-    }
-
-    public void setValid(Boolean valid) {
-        this.valid = valid;
-    }
-
     public Date getCreateTime() {
         return createTime;
     }
@@ -151,5 +134,13 @@ public class Spu {
 
     public void setBname(String bname) {
         this.bname = bname;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }

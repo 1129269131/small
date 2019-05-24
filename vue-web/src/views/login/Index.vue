@@ -98,6 +98,7 @@ export default {
   methods: {
     loginHandler () {
       login(this.username, this.password).then(response => {
+        localStorage.setItem('user',this.username)
         setToken(response.result)
         this.$router.push({ path: '/' })
       })

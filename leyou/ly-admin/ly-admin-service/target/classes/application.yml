@@ -26,3 +26,7 @@ eureka:
 mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+leyou:
+  jwt:
+    pubKeyPath:  E:/temp/rsa.pub #公钥地址
+    cookieName: TOKEN

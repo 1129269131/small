@@ -317,7 +317,7 @@
                         <div class="cart-title number">数量</div>
             <dd>
               <el-input-number
-                v-model="num1"
+                v-model="commondityNum"
                 :min="1"
                 :max="10"
                 label="描述文字"
@@ -1178,8 +1178,7 @@
             label="猜你喜欢"
             name="third"
           >
-					
-
+				
 						<div class="am-tab-panel am-fade am-active am-in">
             <div class="like">
               <ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
@@ -1361,7 +1360,7 @@
 </template>
 
 <script>
-import { goodsDetailList, querySpuById, queryBrandById, queryGroupByCid, queryParamByCid } from '@/api/item'
+import { goodsDetailList, querySpuById, queryBrandById, queryGroupBySpuId, queryParamByCid,addCart } from '@/api/item'
 export default {
   name: 'ListMain',
   data() {
@@ -1369,7 +1368,7 @@ export default {
       value2: null,
       value3: null,
       value4: null,
-      num1: 1,
+      commondityNum: 1,
       stock: 1,
       items: [],
       spu: null,
@@ -1379,6 +1378,11 @@ export default {
       specs: null,
       skuImg: null,
       parameters: null,
+      cart:{
+        skuId: null,
+        price: null,
+        num: null
+      },
       options2: [{
         value: '北京市',
         label: '北京市'
@@ -1454,21 +1458,22 @@ export default {
     }
   },
   methods: {
-    goodsDetailList() {
+    /* goodsDetailList() {
       let goodsId = this.$route.params.goodsId
       goodsDetailList(goodsId).then(response => {
         this.items = response.result.taste
       })
-    },
+    }, */
     querySpuById() {
       querySpuById(localStorage.getItem('spuId')).then(response => {
         let data = response.result
-
+        console.log(data)
         this.spu = data
         this.skus = data.skus
-        this.skuImg = data.skus[0].images.split(',')
-        this.queryBrandById(data.brandId)
-        this.queryGroupByCid(data.cid3)
+        this.skuImg = data.img.split(',')
+        
+        // this.queryBrandById(data.brandId)
+        this.queryGroupBySpuId(data.id)
       })
     },
     queryBrandById(brandId) {
@@ -1476,8 +1481,8 @@ export default {
 
       })
     },
-    queryGroupByCid(cid) {
-      queryGroupByCid(cid).then(response => {
+    queryGroupBySpuId(spuId) {
+      queryGroupBySpuId(spuId).then(response => {
         let data = response.result
         this.parameters = data
       })
@@ -1496,25 +1501,41 @@ export default {
       this.$('.packages').removeClass('selected')
       this.$('.packages').eq(index).addClass('selected')
     },
+    // 购物车数据加入redis中
+    addCart (cart) {
+      addCart(cart).then(response => {
+        
+      })
+    },
     /* 加入购物车 */
     addCar(){
-      let carts = localStorage.getItem('cars') || []
-      let cart = JSON.parse(localStorage.getItem('cars'))
-      
-      if( cart && cart[0].skuId === 1){
-        cart[0].num += this.num1
-        localStorage.setItem('cars',JSON.stringify(cart))
+      debugger
+      if(localStorage.getItem('user')){
+        this.cart.skuId = this.spu.id
+        this.cart.price = this.spu.skus[0].price
+        this.cart.num = this.commondityNum
+        this.addCart(this.cart)
       }else{
-        cart = {
-          skuId: 1,
-          title: '商品标题',
-          price: 100,
-          image: 'a.png',
-          num: 1
+        let carts = localStorage.getItem('cars') || []
+        let cart = JSON.parse(localStorage.getItem('cars'))
+        let spu = this.spu
+        let commondityNum = this.commondityNum
+
+        if( cart && cart[0].skuId === spu.id){
+          cart[0].num += commondityNum
+          localStorage.setItem('cars',JSON.stringify(cart))
+        }else{
+          cart = {
+            skuId: spu.id,
+            // title: '商品标题',
+            price: spu.skus[0].price,
+            // image: 'a.png',
+            num: commondityNum
+          }
+          carts.push(cart)
+          localStorage.setItem('cars',JSON.stringify(carts))
         }
-        carts.push(cart)
-        localStorage.setItem('cars',JSON.stringify(carts))
-      }
+      } 
     }
   },
   mounted() {

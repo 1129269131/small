@@ -18,7 +18,9 @@ zuul:
   routes:
       item-service: /item/** # 将商品微服务映射到/item/**
       auth-service: /auth/** # 授权中心微服务
-      admin-service: /admin/** #后台管理微服务
+      admin-service: /admin/** #外部接口微服务
+      user-service: /user/** #用户信息管理微服务
+      test-service: /test/** #测试微服务
 ribbon:
   ConnectTimeout: 250 # 连接超时时间(ms)
   ReadTimeout: 2000 # 通信超时时间(ms)

@@ -11,7 +11,7 @@ public class Brand {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;// 品牌名称
-    private String image;// 品牌图片
+    private String img;// 品牌图片
     private Character letter;
 
     public Long getId() {
@@ -30,12 +30,12 @@ public class Brand {
         this.name = name;
     }
 
-    public String getImage() {
-        return image;
+    public String getImg() {
+        return img;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public Character getLetter() {

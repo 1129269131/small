@@ -11,6 +11,7 @@
         <module>leyou-auth</module>
         <module>leyou-user</module>
         <module>ly-admin</module>
+        <module>test</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

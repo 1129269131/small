@@ -28,9 +28,9 @@ public class SpecificationService {
     @Autowired
     private SpecParamMapper specParamMapper;
 
-    public List<SpecGroup> queryGroupByCid(Long cid){
+    public List<SpecGroup> queryGroupByCid(Long spuId){
         SpecGroup group = new SpecGroup();
-        group.setCid(cid);
+        group.setSpuId(spuId);
         List<SpecGroup> list = specGroupMapper.select(group);
         if(CollectionUtils.isEmpty(list)){
             System.out.println("报错");
@@ -38,10 +38,10 @@ public class SpecificationService {
         return list;
     }
 
-    public Common<List<SpecGroup>> queryGroupByCid2(Long cid){
+    public Common<List<SpecGroup>> queryGroupByCid2(Long spuId){
         Common<List<SpecGroup>> res = new Common<List<SpecGroup>>();
         SpecGroup group = new SpecGroup();
-        group.setCid(cid);
+        group.setSpuId(spuId);
         List<SpecGroup> list = specGroupMapper.select(group);
         if(CollectionUtils.isEmpty(list)){
             System.out.println("报错");

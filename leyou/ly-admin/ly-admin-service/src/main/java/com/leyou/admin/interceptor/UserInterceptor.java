@@ -3,8 +3,6 @@ package com.leyou.admin.interceptor;
 import com.leyou.admin.config.JwtProperties;
 import com.leyou.auth.entity.UserInfo;
 import com.leyou.auth.utils.JwtUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
