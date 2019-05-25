@@ -1535,6 +1535,7 @@ export default {
         this.cart.img = this.spu.skus[0].img
         this.addCart(this.cart)
       }else{
+        let $this = this
         let carts = localStorage.getItem('cars') || []
         let cart = JSON.parse(localStorage.getItem('cars'))
         let spu = this.spu
@@ -1546,10 +1547,14 @@ export default {
         }else{
           cart = {
             skuId: spu.id,
-            // title: '商品标题',
             price: spu.skus[0].price,
-            // image: 'a.png',
-            num: commondityNum
+            num: commondityNum,
+            title: spu.title,
+            newPrice: spu.skus[0].price,
+            oldPrice: spu.skus[0].old_price,
+            packageStyle: $this.packageStyle,
+            style: spu.skus[0].style,
+            img: spu.skus[0].img
           }
           carts.push(cart)
           localStorage.setItem('cars',JSON.stringify(carts))

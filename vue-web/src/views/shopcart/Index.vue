@@ -54,7 +54,7 @@
                       data-point="tbcart.8.12"
                     >
                       <img
-                        src="@/assets/images/kouhong.jpg_80x80.jpg"
+                        :src="require('@/assets/images/'+item.img)"
                         class="itempic J_ItemImg"
                       ></a>
                   </div>
@@ -210,25 +210,7 @@ export default {
           this.cartData = response.result
         })
       }else{
-        let carts = localStorage.getItem('cars') || []
-        let cart = JSON.parse(localStorage.getItem('cars'))
-        let spu = this.spu
-        let commondityNum = this.commondityNum
-
-        if( cart && cart[0].skuId === spu.id){
-            cart[0].num += commondityNum
-            localStorage.setItem('cars',JSON.stringify(cart))
-          }else{
-            cart = {
-              skuId: spu.id,
-              // title: '商品标题',
-              price: spu.skus[0].price,
-              // image: 'a.png',
-              num: commondityNum
-            }
-            carts.push(cart)
-            localStorage.setItem('cars',JSON.stringify(carts))
-        }
+        this.cartData = JSON.parse(localStorage.getItem('cars'))
       } 
       this.checkCommodity()
     },
