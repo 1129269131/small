@@ -76,3 +76,13 @@ export function queryCartList() {
         method: 'post'
     })
 }
+
+/**
+ * 查询用户地址信息
+ */
+export function queryAddress(uid) {
+    return request({
+        url: '/admin/address/queryAddress?uid='+uid,
+        method: 'post'
+    })
+}

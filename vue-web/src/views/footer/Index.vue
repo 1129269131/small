@@ -19,10 +19,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
+
 </style>

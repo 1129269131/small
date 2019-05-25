@@ -35,10 +35,7 @@
                   <div class="cart-checkbox ">
                     <input
                       class="check toCheck"
-                      id="J_CheckBox_170037950254"
-                      name="items[]"
                       @click="checkCommodity(index,item)"
-                      value="170037950254"
                       type="checkbox"
                     />
                     <!-- <label for="J_CheckBox_170037950254"></label> -->
@@ -162,13 +159,15 @@
               <strong class="price">¥<em id="J_Total">{{item.total}}</em></strong>
             </div>
             <div class="btn-area">
+              <router-link :to="{ name: 'Pay', params: checkItems}">
               <a
-                href="pay.html"
+                href="@"
                 id="J_Go"
                 class="submit-btn submit-btn-disabled"
                 aria-label="请注意如果没有选择宝贝，将无法结算"
               >
                 <span>结&nbsp;算</span></a>
+              </router-link>
             </div>
           </div>
 
@@ -248,7 +247,8 @@ export default {
       let $this = this
       this.$('#allSelect').click(function(){
         if($this.$(this).is(':checked')){
-          $this.$('.toCheck').attr("checked","true")
+          // $this.$('.toCheck').attr("checked","true")
+          $this.$('.toCheck').prop("checked",true);
           $this.checkItems = $this.cartData
           //获取已选商品数量
           $this.item.selectedNum = $this.checkItems.length
@@ -259,7 +259,8 @@ export default {
           })
           $this.item.total = total
         }else{
-          $this.$('.toCheck').removeAttr("checked")
+          // $this.$('.toCheck').attr("checked","false")
+          $this.$('.toCheck').prop("checked",false);
           $this.checkItems = []
           //获取已选商品数量
           $this.item.selectedNum = 0
@@ -324,5 +325,12 @@ export default {
     width: 100%;
     text-align: center
   }
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 </style>

@@ -21,6 +21,14 @@ const routes = [{
   }
 },
 {
+  name: 'Pay',
+  path: '/pay',
+  component: resolve => require(['@/views/pay/Index'], resolve),
+  meta: {
+    title: 'Pay'
+  }
+},
+{
   name: 'Shopcart',
   path: '/shopcart',
   component: resolve => require(['@/views/shopcart/Index'], resolve),
