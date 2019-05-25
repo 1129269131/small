@@ -30,17 +30,18 @@
             <div class="clear"></div>
             <div class="bundle-main">
               <ul class="item-content goodsList clearfix">
-                <div v-for="item in cartData">
+                <div v-for="(item,index) in cartData">
                 <li>
                   <div class="cart-checkbox ">
                     <input
-                      class="check"
+                      class="check toCheck"
                       id="J_CheckBox_170037950254"
                       name="items[]"
+                      @click="checkCommodity(index,item)"
                       value="170037950254"
                       type="checkbox"
-                    >
-                    <label for="J_CheckBox_170037950254"></label>
+                    />
+                    <!-- <label for="J_CheckBox_170037950254"></label> -->
                   </div>
                 </li>
                 <li>
@@ -73,10 +74,6 @@
                   <div class="item-props item-props-can">
                     <span class="sku-line">味道：{{item.style}} </span>
                     <span class="sku-line">包装：{{item.packageStyle}}</span>
-                    <span
-                      tabindex="0"
-                      class="btn-edit-sku theme-login"
-                    >修改</span>
                     <i class="theme-login am-icon-sort-desc"></i>
                   </div>
                 </li>
@@ -100,13 +97,14 @@
                     v-model="item.num"
                     :min="1"
                     :max="10"
+                    @change="numberChange()"
                     style="width: 130px;margin-top: 15px"
                   ></el-input-number>
                 </li>
                 <li>
                   <div class="td-inner amountNumber">
-											<em tabindex="0" class="J_ItemSum number">{{item.price}}</em>
-										</div>
+											<em tabindex="0" class="J_ItemSum number">{{item.newPrice*item.num}}</em>
+									</div>
                 </li>
                 <li>
                   <div class="td-inner delete-operation">
@@ -134,7 +132,7 @@
             <div class="cart-checkbox">
               <input
                 class="check-all check"
-                id="J_SelectAllCbx2"
+                id="allSelect"
                 name="select-all"
                 value="true"
                 type="checkbox"
@@ -149,16 +147,11 @@
               hidefocus="true"
               class="deleteAll"
             >删除</a>
-            <a
-              href="#"
-              hidefocus="true"
-              class="J_BatchFav"
-            >移入收藏夹</a>
           </div>
           <div class="float-bar-right">
             <div class="amount-sum">
               <span class="txt">已选商品</span>
-              <em id="J_SelectedItemsCount">0</em><span class="txt">件</span>
+              <em id="J_SelectedItemsCount">{{item.selectedNum}}</em><span class="txt">件</span>
               <div class="arrow-box">
                 <span class="selected-items-arrow"></span>
                 <span class="arrow"></span>
@@ -166,7 +159,7 @@
             </div>
             <div class="price-sum">
               <span class="txt">合计:</span>
-              <strong class="price">¥<em id="J_Total">0.00</em></strong>
+              <strong class="price">¥<em id="J_Total">{{item.total}}</em></strong>
             </div>
             <div class="btn-area">
               <a
@@ -201,7 +194,12 @@ export default {
     return {
       commondityNum: 1,
       isChecked: true,
-      cartData: null
+      cartData: null,
+      checkItems: [],
+      item: {
+        selectedNum: 0,
+        total: 0
+      }
     }
   },
   methods: {
@@ -210,8 +208,6 @@ export default {
       if(localStorage.getItem('user')){
         queryCartList().then(response => {
           this.cartData = response.result
-          console.log('----yy-----')
-          console.log(response)
         })
       }else{
         let carts = localStorage.getItem('cars') || []
@@ -220,24 +216,80 @@ export default {
         let commondityNum = this.commondityNum
 
         if( cart && cart[0].skuId === spu.id){
-          cart[0].num += commondityNum
-          localStorage.setItem('cars',JSON.stringify(cart))
-        }else{
-          cart = {
-            skuId: spu.id,
-            // title: '商品标题',
-            price: spu.skus[0].price,
-            // image: 'a.png',
-            num: commondityNum
-          }
-          carts.push(cart)
-          localStorage.setItem('cars',JSON.stringify(carts))
+            cart[0].num += commondityNum
+            localStorage.setItem('cars',JSON.stringify(cart))
+          }else{
+            cart = {
+              skuId: spu.id,
+              // title: '商品标题',
+              price: spu.skus[0].price,
+              // image: 'a.png',
+              num: commondityNum
+            }
+            carts.push(cart)
+            localStorage.setItem('cars',JSON.stringify(carts))
         }
       } 
+      this.checkCommodity()
+    },
+    /* 选中商品 */
+    checkCommodity(index,item){
+      let currentItem = this.$('.toCheck').eq(index)
+      let commodityItem = item
+      if(currentItem.is(':checked')){
+        this.checkItems.push(item)
+      }else{
+        this.checkItems = this.checkItems.filter(function (item, index) {
+            return item.skuId != commodityItem.skuId
+        })
+      }
+      //获取已选商品数量
+      this.item.selectedNum = this.checkItems.length
+      //获取合计
+      let total = 0
+      this.checkItems.forEach(function (item, index) {
+        total += item.num*item.newPrice
+      })
+      this.item.total = total
+    },
+    /* 监听已选商品的数量变化 */
+    numberChange(){
+      //获取合计
+      let total = 0
+      this.checkItems.forEach(function (item, index) {
+        total += item.num*item.newPrice
+      })
+      this.item.total = total
+    },
+    /* 监听全选 */
+    allSelect(){
+      let $this = this
+      this.$('#allSelect').click(function(){
+        if($this.$(this).is(':checked')){
+          $this.$('.toCheck').attr("checked","true")
+          $this.checkItems = $this.cartData
+          //获取已选商品数量
+          $this.item.selectedNum = $this.checkItems.length
+          //获取合计
+          let total = 0
+          $this.checkItems.forEach(function (item, index) {
+            total += item.num*item.newPrice
+          })
+          $this.item.total = total
+        }else{
+          $this.$('.toCheck').removeAttr("checked")
+          $this.checkItems = []
+          //获取已选商品数量
+          $this.item.selectedNum = 0
+          //获取合计
+          $this.item.total = 0
+        }
+      })
     }
   },
   mounted() {
     this.checkCar()
+    this.allSelect()
   }
 }
 </script>
