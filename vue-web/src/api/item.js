@@ -86,3 +86,14 @@ export function queryAddress(uid) {
         method: 'post'
     })
 }
+
+/**
+ * 添加订单
+ */
+export function addOrder(orders) {
+    return request({
+        url: '/admin/order/addOrder',
+        method: 'post',
+        data: orders
+    })
+}
