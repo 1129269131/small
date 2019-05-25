@@ -5,30 +5,11 @@
       <div class="concent">
         <div id="cartTable">
           <div class="cart-table-th">
-            <div class="wp">
-              <div class="th th-chk">
-                <div
-                  id="J_SelectAll1"
-                  class="select-all J_SelectAll"
-                >
-
-                </div>
-              </div>
-              <div class="th th-item">
-                <div class="td-inner">商品信息</div>
-              </div>
-              <div class="th th-price">
-                <div class="td-inner">单价</div>
-              </div>
-              <div class="th th-amount">
-                <div class="td-inner">数量</div>
-              </div>
-              <div class="th th-sum">
-                <div class="td-inner">金额</div>
-              </div>
-              <div class="th th-op">
-                <div class="td-inner">操作</div>
-              </div>
+            <div class="cart-table-head" style="float: right">
+              <span>单价</span>
+              <span>数量</span>
+              <span>金额</span>
+              <span>操作</span>
             </div>
           </div>
           <div class="clear"></div>
@@ -49,6 +30,7 @@
             <div class="clear"></div>
             <div class="bundle-main">
               <ul class="item-content goodsList clearfix">
+                <div v-for="item in cartData">
                 <li>
                   <div class="cart-checkbox ">
                     <input
@@ -66,7 +48,7 @@
                     <a
                       href="#"
                       target="_blank"
-                      data-title="美康粉黛醉美东方唇膏口红正品 持久保湿滋润防水不掉色护唇彩妆"
+                      data-title=""
                       class="J_MakePoint"
                       data-point="tbcart.8.12"
                     >
@@ -81,16 +63,16 @@
                     <a
                       href="#"
                       target="_blank"
-                      title="美康粉黛醉美唇膏 持久保湿滋润防水不掉色"
+                      title=""
                       class="item-title J_MakePoint"
                       data-point="tbcart.8.11"
-                    >美康粉黛醉美唇膏 持久保湿滋润防水不掉色</a>
+                    >{{item.title}}</a>
                   </div>
                 </li>
                 <li>
                   <div class="item-props item-props-can">
-                    <span class="sku-line">颜色：12#川南玛瑙</span>
-                    <span class="sku-line">包装：裸装</span>
+                    <span class="sku-line">味道：{{item.style}} </span>
+                    <span class="sku-line">包装：{{item.packageStyle}}</span>
                     <span
                       tabindex="0"
                       class="btn-edit-sku theme-login"
@@ -102,18 +84,40 @@
                   <div class="item-price price-promo-promo">
                     <div class="price-content">
                       <div class="price-line">
-                        <em class="price-original">78.00</em>
+                        <em class="price-original">{{item.oldPrice}}</em>
                       </div>
                       <div class="price-line">
                         <em
                           class="J_Price price-now"
                           tabindex="0"
-                        >39.00</em>
+                        >{{item.newPrice}}</em>
                       </div>
                     </div>
                   </div>
                 </li>
-              </ul>
+                <li>
+                  <el-input-number
+                    v-model="item.num"
+                    :min="1"
+                    :max="10"
+                    style="width: 130px;margin-top: 15px"
+                  ></el-input-number>
+                </li>
+                <li>
+                  <div class="td-inner amountNumber">
+											<em tabindex="0" class="J_ItemSum number">{{item.price}}</em>
+										</div>
+                </li>
+                <li>
+                  <div class="td-inner delete-operation">
+											<a href="javascript:;" data-point-url="#" class="delete">
+                  删除</a>
+									</div>
+                </li>
+              
+              
+                </div>
+                </ul>
             </div>
           </div>
 
@@ -177,37 +181,6 @@
 
         </div>
 
-        <div class="footer">
-          <div class="footer-hd">
-            <p>
-              <a href="#">恒望科技</a>
-              <b>|</b>
-              <a href="#">商城首页</a>
-              <b>|</b>
-              <a href="#">支付宝</a>
-              <b>|</b>
-              <a href="#">物流</a>
-            </p>
-          </div>
-          <div class="footer-bd">
-            <p>
-              <a href="#">关于恒望</a>
-              <a href="#">合作伙伴</a>
-              <a href="#">联系我们</a>
-              <a href="#">网站地图</a>
-              <em>© 2015-2025 Hengwang.com 版权所有. 更多模板 <a
-                  href="http://www.cssmoban.com/"
-                  target="_blank"
-                  title="模板之家"
-                >模板之家</a> - Collect from <a
-                  href="http://www.cssmoban.com/"
-                  title="网页模板"
-                  target="_blank"
-                >网页模板</a></em>
-            </p>
-          </div>
-        </div>
-
       </div>
     </div>
     <Footer></Footer>
@@ -215,6 +188,7 @@
 </template>
 
 <script>
+import { queryCartList } from '@/api/item'
 import Top from '../top/Index'
 import Footer from '../footer/Index'
 export default {
@@ -225,10 +199,45 @@ export default {
   },
   data() {
     return {
+      commondityNum: 1,
+      isChecked: true,
+      cartData: null
     }
   },
   methods: {
+    /* 查看购物车 */
+    checkCar(){
+      if(localStorage.getItem('user')){
+        queryCartList().then(response => {
+          this.cartData = response.result
+          console.log('----yy-----')
+          console.log(response)
+        })
+      }else{
+        let carts = localStorage.getItem('cars') || []
+        let cart = JSON.parse(localStorage.getItem('cars'))
+        let spu = this.spu
+        let commondityNum = this.commondityNum
 
+        if( cart && cart[0].skuId === spu.id){
+          cart[0].num += commondityNum
+          localStorage.setItem('cars',JSON.stringify(cart))
+        }else{
+          cart = {
+            skuId: spu.id,
+            // title: '商品标题',
+            price: spu.skus[0].price,
+            // image: 'a.png',
+            num: commondityNum
+          }
+          carts.push(cart)
+          localStorage.setItem('cars',JSON.stringify(carts))
+        }
+      } 
+    }
+  },
+  mounted() {
+    this.checkCar()
   }
 }
 </script>
@@ -256,5 +265,30 @@ export default {
 }
 .item-props {
   padding-top: 20px;
+}
+.cart-table-head{
+  float: right;
+  span{
+    display: inline-block;
+    width: 115px;
+  }
+}
+.amountNumber{
+  width: 110px;
+  margin-top: 25px;
+  em{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+}
+.delete-operation{
+  width: 110px;
+  margin-top: 25px;
+  a{
+    display: inline-block;
+    width: 100%;
+    text-align: center
+  }
 }
 </style>

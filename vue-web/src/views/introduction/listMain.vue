@@ -1356,7 +1356,6 @@
     </div>
 
   </div>
-  </div>
 </template>
 
 <script>
@@ -1368,6 +1367,7 @@ export default {
       value2: null,
       value3: null,
       value4: null,
+      activeName: 'first',
       commondityNum: 1,
       stock: 1,
       items: [],
@@ -1378,10 +1378,17 @@ export default {
       specs: null,
       skuImg: null,
       parameters: null,
+      packageStyle: null,
       cart:{
         skuId: null,
         price: null,
-        num: null
+        num: null,
+        title: null,
+        newPrice: null,
+        oldPrice: null,
+        style: null,
+        packageStyle: null,
+        img: null
       },
       options2: [{
         value: '北京市',
@@ -1498,6 +1505,13 @@ export default {
       this.$('.skus').eq(index).addClass('selected')
     },
     isPackagesSelect(index) {
+      if(index===0){
+        this.packageStyle = '手袋单人份'
+      }else if(index===1){
+        this.packageStyle = '礼盒双人份'
+      }else{
+        this.packageStyle = '全家福礼包'
+      }
       this.$('.packages').removeClass('selected')
       this.$('.packages').eq(index).addClass('selected')
     },
@@ -1509,11 +1523,16 @@ export default {
     },
     /* 加入购物车 */
     addCar(){
-      debugger
       if(localStorage.getItem('user')){
         this.cart.skuId = this.spu.id
         this.cart.price = this.spu.skus[0].price
         this.cart.num = this.commondityNum
+        this.cart.title = this.spu.title
+        this.cart.newPrice = this.spu.skus[0].price
+        this.cart.oldPrice = this.spu.skus[0].old_price
+        this.cart.packageStyle = this.packageStyle
+        this.cart.style = this.spu.skus[0].style
+        this.cart.img = this.spu.skus[0].img
         this.addCart(this.cart)
       }else{
         let carts = localStorage.getItem('cars') || []

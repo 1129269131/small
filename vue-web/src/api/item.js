@@ -57,13 +57,22 @@ export function queryParamByCid(cId) {
 }
 
 /**
- * 购物车
+ * 加入购物车
  */
 export function addCart(cart) {
-    debugger
     return request({
         url: '/admin/cart/addCart',
         method: 'post',
         data: cart
+    })
+}
+
+/**
+ * 查看购物车
+ */
+export function queryCartList() {
+    return request({
+        url: '/admin/cart/queryCartList',
+        method: 'post'
     })
 }

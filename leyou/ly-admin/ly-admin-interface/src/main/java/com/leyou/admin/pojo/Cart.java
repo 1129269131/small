@@ -3,10 +3,14 @@ package com.leyou.admin.pojo;
 public class Cart {
     private Long skuId;
     private String title;
-    private String image;
+    private String img;
     private Long price;
     private Integer num;
     private String ownSpec;
+    private Long newPrice;
+    private Long oldPrice;
+    private String style;
+    private String packageStyle;
 
     public Long getSkuId() {
         return skuId;
@@ -24,12 +28,12 @@ public class Cart {
         this.title = title;
     }
 
-    public String getImage() {
-        return image;
+    public String getImg() {
+        return img;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public Long getPrice() {
@@ -54,5 +58,37 @@ public class Cart {
 
     public void setOwnSpec(String ownSpec) {
         this.ownSpec = ownSpec;
+    }
+
+    public Long getNewPrice() {
+        return newPrice;
+    }
+
+    public void setNewPrice(Long newPrice) {
+        this.newPrice = newPrice;
+    }
+
+    public Long getOldPrice() {
+        return oldPrice;
+    }
+
+    public void setOldPrice(Long oldPrice) {
+        this.oldPrice = oldPrice;
+    }
+
+    public String getStyle() {
+        return style;
+    }
+
+    public void setStyle(String style) {
+        this.style = style;
+    }
+
+    public String getPackageStyle() {
+        return packageStyle;
+    }
+
+    public void setPackageStyle(String packageStyle) {
+        this.packageStyle = packageStyle;
     }
 }

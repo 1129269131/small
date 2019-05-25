@@ -2,6 +2,7 @@ package com.leyou.admin.service;
 
 import com.leyou.admin.pojo.Cart;
 import com.leyou.auth.entity.UserInfo;
+import com.leyou.common.vo.Common;
 import com.leyou.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.BoundHashOperations;
@@ -48,6 +49,7 @@ public class CartService {
      * @return
      */
     public List<Cart> queryCartList(HttpServletRequest request){
+
         // 获取登录用户
         UserInfo user = (UserInfo) request.getAttribute("user");
         //key
@@ -62,6 +64,7 @@ public class CartService {
         BoundHashOperations<String, Object, Object> operation = redisTemplate.boundHashOps(key);
 
         List<Object> carts = operation.values();
+
         return carts.stream().map( o -> JsonUtils.parse(o.toString(),Cart.class)).collect(Collectors.toList());
     }
 }

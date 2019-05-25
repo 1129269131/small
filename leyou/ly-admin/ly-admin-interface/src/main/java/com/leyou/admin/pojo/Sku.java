@@ -15,6 +15,7 @@ public class Sku {
     private String title;
     private Long price;
     private Long old_price;
+    private String img;
     private Date createTime;
     private Date lastUpdateTime;
 
@@ -91,5 +92,13 @@ public class Sku {
 
     public void setOld_price(Long old_price) {
         this.old_price = old_price;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }
