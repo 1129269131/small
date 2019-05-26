@@ -24,6 +24,7 @@
                 type="text"
                 id="user-name2"
                 placeholder="nickname"
+                v-model="userInfo.username"
               >
 
             </div>
@@ -39,6 +40,7 @@
                 type="text"
                 id="user-name2"
                 placeholder="name"
+                v-model="userInfo.truename"
               >
 
             </div>
@@ -54,7 +56,8 @@
                   value="male"
                   data-am-ucheck=""
                   class="am-ucheck-radio"
-                ><span class="am-ucheck-icons"><i class="am-icon-unchecked"></i><i class="am-icon-checked"></i></span> 男
+                >
+                <span class="am-ucheck-icons"><i class="am-icon-unchecked"></i><i class="am-icon-checked"></i></span> 男
               </label>
               <label class="am-radio-inline">
                 <input
@@ -65,144 +68,57 @@
                   class="am-ucheck-radio"
                 ><span class="am-ucheck-icons"><i class="am-icon-unchecked"></i><i class="am-icon-checked"></i></span> 女
               </label>
-              <label class="am-radio-inline">
+              <label class="am-radio-inline" style="width: 50px">
                 <input
                   type="radio"
                   name="radio10"
                   value="secret"
                   data-am-ucheck=""
                   class="am-ucheck-radio"
-                ><span class="am-ucheck-icons"><i class="am-icon-unchecked"></i><i class="am-icon-checked"></i></span> 保密
+                ><span class="am-ucheck-icons"><i class="am-icon-unchecked"></i><i class="am-icon-checked"></i></span>保密
               </label>
             </div>
           </div>
 
-          <div class="am-form-group">
+         <!--  <div class="am-form-group">
             <label
               for="user-birth"
               class="am-form-label"
             >生日</label>
             <div class="am-form-content birth">
               <div class="birth-select">
-                <select
-                  data-am-selected=""
-                  style="display: none;"
-                >
-                  <option value="a">2015</option>
-                  <option value="b">1987</option>
-                </select>
-                <div
-                  class="am-selected am-dropdown"
-                  id="am-selected-pgof1"
-                  data-am-dropdown=""
-                > <button
-                    type="button"
-                    class="am-selected-btn am-btn am-dropdown-toggle am-btn-default"
-                  > <span class="am-selected-status am-fl">2015</span> <i class="am-selected-icon am-icon-caret-down"></i> </button>
-                  <div
-                    class="am-selected-content am-dropdown-content"
-                    style="min-width: 212px;"
-                  >
-                    <h2 class="am-selected-header"><span class="am-icon-chevron-left">返回</span></h2>
-                    <ul class="am-selected-list">
-                      <li
-                        class="am-checked"
-                        data-index="0"
-                        data-group="0"
-                        data-value="a"
-                      > <span class="am-selected-text">2015</span> <i class="am-icon-check"></i></li>
-                      <li
-                        class=""
-                        data-index="1"
-                        data-group="0"
-                        data-value="b"
-                      > <span class="am-selected-text">1987</span> <i class="am-icon-check"></i></li>
-                    </ul>
-                    <div class="am-selected-hint"></div>
-                  </div>
-                </div>
-                <em>年</em>
+                <el-select v-model="value" placeholder="请选择">
+                  <el-option
+                    v-for="item in options"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value">
+                  </el-option>
+                </el-select>
               </div>
               <div class="birth-select2">
-                <select
-                  data-am-selected=""
-                  style="display: none;"
-                >
-                  <option value="a">12</option>
-                  <option value="b">8</option>
-                </select>
-                <div
-                  class="am-selected am-dropdown"
-                  id="am-selected-rkh49"
-                  data-am-dropdown=""
-                > <button
-                    type="button"
-                    class="am-selected-btn am-btn am-dropdown-toggle am-btn-default"
-                  > <span class="am-selected-status am-fl">12</span> <i class="am-selected-icon am-icon-caret-down"></i> </button>
-                  <div
-                    class="am-selected-content am-dropdown-content"
-                    style="min-width: 163px;"
-                  >
-                    <h2 class="am-selected-header"><span class="am-icon-chevron-left">返回</span></h2>
-                    <ul class="am-selected-list">
-                      <li
-                        class="am-checked"
-                        data-index="0"
-                        data-group="0"
-                        data-value="a"
-                      > <span class="am-selected-text">12</span> <i class="am-icon-check"></i></li>
-                      <li
-                        class=""
-                        data-index="1"
-                        data-group="0"
-                        data-value="b"
-                      > <span class="am-selected-text">8</span> <i class="am-icon-check"></i></li>
-                    </ul>
-                    <div class="am-selected-hint"></div>
-                  </div>
-                </div>
-                <em>月</em>
+                <el-select v-model="value" placeholder="请选择">
+                  <el-option
+                    v-for="item in options"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value">
+                  </el-option>
+                </el-select>
               </div>
               <div class="birth-select2">
-                <select
-                  data-am-selected=""
-                  style="display: none;"
-                >
-                  <option value="a">21</option>
-                  <option value="b">23</option>
-                </select>
-                <div
-                  class="am-selected am-dropdown "
-                  id="am-selected-gx952"
-                  data-am-dropdown=""
-                > <button
-                    type="button"
-                    class="am-selected-btn am-btn am-dropdown-toggle am-btn-default"
-                  > <span class="am-selected-status am-fl">21</span> <i class="am-selected-icon am-icon-caret-down"></i> </button>
-                  <div class="am-selected-content am-dropdown-content">
-                    <h2 class="am-selected-header"><span class="am-icon-chevron-left">返回</span></h2>
-                    <ul class="am-selected-list">
-                      <li
-                        class="am-checked"
-                        data-index="0"
-                        data-group="0"
-                        data-value="a"
-                      > <span class="am-selected-text">21</span> <i class="am-icon-check"></i></li>
-                      <li
-                        class=""
-                        data-index="1"
-                        data-group="0"
-                        data-value="b"
-                      > <span class="am-selected-text">23</span> <i class="am-icon-check"></i></li>
-                    </ul>
-                    <div class="am-selected-hint"></div>
-                  </div>
-                </div>
-                <em>日</em>
+                <el-select v-model="value" placeholder="请选择">
+                  <el-option
+                    v-for="item in options"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value">
+                  </el-option>
+                </el-select>
               </div>
             </div>
 
-          </div>
+          </div> -->
           <div class="am-form-group">
             <label
               for="user-phone"
@@ -213,6 +129,7 @@
                 id="user-phone"
                 placeholder="telephonenumber"
                 type="tel"
+                v-model="userInfo.phone"
               >
 
             </div>
@@ -227,6 +144,7 @@
                 id="user-email"
                 placeholder="Email"
                 type="email"
+                v-model="userInfo.email"
               >
 
             </div>
@@ -264,7 +182,7 @@
             </div>
           </div>
           <div class="info-btn">
-            <div class="am-btn am-btn-danger">保存修改</div>
+            <div class="am-btn am-btn-danger" @click="updateUser()">保存修改</div>
           </div>
 
         </form>
@@ -276,6 +194,7 @@
 
 <script>
 import UserBasicInfo from './UserBasicInfo'
+import { updateUser } from '@/api/item'
 export default {
   name: 'Information',
   components: {
@@ -283,10 +202,24 @@ export default {
   },
   data() {
     return {
+      userInfo: {
+        id: null,
+        username: null,
+        truename: null,
+        sex: null,
+        phone: null,
+        email: null
+      }
     }
   },
   methods: {
-
+    updateUser(){
+      this.userInfo.id = 1
+      this.userInfo.sex = 1
+      updateUser(this.userInfo).then(response => {
+        alert(response)
+      })
+    }
   }
 }
 </script>

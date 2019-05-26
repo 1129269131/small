@@ -107,3 +107,14 @@ export function queryComment(skuId,commentType) {
         method: 'post'
     })
 }
+
+/**
+ * 更新用户信息
+ */
+export function updateUser(user) {
+    return request({
+        url: '/admin/user/updateUser',
+        method: 'post',
+        data: user
+    })
+}
