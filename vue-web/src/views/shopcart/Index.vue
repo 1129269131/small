@@ -205,6 +205,8 @@ export default {
       if(localStorage.getItem('user')){
         queryCartList().then(response => {
           this.cartData = response.result
+          console.log('-----')
+          console.log(this.cartData)
         })
       }else{
         this.cartData = JSON.parse(localStorage.getItem('cars'))

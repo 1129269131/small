@@ -15,8 +15,13 @@ public class AdvertisementController {
     @Autowired
     private AdvertisementService advertisementService;
 
+    /**
+     * 广告查询
+     * @param classification
+     * @return
+     */
     @GetMapping("{classification}")
     public ResponseEntity<Common<List<Advertisement>>> queryAdvertisement(@PathVariable("classification") Integer classification){
-            return ResponseEntity.ok(advertisementService.queryAdvertisement(classification));
+        return ResponseEntity.ok(advertisementService.queryAdvertisement(classification));
     }
 }

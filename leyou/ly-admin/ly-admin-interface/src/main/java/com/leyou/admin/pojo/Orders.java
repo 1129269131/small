@@ -4,18 +4,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
 
 @Table(name = "tb_order")
 public class Orders {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private Long addressId;
 
     private Long totalPay;
 
     private Long actualPay;
 
-    private int paymentType;
+    private Integer paymentType;
 
     private Long postFee;
 
@@ -27,9 +30,11 @@ public class Orders {
 
     private String buyerMessage;
 
-    private Long addressId;
-
     private int buyerRate;
+
+    private Integer orderStatus;
+
+    private Date createTime;
 
     public Long getId() {
         return id;
@@ -37,6 +42,14 @@ public class Orders {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(Long addressId) {
+        this.addressId = addressId;
     }
 
     public Long getTotalPay() {
@@ -55,11 +68,11 @@ public class Orders {
         this.actualPay = actualPay;
     }
 
-    public int getPaymentType() {
+    public Integer getPaymentType() {
         return paymentType;
     }
 
-    public void setPaymentType(int paymentType) {
+    public void setPaymentType(Integer paymentType) {
         this.paymentType = paymentType;
     }
 
@@ -103,19 +116,27 @@ public class Orders {
         this.buyerMessage = buyerMessage;
     }
 
-    public Long getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(Long addressId) {
-        this.addressId = addressId;
-    }
-
     public int getBuyerRate() {
         return buyerRate;
     }
 
     public void setBuyerRate(int buyerRate) {
         this.buyerRate = buyerRate;
+    }
+
+    public Integer getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(Integer orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

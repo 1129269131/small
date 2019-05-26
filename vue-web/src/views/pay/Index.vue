@@ -325,6 +325,7 @@ export default {
         addressList: null,
         buyerMessage: '',
         orders: {
+            uid: 1,
             addressId: null,
             shippingName: null,
             paymentType: null,

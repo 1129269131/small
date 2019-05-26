@@ -59,8 +59,8 @@ public class LoginFilter extends ZuulFilter {
                 break;
             }
         }
-        return flag;
-//        return true;
+//        return flag;
+        return true;
     }
 
     @Override
