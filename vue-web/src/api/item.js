@@ -97,3 +97,13 @@ export function addOrder(orders) {
         data: orders
     })
 }
+
+/**
+ * 查询评价信息
+ */
+export function queryComment(skuId,commentType) {
+    return request({
+        url: '/admin/comment/queryComment?skuId='+skuId+'&commentType='+commentType,
+        method: 'post'
+    })
+}

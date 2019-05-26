@@ -300,7 +300,7 @@
                         <div class="cart-title">包装</div>
                         <ul>
                           <li
-                            class="sku-line packages"
+                            class="sku-line packages selected"
                             @click="isPackagesSelect(0)"
                           >手袋单人份<i></i></li>
                           <li
@@ -396,7 +396,7 @@
           title="加入购物车"
           @click="addCar()"
         >
-        <i></i>加入购物车
+          <i></i>加入购物车
         </a>
       </div>
     </li>
@@ -554,7 +554,10 @@
                 </div>
                 <div class="clear"></div>
                 <ul id="J_AttrUL">
-                  <li v-for="(item, index) in parameters" title="">{{item.name}}:&nbsp;{{item.value}}</li>
+                  <li
+                    v-for="(item, index) in parameters"
+                    title=""
+                  >{{item.name}}:&nbsp;{{item.value}}</li>
                 </ul>
                 <div class="clear"></div>
               </div>
@@ -601,567 +604,296 @@
               <div class="clear"></div>
               <div class="tb-r-filter-bar">
                 <ul class=" tb-taglist am-avg-sm-4">
-                  <li class="tb-taglist-li tb-taglist-li-current">
-                    <div class="comment-info">
-                      <span>全部评价</span>
-                      <span class="tb-tbcr-num">(32)</span>
-                    </div>
-                  </li>
+                  <el-tabs
+                    v-model="commentActiveName"
+                    @tab-click="commentTabClick()"
+                  >
+                    <el-tab-pane
+                      label="全部评价"
+                      name="allComment"
+                    >
+                      <ul
+                        data-v-6a88d622=""
+                        class="am-comments-list am-comments-list-flip"
+                      >
+                        <li
+                          data-v-6a88d622=""
+                          class="am-comment"
+                          v-for="(item,index) in commentList"
+                        ><a
+                            data-v-6a88d622=""
+                            href=""
+                          ><img
+                              data-v-6a88d622=""
+                              src="data:image/jpeg;base64,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"
+                              class="am-comment-avatar"
+                            ></a>
+                          <div
+                            data-v-6a88d622=""
+                            class="am-comment-main"
+                          >
+                            <header
+                              data-v-6a88d622=""
+                              class="am-comment-hd"
+                            >
+                              <div
+                                data-v-6a88d622=""
+                                class="am-comment-meta"
+                              ><a
+                                  data-v-6a88d622=""
+                                  href="#link-to-user"
+                                  class="am-comment-author"
+                                >b***1 (匿名)</a>
+                                评论于
+                                <time
+                                  data-v-6a88d622=""
+                                  datetime=""
+                                >{{item.createTime}}</time></div>
+                            </header>
+                            <div
+                              data-v-6a88d622=""
+                              class="am-comment-bd"
+                            >
+                              <div
+                                data-v-6a88d622=""
+                                data-id="255776406962"
+                                class="tb-rev-item "
+                              >
+                                <div
+                                  data-v-6a88d622=""
+                                  class="J_TbcRate_ReviewContent tb-tbcr-content "
+                                >
+                                  {{item.commentContent}}
+                                </div>
+                                <!-- <div
+                                  data-v-6a88d622=""
+                                  class="tb-r-act-bar"
+                                >
+                                  颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
+                                </div> -->
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </el-tab-pane>
+                    <el-tab-pane
+                      label="好评"
+                      name="goodComment"
+                    >
+                      <ul
+                        data-v-6a88d622=""
+                        class="am-comments-list am-comments-list-flip"
+                      >
+                        <li
+                          data-v-6a88d622=""
+                          class="am-comment"
+                          v-for="(item,index) in commentList"
+                        ><a
+                            data-v-6a88d622=""
+                            href=""
+                          ><img
+                              data-v-6a88d622=""
+                              src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAAQABAAD/2wBDAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQICAQECAQEBAgICAgICAgICAQICAgICAgICAgL/2wBDAQEBAQEBAQEBAQECAQEBAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgL/wAARCAAoACgDAREAAhEBAxEB/8QAGgAAAwADAQAAAAAAAAAAAAAABwgJAQIFCv/EACsQAAEEAQMDAwQCAwAAAAAAAAMBAgQFBgcREgAIExQhQRUYIzEXMjNCUf/EABsBAAMBAQADAAAAAAAAAAAAAAYHCAQFAAMK/8QAMxEAAgEDAwMBBQgBBQAAAAAAAQIDBAURAAYSBxMhMRQiQVKBCBUyQlFhYnFDFjRyocH/2gAMAwEAAhEDEQA/APTB18y+rw0EdeMxvcKw5lvjd3BqbEFpB9QORHgzZcqtM9wDthQ5qOQj2lIFzlRqrwG7ZW/2Qn2nbaO6XVaW4QSS0zq3lCwCNjILFceMZwCQCcaYfTWw23cF/ahu9vkraSSGTiVaSNElUBlMkkeCoKhlGSByK+D6EYaU90Ndekk0+ozq6hnxheWHkAGHj01sNCIJRGAR5HV1giORytV7hPaiuao9vGnbv+xZ6Nlms3Oup3JBjODInqc+MBlP9cgcA59dGG9ejtVbUhr9qiW500zcZKVir1EBxnkrAIJYj5AIUOpwCG/EWmp7+jyCP6qjt663j+yqavmAlsRF/XJQvXjv8b9AtRSVNI/Cqp3p3/R1Kn/sDSarrZcbZL2bjQy0Mvyyxsh+nIDP011+s+sOgzrjqi3S3D/qEQY5GQXMptRjsYq/i9Y8bzSJ0hv7fGjQxmKrU/u9rB7t58kIds2Q3y4rA5K0sI5ysPXiPAUfuxwo/TyfOMaPenWzjvK/eyTsYrXQIZ6p1/F2wQqxqfg8shVAfyqWfB44Mpr/AFSrMjyZ9JdZpU2mazEfMPW2F3XGyUrWjEYyRql0lTRIA2lYrWCExjRvZ7Izi1KFprM9BbFkorS9PbEwveELCMk+MGXjxyWBHluTEeSTquLZSWa1slrtxgo2gU8aaJkVgg/O0YPN2IILyOGOTknJycdenXb1pgmqcQFvIm6d51VybajMD6i3HL2BZOhuM1SAj28SFJIiBKxjvxnbxI1F2Rdt08u1gkemWK8WuSOnqgeBmiePljwWjZlHlSfxKfB8a4tZR2Hc1JUUVUlPdqYe64DJIYywyCGUlonx5VgVb4jxqtujepQNUcKiX7hDiW8WQapv4I3bsjW0Pj5Hh39/SnA8EgW/ujJKNVVc13U97hs72S5S0fLnCwDxN80bemf5Kcq37jPoRqPd+7Sk2duCa2BzNRTIs9NIRgvBJnAb4c42DRPj1ZOQGGGle71HkDYaZyDkUVYweVoQjke4TJiArCtcrRscqvSGOWvsiuVEXZF6N+miq7XVAR3m7OP+JLA/TkV04/s+qklNu+KNedWxoiB4yU5zKQCSBgyNGPJAzjJ1BjVbA8izjvL7d9QMCoa2ThuLkyCxyzNaqjNDtZM01eGrPVZFblYMhYAoMGudEjmGitfPkOY56E2ZYllv9Dbekm79s3OqUXCaZWpYmbJZZO0cxDz7oZHJxjByT6+Srcuxr5S9X9obiegelpoaKZalgUK+EqBHyaNmVixlQDychQPynFHukRpn6nBoZguQab93HcLmGTUdbg+n19CqqLFj1VGevrL8i2Um5jz3grxk+p2vGXMQ5xjTjyRHo3/Z8b0v1Dufp50+tlLVLV3i2I/fHLLxKidsiQkkjkeOMn3sZHppY9O9i32j371LuNLb3NuuZgliAKRo5ZubMhdkTC5cHz4Z8erav92V+d8DUszXOdAJfUaBfsqMfJbRhUzho5EX/C+Pv7f8RU36jLqTxFXa1/yLE+f65nH/ALjQP9oLtrU7RjIxUrS1HIfEL7Q3HOP5B8fU6YXWrS6PqvhZ6NhxwbuBJFbY5ZkZzZDtYyORozonu6FIA8oDInvwPyTdzW9CO3b09iuUdWFMkDApKmcckPrj+SnDL+4x6E6VvT/eUuyr/HcjEam31KGCrhBwZIXwcr8O5EwWSPPjkuD4J1KDM8fzjTuVKfJw6tdl1OCY+rx/M330fDMlP41aMZpmPWkIk6vI5GqORGktIF/Hnx/IJae2JubbYutBX3Kih3FYmYe0QOTzVWBGfcZJUeMnlxDANj4jB1WNVNTb0sUjbW3S9G1QFKVdKYmqKchgxSWGZJRGxAKskkRyPKEjDaXb7ju4DzpD+zrSf1qkUfNbHV9Ktqou3ldP/lTxen3TfdDKvH436o7746Gce9/pG3mL1/3Vdzx+na73LP7Y+usp6WXP2UyD7Qd1M4GeH3Tb8lvl5ezfTljH00yOEYpnWpE2P6DEa5uU3AoRberxZ14XBMVO4fEowT7+xmEgVgnuLuQ8kkmS5i8UevjGya99bo24LpX19BRw7fsgdvZqaPPMoAAPDs8ru+OR5MwQsfQZ1ohrKLY9hhbde5pKySnVuc9QYhVVTZLBIoIUiVmwQo4RqqjDSMB72qzaRabwtK8Jr8XjnSbN8h7G8tPH43WdzOf5ZknjuqsA3ZggtVVVoY7EVVXdVmK+3eW93KaukXgjYWNM54Rr4Vf7/M36sT8NSPvndlRvPcNVeZYvZqchYqeHOezTxjEaZ+LHy7t8XZiPGBom7/Px+9+uPoQ1MLXXPrfXHJLHBcfNJHh1NIjxwshojTXVlJtQUsCU97EVxvU2RlZDCi8VEJxnsV6tRjx2Zt1bZ92M0Pfvd5dUjXySnIcgir82MBj68iFHj1sHpxtig6d2il3HdYka/XFHZjJ5WnhWFqiVACQF7UKgzvjPcYRqQoPI16f9mXZ5c4FnthqBrblGEZvgc/Jq25xo+RBE4R6174lPIqq2a97r8J3hYRWg3VSyHh4jaxrluLbux+j9dtvcFVuLdL2HcNgeqinpzJCrK0R4QNCjxl6gSEBj22zydkwoUEq7c3Wvrxb917Yp9r7Go9xbZ3HHRzQVIpZXDrKOdQk0sbqlK0YYoDIuAiK+XZiAI+3bU6Xphf0unltNNNwrI2RS0siVxU1aafNkVgJjSu2VkR1pGICQNVVglUZmcEUu8IbvsUF2grrnRrxr7eziQD/KigPkj5u2Qy+hPlTn3dMfqns+Dd9suG6KGnWnv9oLrUImeMyxRrM0ePILrC4kiYAM45I3L3MUu6TepI1//9k="
+                              class="am-comment-avatar"
+                            ></a>
+                          <div
+                            data-v-6a88d622=""
+                            class="am-comment-main"
+                          >
+                            <header
+                              data-v-6a88d622=""
+                              class="am-comment-hd"
+                            >
+                              <div
+                                data-v-6a88d622=""
+                                class="am-comment-meta"
+                              ><a
+                                  data-v-6a88d622=""
+                                  href="#link-to-user"
+                                  class="am-comment-author"
+                                >b***1 (匿名)</a>
+                                评论于
+                                <time
+                                  data-v-6a88d622=""
+                                  datetime=""
+                                >{{item.createTime}}</time></div>
+                            </header>
+                            <div
+                              data-v-6a88d622=""
+                              class="am-comment-bd"
+                            >
+                              <div
+                                data-v-6a88d622=""
+                                data-id="255776406962"
+                                class="tb-rev-item "
+                              >
+                                <div
+                                  data-v-6a88d622=""
+                                  class="J_TbcRate_ReviewContent tb-tbcr-content "
+                                >
+                                  {{item.commentContent}}
+                                </div>
+                                <!-- <div
+                                  data-v-6a88d622=""
+                                  class="tb-r-act-bar"
+                                >
+                                  颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
+                                </div> -->
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
 
-                  <li class="tb-taglist-li tb-taglist-li-1">
-                    <div class="comment-info">
-                      <span>好评</span>
-                      <span class="tb-tbcr-num">(32)</span>
-                    </div>
-                  </li>
+                    </el-tab-pane>
+                    <el-tab-pane
+                      label="中评"
+                      name="midComment"
+                    >
+                      <ul
+                        data-v-6a88d622=""
+                        class="am-comments-list am-comments-list-flip"
+                      >
+                        <li
+                          data-v-6a88d622=""
+                          class="am-comment"
+                          v-for="(item,index) in commentList"
+                        ><a
+                            data-v-6a88d622=""
+                            href=""
+                          ><img
+                              data-v-6a88d622=""
+                              src="data:image/jpeg;base64,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"
+                              class="am-comment-avatar"
+                            ></a>
+                          <div
+                            data-v-6a88d622=""
+                            class="am-comment-main"
+                          >
+                            <header
+                              data-v-6a88d622=""
+                              class="am-comment-hd"
+                            >
+                              <div
+                                data-v-6a88d622=""
+                                class="am-comment-meta"
+                              ><a
+                                  data-v-6a88d622=""
+                                  href="#link-to-user"
+                                  class="am-comment-author"
+                                >b***1 (匿名)</a>
+                                评论于
+                                <time
+                                  data-v-6a88d622=""
+                                  datetime=""
+                                >{{item.createTime}}</time></div>
+                            </header>
+                            <div
+                              data-v-6a88d622=""
+                              class="am-comment-bd"
+                            >
+                              <div
+                                data-v-6a88d622=""
+                                data-id="255776406962"
+                                class="tb-rev-item "
+                              >
+                                <div
+                                  data-v-6a88d622=""
+                                  class="J_TbcRate_ReviewContent tb-tbcr-content "
+                                >
+                                  {{item.commentContent}}
+                                </div>
+                                <!-- <div
+                                  data-v-6a88d622=""
+                                  class="tb-r-act-bar"
+                                >
+                                  颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
+                                </div> -->
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
 
-                  <li class="tb-taglist-li tb-taglist-li-0">
-                    <div class="comment-info">
-                      <span>中评</span>
-                      <span class="tb-tbcr-num">(32)</span>
-                    </div>
-                  </li>
+                    </el-tab-pane>
+                    <el-tab-pane
+                      label="差评"
+                      name="badComment"
+                    >
+                      <ul
+                        data-v-6a88d622=""
+                        class="am-comments-list am-comments-list-flip"
+                      >
+                        <li
+                          data-v-6a88d622=""
+                          class="am-comment"
+                          v-for="(item,index) in commentList"
+                        ><a
+                            data-v-6a88d622=""
+                            href=""
+                          ><img
+                              data-v-6a88d622=""
+                              src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAAQABAAD/2wBDAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQICAQECAQEBAgICAgICAgICAQICAgICAgICAgL/2wBDAQEBAQEBAQEBAQECAQEBAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgL/wAARCAAoACgDAREAAhEBAxEB/8QAGgAAAwADAQAAAAAAAAAAAAAABwgJAQIFCv/EACsQAAEEAQMDAwQCAwAAAAAAAAMBAgQFBgcREgAIExQhQRUYIzEXMjNCUf/EABsBAAMBAQADAAAAAAAAAAAAAAYHCAQFAAMK/8QAMxEAAgEDAwMBBQgBBQAAAAAAAQIDBAURAAYSBxMhMRQiQVKBCBUyQlFhYnFDFjRyocH/2gAMAwEAAhEDEQA/APTB18y+rw0EdeMxvcKw5lvjd3BqbEFpB9QORHgzZcqtM9wDthQ5qOQj2lIFzlRqrwG7ZW/2Qn2nbaO6XVaW4QSS0zq3lCwCNjILFceMZwCQCcaYfTWw23cF/ahu9vkraSSGTiVaSNElUBlMkkeCoKhlGSByK+D6EYaU90Ndekk0+ozq6hnxheWHkAGHj01sNCIJRGAR5HV1giORytV7hPaiuao9vGnbv+xZ6Nlms3Oup3JBjODInqc+MBlP9cgcA59dGG9ejtVbUhr9qiW500zcZKVir1EBxnkrAIJYj5AIUOpwCG/EWmp7+jyCP6qjt663j+yqavmAlsRF/XJQvXjv8b9AtRSVNI/Cqp3p3/R1Kn/sDSarrZcbZL2bjQy0Mvyyxsh+nIDP011+s+sOgzrjqi3S3D/qEQY5GQXMptRjsYq/i9Y8bzSJ0hv7fGjQxmKrU/u9rB7t58kIds2Q3y4rA5K0sI5ysPXiPAUfuxwo/TyfOMaPenWzjvK/eyTsYrXQIZ6p1/F2wQqxqfg8shVAfyqWfB44Mpr/AFSrMjyZ9JdZpU2mazEfMPW2F3XGyUrWjEYyRql0lTRIA2lYrWCExjRvZ7Izi1KFprM9BbFkorS9PbEwveELCMk+MGXjxyWBHluTEeSTquLZSWa1slrtxgo2gU8aaJkVgg/O0YPN2IILyOGOTknJycdenXb1pgmqcQFvIm6d51VybajMD6i3HL2BZOhuM1SAj28SFJIiBKxjvxnbxI1F2Rdt08u1gkemWK8WuSOnqgeBmiePljwWjZlHlSfxKfB8a4tZR2Hc1JUUVUlPdqYe64DJIYywyCGUlonx5VgVb4jxqtujepQNUcKiX7hDiW8WQapv4I3bsjW0Pj5Hh39/SnA8EgW/ujJKNVVc13U97hs72S5S0fLnCwDxN80bemf5Kcq37jPoRqPd+7Sk2duCa2BzNRTIs9NIRgvBJnAb4c42DRPj1ZOQGGGle71HkDYaZyDkUVYweVoQjke4TJiArCtcrRscqvSGOWvsiuVEXZF6N+miq7XVAR3m7OP+JLA/TkV04/s+qklNu+KNedWxoiB4yU5zKQCSBgyNGPJAzjJ1BjVbA8izjvL7d9QMCoa2ThuLkyCxyzNaqjNDtZM01eGrPVZFblYMhYAoMGudEjmGitfPkOY56E2ZYllv9Dbekm79s3OqUXCaZWpYmbJZZO0cxDz7oZHJxjByT6+Srcuxr5S9X9obiegelpoaKZalgUK+EqBHyaNmVixlQDychQPynFHukRpn6nBoZguQab93HcLmGTUdbg+n19CqqLFj1VGevrL8i2Um5jz3grxk+p2vGXMQ5xjTjyRHo3/Z8b0v1Dufp50+tlLVLV3i2I/fHLLxKidsiQkkjkeOMn3sZHppY9O9i32j371LuNLb3NuuZgliAKRo5ZubMhdkTC5cHz4Z8erav92V+d8DUszXOdAJfUaBfsqMfJbRhUzho5EX/C+Pv7f8RU36jLqTxFXa1/yLE+f65nH/ALjQP9oLtrU7RjIxUrS1HIfEL7Q3HOP5B8fU6YXWrS6PqvhZ6NhxwbuBJFbY5ZkZzZDtYyORozonu6FIA8oDInvwPyTdzW9CO3b09iuUdWFMkDApKmcckPrj+SnDL+4x6E6VvT/eUuyr/HcjEam31KGCrhBwZIXwcr8O5EwWSPPjkuD4J1KDM8fzjTuVKfJw6tdl1OCY+rx/M330fDMlP41aMZpmPWkIk6vI5GqORGktIF/Hnx/IJae2JubbYutBX3Kih3FYmYe0QOTzVWBGfcZJUeMnlxDANj4jB1WNVNTb0sUjbW3S9G1QFKVdKYmqKchgxSWGZJRGxAKskkRyPKEjDaXb7ju4DzpD+zrSf1qkUfNbHV9Ktqou3ldP/lTxen3TfdDKvH436o7746Gce9/pG3mL1/3Vdzx+na73LP7Y+usp6WXP2UyD7Qd1M4GeH3Tb8lvl5ezfTljH00yOEYpnWpE2P6DEa5uU3AoRberxZ14XBMVO4fEowT7+xmEgVgnuLuQ8kkmS5i8UevjGya99bo24LpX19BRw7fsgdvZqaPPMoAAPDs8ru+OR5MwQsfQZ1ohrKLY9hhbde5pKySnVuc9QYhVVTZLBIoIUiVmwQo4RqqjDSMB72qzaRabwtK8Jr8XjnSbN8h7G8tPH43WdzOf5ZknjuqsA3ZggtVVVoY7EVVXdVmK+3eW93KaukXgjYWNM54Rr4Vf7/M36sT8NSPvndlRvPcNVeZYvZqchYqeHOezTxjEaZ+LHy7t8XZiPGBom7/Px+9+uPoQ1MLXXPrfXHJLHBcfNJHh1NIjxwshojTXVlJtQUsCU97EVxvU2RlZDCi8VEJxnsV6tRjx2Zt1bZ92M0Pfvd5dUjXySnIcgir82MBj68iFHj1sHpxtig6d2il3HdYka/XFHZjJ5WnhWFqiVACQF7UKgzvjPcYRqQoPI16f9mXZ5c4FnthqBrblGEZvgc/Jq25xo+RBE4R6174lPIqq2a97r8J3hYRWg3VSyHh4jaxrluLbux+j9dtvcFVuLdL2HcNgeqinpzJCrK0R4QNCjxl6gSEBj22zydkwoUEq7c3Wvrxb917Yp9r7Go9xbZ3HHRzQVIpZXDrKOdQk0sbqlK0YYoDIuAiK+XZiAI+3bU6Xphf0unltNNNwrI2RS0siVxU1aafNkVgJjSu2VkR1pGICQNVVglUZmcEUu8IbvsUF2grrnRrxr7eziQD/KigPkj5u2Qy+hPlTn3dMfqns+Dd9suG6KGnWnv9oLrUImeMyxRrM0ePILrC4kiYAM45I3L3MUu6TepI1//9k="
+                              class="am-comment-avatar"
+                            ></a>
+                          <div
+                            data-v-6a88d622=""
+                            class="am-comment-main"
+                          >
+                            <header
+                              data-v-6a88d622=""
+                              class="am-comment-hd"
+                            >
+                              <div
+                                data-v-6a88d622=""
+                                class="am-comment-meta"
+                              ><a
+                                  data-v-6a88d622=""
+                                  href="#link-to-user"
+                                  class="am-comment-author"
+                                >b***1 (匿名)</a>
+                                评论于
+                                <time
+                                  data-v-6a88d622=""
+                                  datetime=""
+                                >{{item.createTime}}</time></div>
+                            </header>
+                            <div
+                              data-v-6a88d622=""
+                              class="am-comment-bd"
+                            >
+                              <div
+                                data-v-6a88d622=""
+                                data-id="255776406962"
+                                class="tb-rev-item "
+                              >
+                                <div
+                                  data-v-6a88d622=""
+                                  class="J_TbcRate_ReviewContent tb-tbcr-content "
+                                >
+                                  {{item.commentContent}}
+                                </div>
+                                <!-- <div
+                                  data-v-6a88d622=""
+                                  class="tb-r-act-bar"
+                                >
+                                  颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
+                                </div> -->
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
 
-                  <li class="tb-taglist-li tb-taglist-li--1">
-                    <div class="comment-info">
-                      <span>差评</span>
-                      <span class="tb-tbcr-num">(32)</span>
-                    </div>
-                  </li>
+                    </el-tab-pane>
+                  </el-tabs>
                 </ul>
               </div>
               <div class="clear"></div>
 
-              <ul class="am-comments-list am-comments-list-flip">
-                <li class="am-comment">
-                  <!-- 评论容器 -->
-                  <a href="">
-                    <img
-                      class="am-comment-avatar"
-                      src="@/assets/images/hwbn40x40.jpg"
-                    >
-                    <!-- 评论者头像 -->
-                  </a>
-
-                  <div class="am-comment-main">
-                    <!-- 评论内容容器 -->
-                    <header class="am-comment-hd">
-                      <!--<h3 class="am-comment-title">评论标题</h3>-->
-                      <div class="am-comment-meta">
-                        <!-- 评论元数据 -->
-                        <a
-                          href="#link-to-user"
-                          class="am-comment-author"
-                        >b***1 (匿名)</a>
-                        <!-- 评论者 -->
-                        评论于
-                        <time datetime="">2015年11月02日 17:46</time>
-                      </div>
-                    </header>
-
-                    <div class="am-comment-bd">
-                      <div
-                        class="tb-rev-item "
-                        data-id="255776406962"
-                      >
-                        <div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-                          摸起来丝滑柔软，不厚，没色差，颜色好看！买这个衣服还接到诈骗电话，我很好奇他们是怎么知道我买了这件衣服，并且还知道我的电话的！
-                        </div>
-                        <div class="tb-r-act-bar">
-                          颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
-                        </div>
-                      </div>
-
-                    </div>
-                    <!-- 评论内容 -->
-                  </div>
-                </li>
-                <li class="am-comment">
-                  <!-- 评论容器 -->
-                  <a href="">
-                    <img
-                      class="am-comment-avatar"
-                      src="@/assets/images/hwbn40x40.jpg"
-                    >
-                    <!-- 评论者头像 -->
-                  </a>
-
-                  <div class="am-comment-main">
-                    <!-- 评论内容容器 -->
-                    <header class="am-comment-hd">
-                      <!--<h3 class="am-comment-title">评论标题</h3>-->
-                      <div class="am-comment-meta">
-                        <!-- 评论元数据 -->
-                        <a
-                          href="#link-to-user"
-                          class="am-comment-author"
-                        >l***4 (匿名)</a>
-                        <!-- 评论者 -->
-                        评论于
-                        <time datetime="">2015年10月28日 11:33</time>
-                      </div>
-                    </header>
-
-                    <div class="am-comment-bd">
-                      <div
-                        class="tb-rev-item "
-                        data-id="255095758792"
-                      >
-                        <div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-                          没有色差，很暖和……美美的
-                        </div>
-                        <div class="tb-r-act-bar">
-                          颜色分类：蓝调灰&nbsp;&nbsp;尺码：2XL
-                        </div>
-                      </div>
-
-                    </div>
-                    <!-- 评论内容 -->
-                  </div>
-                </li>
-                <li class="am-comment">
-                  <!-- 评论容器 -->
-                  <a href="">
-                    <img
-                      class="am-comment-avatar"
-                      src="@/assets/images/hwbn40x40.jpg"
-                    >
-                    <!-- 评论者头像 -->
-                  </a>
-
-                  <div class="am-comment-main">
-                    <!-- 评论内容容器 -->
-                    <header class="am-comment-hd">
-                      <!--<h3 class="am-comment-title">评论标题</h3>-->
-                      <div class="am-comment-meta">
-                        <!-- 评论元数据 -->
-                        <a
-                          href="#link-to-user"
-                          class="am-comment-author"
-                        >b***1 (匿名)</a>
-                        <!-- 评论者 -->
-                        评论于
-                        <time datetime="">2015年11月02日 17:46</time>
-                      </div>
-                    </header>
-
-                    <div class="am-comment-bd">
-                      <div
-                        class="tb-rev-item "
-                        data-id="255776406962"
-                      >
-                        <div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-                          摸起来丝滑柔软，不厚，没色差，颜色好看！买这个衣服还接到诈骗电话，我很好奇他们是怎么知道我买了这件衣服，并且还知道我的电话的！
-                        </div>
-                        <div class="tb-r-act-bar">
-                          颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
-                        </div>
-                      </div>
-
-                    </div>
-                    <!-- 评论内容 -->
-                  </div>
-                </li>
-                <li class="am-comment">
-                  <!-- 评论容器 -->
-                  <a href="">
-                    <img
-                      class="am-comment-avatar"
-                      src="@/assets/images/hwbn40x40.jpg"
-                    >
-                    <!-- 评论者头像 -->
-                  </a>
-
-                  <div class="am-comment-main">
-                    <!-- 评论内容容器 -->
-                    <header class="am-comment-hd">
-                      <!--<h3 class="am-comment-title">评论标题</h3>-->
-                      <div class="am-comment-meta">
-                        <!-- 评论元数据 -->
-                        <a
-                          href="#link-to-user"
-                          class="am-comment-author"
-                        >h***n (匿名)</a>
-                        <!-- 评论者 -->
-                        评论于
-                        <time datetime="">2015年11月25日 12:48</time>
-                      </div>
-                    </header>
-
-                    <div class="am-comment-bd">
-                      <div
-                        class="tb-rev-item "
-                        data-id="258040417670"
-                      >
-                        <div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-                          式样不错，初冬穿
-                        </div>
-                        <div class="tb-r-act-bar">
-                          颜色分类：柠檬黄&nbsp;&nbsp;尺码：L
-                        </div>
-                      </div>
-                    </div>
-                    <!-- 评论内容 -->
-                  </div>
-                </li>
-
-                <li class="am-comment">
-                  <!-- 评论容器 -->
-                  <a href="">
-                    <img
-                      class="am-comment-avatar"
-                      src="@/assets/images/hwbn40x40.jpg"
-                    >
-                    <!-- 评论者头像 -->
-                  </a>
-
-                  <div class="am-comment-main">
-                    <!-- 评论内容容器 -->
-                    <header class="am-comment-hd">
-                      <!--<h3 class="am-comment-title">评论标题</h3>-->
-                      <div class="am-comment-meta">
-                        <!-- 评论元数据 -->
-                        <a
-                          href="#link-to-user"
-                          class="am-comment-author"
-                        >b***1 (匿名)</a>
-                        <!-- 评论者 -->
-                        评论于
-                        <time datetime="">2015年11月02日 17:46</time>
-                      </div>
-                    </header>
-
-                    <div class="am-comment-bd">
-                      <div
-                        class="tb-rev-item "
-                        data-id="255776406962"
-                      >
-                        <div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-                          摸起来丝滑柔软，不厚，没色差，颜色好看！买这个衣服还接到诈骗电话，我很好奇他们是怎么知道我买了这件衣服，并且还知道我的电话的！
-                        </div>
-                        <div class="tb-r-act-bar">
-                          颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
-                        </div>
-                      </div>
-
-                    </div>
-                    <!-- 评论内容 -->
-                  </div>
-                </li>
-                <li class="am-comment">
-                  <!-- 评论容器 -->
-                  <a href="">
-                    <img
-                      class="am-comment-avatar"
-                      src="@/assets/images/hwbn40x40.jpg"
-                    >
-                    <!-- 评论者头像 -->
-                  </a>
-
-                  <div class="am-comment-main">
-                    <!-- 评论内容容器 -->
-                    <header class="am-comment-hd">
-                      <!--<h3 class="am-comment-title">评论标题</h3>-->
-                      <div class="am-comment-meta">
-                        <!-- 评论元数据 -->
-                        <a
-                          href="#link-to-user"
-                          class="am-comment-author"
-                        >l***4 (匿名)</a>
-                        <!-- 评论者 -->
-                        评论于
-                        <time datetime="">2015年10月28日 11:33</time>
-                      </div>
-                    </header>
-
-                    <div class="am-comment-bd">
-                      <div
-                        class="tb-rev-item "
-                        data-id="255095758792"
-                      >
-                        <div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-                          没有色差，很暖和……美美的
-                        </div>
-                        <div class="tb-r-act-bar">
-                          颜色分类：蓝调灰&nbsp;&nbsp;尺码：2XL
-                        </div>
-                      </div>
-
-                    </div>
-                    <!-- 评论内容 -->
-                  </div>
-                </li>
-                <li class="am-comment">
-                  <!-- 评论容器 -->
-                  <a href="">
-                    <img
-                      class="am-comment-avatar"
-                      src="@/assets/images/hwbn40x40.jpg"
-                    >
-                    <!-- 评论者头像 -->
-                  </a>
-
-                  <div class="am-comment-main">
-                    <!-- 评论内容容器 -->
-                    <header class="am-comment-hd">
-                      <!--<h3 class="am-comment-title">评论标题</h3>-->
-                      <div class="am-comment-meta">
-                        <!-- 评论元数据 -->
-                        <a
-                          href="#link-to-user"
-                          class="am-comment-author"
-                        >b***1 (匿名)</a>
-                        <!-- 评论者 -->
-                        评论于
-                        <time datetime="">2015年11月02日 17:46</time>
-                      </div>
-                    </header>
-
-                    <div class="am-comment-bd">
-                      <div
-                        class="tb-rev-item "
-                        data-id="255776406962"
-                      >
-                        <div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-                          摸起来丝滑柔软，不厚，没色差，颜色好看！买这个衣服还接到诈骗电话，我很好奇他们是怎么知道我买了这件衣服，并且还知道我的电话的！
-                        </div>
-                        <div class="tb-r-act-bar">
-                          颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
-                        </div>
-                      </div>
-
-                    </div>
-                    <!-- 评论内容 -->
-                  </div>
-                </li>
-                <li class="am-comment">
-                  <!-- 评论容器 -->
-                  <a href="">
-                    <img
-                      class="am-comment-avatar"
-                      src="@/assets/images/hwbn40x40.jpg"
-                    >
-                    <!-- 评论者头像 -->
-                  </a>
-
-                  <div class="am-comment-main">
-                    <!-- 评论内容容器 -->
-                    <header class="am-comment-hd">
-                      <!--<h3 class="am-comment-title">评论标题</h3>-->
-                      <div class="am-comment-meta">
-                        <!-- 评论元数据 -->
-                        <a
-                          href="#link-to-user"
-                          class="am-comment-author"
-                        >h***n (匿名)</a>
-                        <!-- 评论者 -->
-                        评论于
-                        <time datetime="">2015年11月25日 12:48</time>
-                      </div>
-                    </header>
-
-                    <div class="am-comment-bd">
-                      <div
-                        class="tb-rev-item "
-                        data-id="258040417670"
-                      >
-                        <div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-                          式样不错，初冬穿
-                        </div>
-                        <div class="tb-r-act-bar">
-                          颜色分类：柠檬黄&nbsp;&nbsp;尺码：L
-                        </div>
-                      </div>
-                    </div>
-                    <!-- 评论内容 -->
-                  </div>
-                </li>
-                <li class="am-comment">
-                  <!-- 评论容器 -->
-                  <a href="">
-                    <img
-                      class="am-comment-avatar"
-                      src="@/assets/images/hwbn40x40.jpg"
-                    >
-                    <!-- 评论者头像 -->
-                  </a>
-
-                  <div class="am-comment-main">
-                    <!-- 评论内容容器 -->
-                    <header class="am-comment-hd">
-                      <!--<h3 class="am-comment-title">评论标题</h3>-->
-                      <div class="am-comment-meta">
-                        <!-- 评论元数据 -->
-                        <a
-                          href="#link-to-user"
-                          class="am-comment-author"
-                        >b***1 (匿名)</a>
-                        <!-- 评论者 -->
-                        评论于
-                        <time datetime="">2015年11月02日 17:46</time>
-                      </div>
-                    </header>
-
-                    <div class="am-comment-bd">
-                      <div
-                        class="tb-rev-item "
-                        data-id="255776406962"
-                      >
-                        <div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-                          摸起来丝滑柔软，不厚，没色差，颜色好看！买这个衣服还接到诈骗电话，我很好奇他们是怎么知道我买了这件衣服，并且还知道我的电话的！
-                        </div>
-                        <div class="tb-r-act-bar">
-                          颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
-                        </div>
-                      </div>
-
-                    </div>
-                    <!-- 评论内容 -->
-                  </div>
-                </li>
-                <li class="am-comment">
-                  <!-- 评论容器 -->
-                  <a href="">
-                    <img
-                      class="am-comment-avatar"
-                      src="@/assets/images/hwbn40x40.jpg"
-                    >
-                    <!-- 评论者头像 -->
-                  </a>
-
-                  <div class="am-comment-main">
-                    <!-- 评论内容容器 -->
-                    <header class="am-comment-hd">
-                      <!--<h3 class="am-comment-title">评论标题</h3>-->
-                      <div class="am-comment-meta">
-                        <!-- 评论元数据 -->
-                        <a
-                          href="#link-to-user"
-                          class="am-comment-author"
-                        >l***4 (匿名)</a>
-                        <!-- 评论者 -->
-                        评论于
-                        <time datetime="">2015年10月28日 11:33</time>
-                      </div>
-                    </header>
-
-                    <div class="am-comment-bd">
-                      <div
-                        class="tb-rev-item "
-                        data-id="255095758792"
-                      >
-                        <div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-                          没有色差，很暖和……美美的
-                        </div>
-                        <div class="tb-r-act-bar">
-                          颜色分类：蓝调灰&nbsp;&nbsp;尺码：2XL
-                        </div>
-                      </div>
-
-                    </div>
-                    <!-- 评论内容 -->
-                  </div>
-                </li>
-                <li class="am-comment">
-                  <!-- 评论容器 -->
-                  <a href="">
-                    <img
-                      class="am-comment-avatar"
-                      src="@/assets/images/hwbn40x40.jpg"
-                    >
-                    <!-- 评论者头像 -->
-                  </a>
-
-                  <div class="am-comment-main">
-                    <!-- 评论内容容器 -->
-                    <header class="am-comment-hd">
-                      <!--<h3 class="am-comment-title">评论标题</h3>-->
-                      <div class="am-comment-meta">
-                        <!-- 评论元数据 -->
-                        <a
-                          href="#link-to-user"
-                          class="am-comment-author"
-                        >b***1 (匿名)</a>
-                        <!-- 评论者 -->
-                        评论于
-                        <time datetime="">2015年11月02日 17:46</time>
-                      </div>
-                    </header>
-
-                    <div class="am-comment-bd">
-                      <div
-                        class="tb-rev-item "
-                        data-id="255776406962"
-                      >
-                        <div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-                          摸起来丝滑柔软，不厚，没色差，颜色好看！买这个衣服还接到诈骗电话，我很好奇他们是怎么知道我买了这件衣服，并且还知道我的电话的！
-                        </div>
-                        <div class="tb-r-act-bar">
-                          颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
-                        </div>
-                      </div>
-
-                    </div>
-                    <!-- 评论内容 -->
-                  </div>
-                </li>
-                <li class="am-comment">
-                  <!-- 评论容器 -->
-                  <a href="">
-                    <img
-                      class="am-comment-avatar"
-                      src="/images/hwbn40x40.jpg"
-                    >
-                    <!-- 评论者头像 -->
-                  </a>
-
-                  <div class="am-comment-main">
-                    <!-- 评论内容容器 -->
-                    <header class="am-comment-hd">
-                      <!--<h3 class="am-comment-title">评论标题</h3>-->
-                      <div class="am-comment-meta">
-                        <!-- 评论元数据 -->
-                        <a
-                          href="#link-to-user"
-                          class="am-comment-author"
-                        >h***n (匿名)</a>
-                        <!-- 评论者 -->
-                        评论于
-                        <time datetime="">2015年11月25日 12:48</time>
-                      </div>
-                    </header>
-
-                    <div class="am-comment-bd">
-                      <div
-                        class="tb-rev-item "
-                        data-id="258040417670"
-                      >
-                        <div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-                          式样不错，初冬穿
-                        </div>
-                        <div class="tb-r-act-bar">
-                          颜色分类：柠檬黄&nbsp;&nbsp;尺码：L
-                        </div>
-                      </div>
-                    </div>
-                    <!-- 评论内容 -->
-                  </div>
-                </li>
-
-              </ul>
-
-              <div class="clear"></div>
-
               <!--分页 -->
-              <ul class="am-pagination am-pagination-right">
-                <li class="am-disabled"><a href="#">«</a></li>
-                <li class="am-active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">»</a></li>
-              </ul>
+
               <div class="clear"></div>
 
               <div class="tb-reviewsft">
@@ -1178,188 +910,187 @@
             label="猜你喜欢"
             name="third"
           >
-				
-						<div class="am-tab-panel am-fade am-active am-in">
-            <div class="like">
-              <ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
-                <li>
-                  <div class="i-pic limit">
-                    <img src="@/assets/images/imgsearch1.jpg">
-                    <p>【良品铺子_开口松子】零食坚果特产炒货
-                      <span>东北红松子奶油味</span></p>
-                    <p class="price fl">
-                      <b>¥</b>
-                      <strong>298.00</strong>
-                    </p>
-                  </div>
-                </li>
-                <li>
-                  <div class="i-pic limit">
-                    <img src="@/assets/images/imgsearch1.jpg">
-                    <p>【良品铺子_开口松子】零食坚果特产炒货
-                      <span>东北红松子奶油味</span></p>
-                    <p class="price fl">
-                      <b>¥</b>
-                      <strong>298.00</strong>
-                    </p>
-                  </div>
-                </li>
-                <li>
-                  <div class="i-pic limit">
-                    <img src="@/assets/images/imgsearch1.jpg">
-                    <p>【良品铺子_开口松子】零食坚果特产炒货
-                      <span>东北红松子奶油味</span></p>
-                    <p class="price fl">
-                      <b>¥</b>
-                      <strong>298.00</strong>
-                    </p>
-                  </div>
-                </li>
-                <li>
-                  <div class="i-pic limit">
-                    <img src="@/assets/images/imgsearch1.jpg">
-                    <p>【良品铺子_开口松子】零食坚果特产炒货
-                      <span>东北红松子奶油味</span></p>
-                    <p class="price fl">
-                      <b>¥</b>
-                      <strong>298.00</strong>
-                    </p>
-                  </div>
-                </li>
-                <li>
-                  <div class="i-pic limit">
-                    <img src="@/assets/images/imgsearch1.jpg">
-                    <p>【良品铺子_开口松子】零食坚果特产炒货
-                      <span>东北红松子奶油味</span></p>
-                    <p class="price fl">
-                      <b>¥</b>
-                      <strong>298.00</strong>
-                    </p>
-                  </div>
-                </li>
-                <li>
-                  <div class="i-pic limit">
-                    <img src="@/assets/images/imgsearch1.jpg">
-                    <p>【良品铺子_开口松子】零食坚果特产炒货
-                      <span>东北红松子奶油味</span></p>
-                    <p class="price fl">
-                      <b>¥</b>
-                      <strong>298.00</strong>
-                    </p>
-                  </div>
-                </li>
-                <li>
-                  <div class="i-pic limit">
-                    <img src="@/assets/images/imgsearch1.jpg">
-                    <p>【良品铺子_开口松子】零食坚果特产炒货
-                      <span>东北红松子奶油味</span></p>
-                    <p class="price fl">
-                      <b>¥</b>
-                      <strong>298.00</strong>
-                    </p>
-                  </div>
-                </li>
-                <li>
-                  <div class="i-pic limit">
-                    <img src="@/assets/images/imgsearch1.jpg">
-                    <p>【良品铺子_开口松子】零食坚果特产炒货
-                      <span>东北红松子奶油味</span></p>
-                    <p class="price fl">
-                      <b>¥</b>
-                      <strong>298.00</strong>
-                    </p>
-                  </div>
-                </li>
-                <li>
-                  <div class="i-pic limit">
-                    <img src="@/assets/images/imgsearch1.jpg">
-                    <p>【良品铺子_开口松子】零食坚果特产炒货
-                      <span>东北红松子奶油味</span></p>
-                    <p class="price fl">
-                      <b>¥</b>
-                      <strong>298.00</strong>
-                    </p>
-                  </div>
-                </li>
-                <li>
-                  <div class="i-pic limit">
-                    <img src="@/assets/images/imgsearch1.jpg">
-                    <p>【良品铺子_开口松子】零食坚果特产炒货
-                      <span>东北红松子奶油味</span></p>
-                    <p class="price fl">
-                      <b>¥</b>
-                      <strong>298.00</strong>
-                    </p>
-                  </div>
-                </li>
-                <li>
-                  <div class="i-pic limit">
-                    <img src="@/assets/images/imgsearch1.jpg">
-                    <p>【良品铺子_开口松子】零食坚果特产炒货
-                      <span>东北红松子奶油味</span></p>
-                    <p class="price fl">
-                      <b>¥</b>
-                      <strong>298.00</strong>
-                    </p>
-                  </div>
-                </li>
-                <li>
-                  <div class="i-pic limit">
-                    <img src="@/assets/images/imgsearch1.jpg">
-                    <p>【良品铺子_开口松子】零食坚果特产炒货
-                      <span>东北红松子奶油味</span></p>
-                    <p class="price fl">
-                      <b>¥</b>
-                      <strong>298.00</strong>
-                    </p>
-                  </div>
-                </li>
+
+            <div class="am-tab-panel am-fade am-active am-in">
+              <div class="like">
+                <ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
+                  <li>
+                    <div class="i-pic limit">
+                      <img src="@/assets/images/imgsearch1.jpg">
+                      <p>【良品铺子_开口松子】零食坚果特产炒货
+                        <span>东北红松子奶油味</span></p>
+                      <p class="price fl">
+                        <b>¥</b>
+                        <strong>298.00</strong>
+                      </p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="i-pic limit">
+                      <img src="@/assets/images/imgsearch1.jpg">
+                      <p>【良品铺子_开口松子】零食坚果特产炒货
+                        <span>东北红松子奶油味</span></p>
+                      <p class="price fl">
+                        <b>¥</b>
+                        <strong>298.00</strong>
+                      </p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="i-pic limit">
+                      <img src="@/assets/images/imgsearch1.jpg">
+                      <p>【良品铺子_开口松子】零食坚果特产炒货
+                        <span>东北红松子奶油味</span></p>
+                      <p class="price fl">
+                        <b>¥</b>
+                        <strong>298.00</strong>
+                      </p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="i-pic limit">
+                      <img src="@/assets/images/imgsearch1.jpg">
+                      <p>【良品铺子_开口松子】零食坚果特产炒货
+                        <span>东北红松子奶油味</span></p>
+                      <p class="price fl">
+                        <b>¥</b>
+                        <strong>298.00</strong>
+                      </p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="i-pic limit">
+                      <img src="@/assets/images/imgsearch1.jpg">
+                      <p>【良品铺子_开口松子】零食坚果特产炒货
+                        <span>东北红松子奶油味</span></p>
+                      <p class="price fl">
+                        <b>¥</b>
+                        <strong>298.00</strong>
+                      </p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="i-pic limit">
+                      <img src="@/assets/images/imgsearch1.jpg">
+                      <p>【良品铺子_开口松子】零食坚果特产炒货
+                        <span>东北红松子奶油味</span></p>
+                      <p class="price fl">
+                        <b>¥</b>
+                        <strong>298.00</strong>
+                      </p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="i-pic limit">
+                      <img src="@/assets/images/imgsearch1.jpg">
+                      <p>【良品铺子_开口松子】零食坚果特产炒货
+                        <span>东北红松子奶油味</span></p>
+                      <p class="price fl">
+                        <b>¥</b>
+                        <strong>298.00</strong>
+                      </p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="i-pic limit">
+                      <img src="@/assets/images/imgsearch1.jpg">
+                      <p>【良品铺子_开口松子】零食坚果特产炒货
+                        <span>东北红松子奶油味</span></p>
+                      <p class="price fl">
+                        <b>¥</b>
+                        <strong>298.00</strong>
+                      </p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="i-pic limit">
+                      <img src="@/assets/images/imgsearch1.jpg">
+                      <p>【良品铺子_开口松子】零食坚果特产炒货
+                        <span>东北红松子奶油味</span></p>
+                      <p class="price fl">
+                        <b>¥</b>
+                        <strong>298.00</strong>
+                      </p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="i-pic limit">
+                      <img src="@/assets/images/imgsearch1.jpg">
+                      <p>【良品铺子_开口松子】零食坚果特产炒货
+                        <span>东北红松子奶油味</span></p>
+                      <p class="price fl">
+                        <b>¥</b>
+                        <strong>298.00</strong>
+                      </p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="i-pic limit">
+                      <img src="@/assets/images/imgsearch1.jpg">
+                      <p>【良品铺子_开口松子】零食坚果特产炒货
+                        <span>东北红松子奶油味</span></p>
+                      <p class="price fl">
+                        <b>¥</b>
+                        <strong>298.00</strong>
+                      </p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="i-pic limit">
+                      <img src="@/assets/images/imgsearch1.jpg">
+                      <p>【良品铺子_开口松子】零食坚果特产炒货
+                        <span>东北红松子奶油味</span></p>
+                      <p class="price fl">
+                        <b>¥</b>
+                        <strong>298.00</strong>
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="clear"></div>
+
+              <!--分页 -->
+              <ul class="am-pagination am-pagination-right">
+                <li class="am-disabled"><a href="#">«</a></li>
+                <li class="am-active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">»</a></li>
               </ul>
+              <div class="clear"></div>
+
             </div>
-            <div class="clear"></div>
 
-            <!--分页 -->
-            <ul class="am-pagination am-pagination-right">
-              <li class="am-disabled"><a href="#">«</a></li>
-              <li class="am-active"><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#">»</a></li>
-            </ul>
-            <div class="clear"></div>
-
-          </div>
-
-
-					</el-tab-pane>
+          </el-tab-pane>
         </el-tabs>
 
-        </div>
-
       </div>
 
-      <div class="clear"></div>
+    </div>
 
-      <div class="footer">
-        <div class="footer-hd">
-          <p>
-            <a href="#">商城首页</a>
-            <b>|</b>
-            <a href="#">支付宝</a>
-            <b>|</b>
-            <a href="#">物流</a>
-          </p>
-        </div>
+    <div class="clear"></div>
+
+    <div class="footer">
+      <div class="footer-hd">
+        <p>
+          <a href="#">商城首页</a>
+          <b>|</b>
+          <a href="#">支付宝</a>
+          <b>|</b>
+          <a href="#">物流</a>
+        </p>
       </div>
     </div>
+  </div>
 
   </div>
 </template>
 
 <script>
-import { goodsDetailList, querySpuById, queryBrandById, queryGroupBySpuId, queryParamByCid,addCart } from '@/api/item'
+import { goodsDetailList, querySpuById, queryBrandById, queryGroupBySpuId, queryParamByCid, addCart, queryComment } from '@/api/item'
 export default {
   name: 'ListMain',
   data() {
@@ -1379,7 +1110,9 @@ export default {
       skuImg: null,
       parameters: null,
       packageStyle: null,
-      cart:{
+      commentActiveName: 'allComment',
+      commentList: null,
+      cart: {
         skuId: null,
         price: null,
         num: null,
@@ -1465,21 +1198,13 @@ export default {
     }
   },
   methods: {
-    /* goodsDetailList() {
-      let goodsId = this.$route.params.goodsId
-      goodsDetailList(goodsId).then(response => {
-        this.items = response.result.taste
-      })
-    }, */
+    /* 查询spu */
     querySpuById() {
       querySpuById(localStorage.getItem('spuId')).then(response => {
         let data = response.result
-        console.log(data)
         this.spu = data
         this.skus = data.skus
         this.skuImg = data.img.split(',')
-        
-        // this.queryBrandById(data.brandId)
         this.queryGroupBySpuId(data.id)
       })
     },
@@ -1505,25 +1230,25 @@ export default {
       this.$('.skus').eq(index).addClass('selected')
     },
     isPackagesSelect(index) {
-      if(index===0){
+      if (index === 0) {
         this.packageStyle = '手袋单人份'
-      }else if(index===1){
+      } else if (index === 1) {
         this.packageStyle = '礼盒双人份'
-      }else{
+      } else {
         this.packageStyle = '全家福礼包'
       }
       this.$('.packages').removeClass('selected')
       this.$('.packages').eq(index).addClass('selected')
     },
     // 购物车数据加入redis中
-    addCart (cart) {
+    addCart(cart) {
       addCart(cart).then(response => {
-        
+
       })
     },
     /* 加入购物车 */
-    addCar(){
-      if(localStorage.getItem('user')){
+    addCar() {
+      if (localStorage.getItem('user')) {
         this.cart.skuId = this.spu.id
         this.cart.price = this.spu.skus[0].price
         this.cart.num = this.commondityNum
@@ -1534,17 +1259,17 @@ export default {
         this.cart.style = this.spu.skus[0].style
         this.cart.img = this.spu.skus[0].img
         this.addCart(this.cart)
-      }else{
+      } else {
         let $this = this
         let carts = localStorage.getItem('cars') || []
         let cart = JSON.parse(localStorage.getItem('cars'))
         let spu = this.spu
         let commondityNum = this.commondityNum
 
-        if( cart && cart[0].skuId === spu.id){
+        if (cart && cart[0].skuId === spu.id) {
           cart[0].num += commondityNum
-          localStorage.setItem('cars',JSON.stringify(cart))
-        }else{
+          localStorage.setItem('cars', JSON.stringify(cart))
+        } else {
           cart = {
             skuId: spu.id,
             price: spu.skus[0].price,
@@ -1557,14 +1282,35 @@ export default {
             img: spu.skus[0].img
           }
           carts.push(cart)
-          localStorage.setItem('cars',JSON.stringify(carts))
+          localStorage.setItem('cars', JSON.stringify(carts))
         }
-      } 
+      }
+    },
+    /* 获取评价信息 */
+    commentTabClick() {
+      if (this.commentActiveName === 'allComment') {
+        queryComment(1, 3).then(response => {
+          this.commentList = response.result
+        })
+      } else if (this.commentActiveName === 'goodComment') {
+        queryComment(1, 0).then(response => {
+          this.commentList = response.result
+        })
+      } else if (this.commentActiveName === 'midComment') {
+        queryComment(1, 1).then(response => {
+          this.commentList = response.result
+        })
+      } else {
+        queryComment(1, 2).then(response => {
+          this.commentList = response.result
+        })
+      }
     }
   },
   mounted() {
     this.querySpuById()
     this.isPackagesSelect()
+    this.commentTabClick()
   }
 }
 </script>
@@ -1577,5 +1323,9 @@ export default {
   .box {
     width: auto !important;
   }
+}
+.am-comments-list .am-comment {
+  display: block;
+  width: 100%;
 }
 </style>
