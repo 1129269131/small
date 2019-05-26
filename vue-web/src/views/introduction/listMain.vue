@@ -643,12 +643,12 @@
                                   data-v-6a88d622=""
                                   href="#link-to-user"
                                   class="am-comment-author"
-                                >b***1 (匿名)</a>
+                                >{{item.userName}} (匿名)</a>
                                 评论于
                                 <time
                                   data-v-6a88d622=""
                                   datetime=""
-                                >{{item.createTime}}</time></div>
+                                >{{item.stringTime}}</time></div>
                             </header>
                             <div
                               data-v-6a88d622=""
@@ -712,12 +712,12 @@
                                   data-v-6a88d622=""
                                   href="#link-to-user"
                                   class="am-comment-author"
-                                >b***1 (匿名)</a>
+                                >{{item.userName}} (匿名)</a>
                                 评论于
                                 <time
                                   data-v-6a88d622=""
                                   datetime=""
-                                >{{item.createTime}}</time></div>
+                                >{{item.stringTime}}</time></div>
                             </header>
                             <div
                               data-v-6a88d622=""
@@ -782,12 +782,12 @@
                                   data-v-6a88d622=""
                                   href="#link-to-user"
                                   class="am-comment-author"
-                                >b***1 (匿名)</a>
+                                >{{item.userName}} (匿名)</a>
                                 评论于
                                 <time
                                   data-v-6a88d622=""
                                   datetime=""
-                                >{{item.createTime}}</time></div>
+                                >{{item.stringTime}}</time></div>
                             </header>
                             <div
                               data-v-6a88d622=""
@@ -852,12 +852,12 @@
                                   data-v-6a88d622=""
                                   href="#link-to-user"
                                   class="am-comment-author"
-                                >b***1 (匿名)</a>
+                                >{{item.userName}} (匿名)</a>
                                 评论于
                                 <time
                                   data-v-6a88d622=""
                                   datetime=""
-                                >{{item.createTime}}</time></div>
+                                >{{item.stringTime}}</time></div>
                             </header>
                             <div
                               data-v-6a88d622=""
@@ -906,165 +906,6 @@
             </div>
 
           </el-tab-pane>
-          <el-tab-pane
-            label="猜你喜欢"
-            name="third"
-          >
-
-            <div class="am-tab-panel am-fade am-active am-in">
-              <div class="like">
-                <ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
-                  <li>
-                    <div class="i-pic limit">
-                      <img src="@/assets/images/imgsearch1.jpg">
-                      <p>【良品铺子_开口松子】零食坚果特产炒货
-                        <span>东北红松子奶油味</span></p>
-                      <p class="price fl">
-                        <b>¥</b>
-                        <strong>298.00</strong>
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="i-pic limit">
-                      <img src="@/assets/images/imgsearch1.jpg">
-                      <p>【良品铺子_开口松子】零食坚果特产炒货
-                        <span>东北红松子奶油味</span></p>
-                      <p class="price fl">
-                        <b>¥</b>
-                        <strong>298.00</strong>
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="i-pic limit">
-                      <img src="@/assets/images/imgsearch1.jpg">
-                      <p>【良品铺子_开口松子】零食坚果特产炒货
-                        <span>东北红松子奶油味</span></p>
-                      <p class="price fl">
-                        <b>¥</b>
-                        <strong>298.00</strong>
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="i-pic limit">
-                      <img src="@/assets/images/imgsearch1.jpg">
-                      <p>【良品铺子_开口松子】零食坚果特产炒货
-                        <span>东北红松子奶油味</span></p>
-                      <p class="price fl">
-                        <b>¥</b>
-                        <strong>298.00</strong>
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="i-pic limit">
-                      <img src="@/assets/images/imgsearch1.jpg">
-                      <p>【良品铺子_开口松子】零食坚果特产炒货
-                        <span>东北红松子奶油味</span></p>
-                      <p class="price fl">
-                        <b>¥</b>
-                        <strong>298.00</strong>
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="i-pic limit">
-                      <img src="@/assets/images/imgsearch1.jpg">
-                      <p>【良品铺子_开口松子】零食坚果特产炒货
-                        <span>东北红松子奶油味</span></p>
-                      <p class="price fl">
-                        <b>¥</b>
-                        <strong>298.00</strong>
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="i-pic limit">
-                      <img src="@/assets/images/imgsearch1.jpg">
-                      <p>【良品铺子_开口松子】零食坚果特产炒货
-                        <span>东北红松子奶油味</span></p>
-                      <p class="price fl">
-                        <b>¥</b>
-                        <strong>298.00</strong>
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="i-pic limit">
-                      <img src="@/assets/images/imgsearch1.jpg">
-                      <p>【良品铺子_开口松子】零食坚果特产炒货
-                        <span>东北红松子奶油味</span></p>
-                      <p class="price fl">
-                        <b>¥</b>
-                        <strong>298.00</strong>
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="i-pic limit">
-                      <img src="@/assets/images/imgsearch1.jpg">
-                      <p>【良品铺子_开口松子】零食坚果特产炒货
-                        <span>东北红松子奶油味</span></p>
-                      <p class="price fl">
-                        <b>¥</b>
-                        <strong>298.00</strong>
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="i-pic limit">
-                      <img src="@/assets/images/imgsearch1.jpg">
-                      <p>【良品铺子_开口松子】零食坚果特产炒货
-                        <span>东北红松子奶油味</span></p>
-                      <p class="price fl">
-                        <b>¥</b>
-                        <strong>298.00</strong>
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="i-pic limit">
-                      <img src="@/assets/images/imgsearch1.jpg">
-                      <p>【良品铺子_开口松子】零食坚果特产炒货
-                        <span>东北红松子奶油味</span></p>
-                      <p class="price fl">
-                        <b>¥</b>
-                        <strong>298.00</strong>
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="i-pic limit">
-                      <img src="@/assets/images/imgsearch1.jpg">
-                      <p>【良品铺子_开口松子】零食坚果特产炒货
-                        <span>东北红松子奶油味</span></p>
-                      <p class="price fl">
-                        <b>¥</b>
-                        <strong>298.00</strong>
-                      </p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="clear"></div>
-
-              <!--分页 -->
-              <ul class="am-pagination am-pagination-right">
-                <li class="am-disabled"><a href="#">«</a></li>
-                <li class="am-active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">»</a></li>
-              </ul>
-              <div class="clear"></div>
-
-            </div>
-
-          </el-tab-pane>
         </el-tabs>
 
       </div>
@@ -1091,6 +932,7 @@
 
 <script>
 import { goodsDetailList, querySpuById, queryBrandById, queryGroupBySpuId, queryParamByCid, addCart, queryComment } from '@/api/item'
+import { parseTime } from '@/utils/index'
 export default {
   name: 'ListMain',
   data() {

@@ -1,9 +1,6 @@
 package com.leyou.admin.pojo;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Table(name="tb_comment")
@@ -23,6 +20,12 @@ public class Comment {
     private String img;
 
     private Date createTime;
+
+    @Transient
+    private String stringTime;
+
+    @Transient
+    private String userName;
 
     public Long getId() {
         return id;
@@ -78,5 +81,21 @@ public class Comment {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getStringTime() {
+        return stringTime;
+    }
+
+    public void setStringTime(String stringTime) {
+        this.stringTime = stringTime;
     }
 }
