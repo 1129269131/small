@@ -18,6 +18,10 @@ public class OrdersDetail {
 
     private Long price;
 
+    private String style;
+
+    private String packageStyle;
+
     public Long getId() {
         return id;
     }
@@ -56,5 +60,21 @@ public class OrdersDetail {
 
     public void setPrice(Long price) {
         this.price = price;
+    }
+
+    public String getStyle() {
+        return style;
+    }
+
+    public void setStyle(String style) {
+        this.style = style;
+    }
+
+    public String getPackageStyle() {
+        return packageStyle;
+    }
+
+    public void setPackageStyle(String packageStyle) {
+        this.packageStyle = packageStyle;
     }
 }

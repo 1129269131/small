@@ -409,7 +409,7 @@
   </div>
 
   <!--优惠套装-->
-  <div class="match">
+  <!-- <div class="match">
     <div class="match-title">优惠套装</div>
     <div class="match-comment">
       <ul class="like_list">
@@ -452,7 +452,7 @@
       </ul>
     </div>
   </div>
-  <div class="clear"></div>
+  <div class="clear"></div> -->
 
   <!-- introduce-->
 

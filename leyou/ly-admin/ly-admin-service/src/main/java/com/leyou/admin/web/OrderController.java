@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
 @Controller
 @RequestMapping("order")
 public class OrderController {
@@ -24,6 +28,16 @@ public class OrderController {
     @PostMapping("addOrder")
     public ResponseEntity<Common<Void>> addOrder(@RequestBody Orders orders){
         return ResponseEntity.ok(orderService.addOrder(orders));
+    }
+
+    /**
+     * 用户订单查询
+     * @param orders
+     * @return
+     */
+    @PostMapping("queryOrder")
+    public ResponseEntity<Common<List<Orders>>> queryOrder(@RequestBody Orders orders){
+        return ResponseEntity.ok(orderService.queryOrder(orders));
     }
 
 }

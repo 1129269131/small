@@ -118,3 +118,14 @@ export function updateUser(user) {
         data: user
     })
 }
+
+/**
+ * 查询用户订单
+ */
+export function queryOrder(order) {
+    return request({
+        url: '/admin/order/queryOrder',
+        method: 'post',
+        data: order
+    })
+}

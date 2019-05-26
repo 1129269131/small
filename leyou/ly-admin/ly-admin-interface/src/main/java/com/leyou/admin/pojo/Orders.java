@@ -35,6 +35,9 @@ public class Orders {
     private Date createTime;
 
     @Transient
+    private String stringTime;
+
+    @Transient
     private List<OrdersDetail> ordersDetails;
 
     public Long getId() {
@@ -147,5 +150,13 @@ public class Orders {
 
     public void setOrdersDetails(List<OrdersDetail> ordersDetails) {
         this.ordersDetails = ordersDetails;
+    }
+
+    public String getStringTime() {
+        return stringTime;
+    }
+
+    public void setStringTime(String stringTime) {
+        this.stringTime = stringTime;
     }
 }
