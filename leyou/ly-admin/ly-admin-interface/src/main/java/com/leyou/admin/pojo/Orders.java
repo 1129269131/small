@@ -1,10 +1,8 @@
 package com.leyou.admin.pojo;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Table(name = "tb_order")
 public class Orders {
@@ -35,6 +33,9 @@ public class Orders {
     private Integer orderStatus;
 
     private Date createTime;
+
+    @Transient
+    private List<OrdersDetail> ordersDetails;
 
     public Long getId() {
         return id;
@@ -138,5 +139,13 @@ public class Orders {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public List<OrdersDetail> getOrdersDetails() {
+        return ordersDetails;
+    }
+
+    public void setOrdersDetails(List<OrdersDetail> ordersDetails) {
+        this.ordersDetails = ordersDetails;
     }
 }

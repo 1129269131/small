@@ -332,7 +332,8 @@ export default {
             buyerMessage: null,
             postFee: null,
             totalPay: null,
-            actualPay: null
+            actualPay: null,
+            ordersDetails: []
         },
         currentAddress: null,
         total: null
@@ -381,8 +382,7 @@ export default {
             this.orders.buyerMessage = this.buyerMessage
             this.orders.totalPay = this.total
             this.orders.actualPay = this.total
-            console.log('-----this.----')
-            console.log(this.orders)
+            this.orders.ordersDetails = this.commoditys
             addOrder(this.orders).then(response => {
                console.log('--order--')
                console.log(response)

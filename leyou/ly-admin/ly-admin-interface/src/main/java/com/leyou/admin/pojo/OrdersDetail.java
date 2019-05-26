@@ -1,9 +1,6 @@
 package com.leyou.admin.pojo;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Table(name = "tb_order_detail")
 public class OrdersDetail {
@@ -16,6 +13,7 @@ public class OrdersDetail {
 
     private Long skuId;
 
+    @Column(name = "`num`")
     private int num;
 
     private Long price;
