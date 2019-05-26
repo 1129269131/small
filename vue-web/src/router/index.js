@@ -21,6 +21,14 @@ const routes = [{
   }
 },
 {
+  name: 'Success',
+  path: '/success',
+  component: resolve => require(['@/views/success/Index'], resolve),
+  meta: {
+    title: 'Success'
+  }
+},
+{
   name: 'Pay',
   path: '/pay',
   component: resolve => require(['@/views/pay/Index'], resolve),

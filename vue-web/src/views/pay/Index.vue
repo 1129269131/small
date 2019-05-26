@@ -336,7 +336,11 @@ export default {
             ordersDetails: []
         },
         currentAddress: null,
-        total: null
+        total: null,
+        orderInfo:{
+          addressInfo: null,
+          actualPay: null
+        }
     }
   },
   methods: {
@@ -384,8 +388,10 @@ export default {
             this.orders.actualPay = this.total
             this.orders.ordersDetails = this.commoditys
             addOrder(this.orders).then(response => {
-               console.log('--order--')
-               console.log(response)
+              this.orderInfo.addressInfo = this.currentAddress
+              this.orderInfo.actualPay = this.orders.actualPay
+              localStorage.setItem('orderInfo',JSON.stringify(this.orderInfo))
+              this.$router.push({ path: '/success' })
             })
         }
   },
