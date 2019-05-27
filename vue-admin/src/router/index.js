@@ -18,62 +18,57 @@ const routes = [{
 },
 // 主路由
 {
-  name: 'Index',
-  path: '/',
-  component: resolve => require(['@/views/dashboard/Index'], resolve),
+  name: 'Lay',
+  path: '/lay',
+  component: resolve => require(['@/views/layOut/Index'], resolve),
   meta: {
-    title: 'Index',
-    authentication: false,
-    noCache: true,
-    access: true
-  }
-},
-{
-  name: 'User',
-  path: '/user',
-  component: resolve => require(['@/views/user/Index'], resolve),
-  meta: {
-    title: 'User',
-    authentication: false,
-    noCache: true,
-    access: true
-  }
-}
-,
-{
-  name: 'Category',
-  path: '/category',
-  component: resolve => require(['@/views/category/Index'], resolve),
-  meta: {
-    title: 'Category',
-    authentication: false,
-    noCache: true,
-    access: true
-  }
-}
-,
-{
-  name: 'Goods',
-  path: '/goods',
-  component: resolve => require(['@/views/goods/Index'], resolve),
-  meta: {
-    title: 'Goods',
-    authentication: false,
-    noCache: true,
-    access: true
-  }
-}
-,
-{
-  name: 'Order',
-  path: '/order',
-  component: resolve => require(['@/views/order/Index'], resolve),
-  meta: {
-    title: 'Order',
-    authentication: false,
-    noCache: true,
-    access: true
-  }
+    title: 'Lay'
+  },children: [
+    {
+      name: 'data',
+      path: '/lay/data',
+      component: resolve => require(['@/views/dashboard/Index'], resolve),
+      meta: {
+        title: 'data'
+      }
+    },
+    {
+      name: 'User',
+      path: '/lay/user',
+      component: resolve => require(['@/views/user/Index'], resolve),
+      meta: {
+        title: 'User'
+      }
+    },
+    {
+      name: 'Goods',
+      path: '/lay/goods',
+      component: resolve => require(['@/views/goods/Index'], resolve),
+      meta: {
+        title: 'Goods'
+      }
+    },
+    {
+      name: 'Order',
+      path: '/lay/order',
+      component: resolve => require(['@/views/order/Index'], resolve),
+      meta: {
+        title: 'Order'
+      }
+    },
+    {
+      name: 'Category',
+      path: '/lay/category',
+      component: resolve => require(['@/views/category/Index'], resolve),
+      meta: {
+        title: 'Category'
+      }
+    },
+    {
+      path: '',
+      redirect: '/lay/data'/*默认显示*/
+    }
+  ]
 }
 ]
 

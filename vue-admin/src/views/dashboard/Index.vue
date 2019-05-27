@@ -3,171 +3,32 @@
     class="page-container"
     id="content"
   >
-    <div class="left">
-      <Left></Left>
-    </div>
-    <div class="right">
-      <div class="page-content-wrapper">
-        <el-row :gutter="20">
-          <el-col :span="6">
-            <el-card :body-style="{ padding: '20px 20px 8px 20px' }">
-              <div class="card-wrapper">
-                <div class="card-meta-wrapper">
-                  <span class="meta-text">总销售额</span>
-                  <span class="card-actions">
-                    <el-tooltip
-                      class="card-tooltip"
-                      effect="dark"
-                      content="指标说明"
-                      placement="top"
-                    >
-                      <i class="el-icon-tiss-info"></i>
-                    </el-tooltip>
-                  </span>
-                  <div class="card-total-text">
-                    <span class="total-text">¥ 126,560</span>
-                  </div>
-                </div>
-                <div
-                  class="card-content"
-                  style="height: 46px;"
-                >
-                  <div class="card-contentFixed">
-                    <div class="trend-item">
-                      <span class="trend-item-title">周同比</span>
-                      <span class="trend-item-text">12%</span>
-                      <span class="trend-item-icon trend-item-icon-up">
-                        <i class="el-icon-caret-top"></i>
-                      </span>
-                    </div>
-                    <div class="trend-item">
-                      <span class="trend-item-title">日同比</span>
-                      <span class="trend-item-text">11%</span>
-                      <span class="trend-item-icon trend-item-icon-down">
-                        <i class="el-icon-caret-bottom"></i>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <div class="card-field-item">
-                    <span class="card-field-title">日销售额</span>
-                    <span class="card-field-text">￥12,423</span>
-                  </div>
+    <div class="page-content-wrapper">
+      <el-row :gutter="20">
+        <el-col :span="6">
+          <el-card :body-style="{ padding: '20px 20px 8px 20px' }">
+            <div class="card-wrapper">
+              <div class="card-meta-wrapper">
+                <span class="meta-text">总销售额</span>
+                <span class="card-actions">
+                  <el-tooltip
+                    class="card-tooltip"
+                    effect="dark"
+                    content="指标说明"
+                    placement="top"
+                  >
+                    <i class="el-icon-tiss-info"></i>
+                  </el-tooltip>
+                </span>
+                <div class="card-total-text">
+                  <span class="total-text">¥ 126,560</span>
                 </div>
               </div>
-            </el-card>
-          </el-col>
-          <el-col :span="6">
-            <el-card :body-style="{ padding: '20px 20px 8px 20px' }">
-              <div class="card-wrapper">
-                <div class="card-meta-wrapper">
-                  <span class="meta-text">访问量</span>
-                  <span class="card-actions">
-                    <el-tooltip
-                      class="card-tooltip"
-                      effect="dark"
-                      content="指标说明"
-                      placement="top"
-                    >
-                      <i class="el-icon-tiss-info"></i>
-                    </el-tooltip>
-                  </span>
-                  <div class="card-total-text">
-                    <span class="total-text">8,846</span>
-                  </div>
-                </div>
-                <div
-                  class="card-content"
-                  style="height: 46px;"
-                >
-                  <div class="card-contentFixed">
-                    <div
-                      id="chartTrendLine"
-                      style="height: 30px; width: 100%;"
-                    ></div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <div class="card-field-item">
-                    <span class="card-field-title">日访问量</span>
-                    <span class="card-field-text">1,234</span>
-                  </div>
-                </div>
-              </div>
-            </el-card>
-          </el-col>
-          <el-col :span="6">
-            <el-card :body-style="{ padding: '20px 20px 8px 20px' }">
-              <div class="card-wrapper">
-                <div class="card-meta-wrapper">
-                  <span class="meta-text">支付笔数</span>
-                  <span class="card-actions">
-                    <el-tooltip
-                      class="card-tooltip"
-                      effect="dark"
-                      content="指标说明"
-                      placement="top"
-                    >
-                      <i class="el-icon-tiss-info"></i>
-                    </el-tooltip>
-                  </span>
-                  <div class="card-total-text">
-                    <span class="total-text">6,560</span>
-                  </div>
-                </div>
-                <div
-                  class="card-content"
-                  style="height: 46px;"
-                >
-                  <div class="card-contentFixed">
-                    <div
-                      id="chartColumn"
-                      style="height: 30px; width: 100%;"
-                    ></div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <div class="card-field-item">
-                    <span class="card-field-title">转化率</span>
-                    <span class="card-field-text">60%</span>
-                  </div>
-                </div>
-              </div>
-            </el-card>
-          </el-col>
-          <el-col :span="6">
-            <el-card :body-style="{ padding: '20px 20px 8px 20px' }">
-              <div class="card-wrapper">
-                <div class="card-meta-wrapper">
-                  <span class="meta-text">运营活动效果</span>
-                  <span class="card-actions">
-                    <el-tooltip
-                      class="card-tooltip"
-                      effect="dark"
-                      content="指标说明"
-                      placement="top"
-                    >
-                      <i class="el-icon-tiss-info"></i>
-                    </el-tooltip>
-                  </span>
-                  <div class="card-total-text">
-                    <span class="total-text">78%</span>
-                  </div>
-                </div>
-                <div
-                  class="card-content"
-                  style="height: 46px;"
-                >
-                  <div class="card-contentFixed">
-                    <el-progress
-                      :percentage="78"
-                      :show-text="false"
-                      status="success"
-                    ></el-progress>
-                  </div>
-                </div>
-                <div class="card-footer">
+              <div
+                class="card-content"
+                style="height: 46px;"
+              >
+                <div class="card-contentFixed">
                   <div class="trend-item">
                     <span class="trend-item-title">周同比</span>
                     <span class="trend-item-text">12%</span>
@@ -184,73 +45,211 @@
                   </div>
                 </div>
               </div>
-            </el-card>
-          </el-col>
-        </el-row>
-        <el-row :gutter="20">
-          <el-col :span="24">
-            <el-card
-              class="chart-card"
-              :body-style="{ padding: '10px 20px' }"
-            >
-              <el-tabs
-                v-model="activeName"
-                id="chart-tabs"
+              <div class="card-footer">
+                <div class="card-field-item">
+                  <span class="card-field-title">日销售额</span>
+                  <span class="card-field-text">￥12,423</span>
+                </div>
+              </div>
+            </div>
+          </el-card>
+        </el-col>
+        <el-col :span="6">
+          <el-card :body-style="{ padding: '20px 20px 8px 20px' }">
+            <div class="card-wrapper">
+              <div class="card-meta-wrapper">
+                <span class="meta-text">访问量</span>
+                <span class="card-actions">
+                  <el-tooltip
+                    class="card-tooltip"
+                    effect="dark"
+                    content="指标说明"
+                    placement="top"
+                  >
+                    <i class="el-icon-tiss-info"></i>
+                  </el-tooltip>
+                </span>
+                <div class="card-total-text">
+                  <span class="total-text">8,846</span>
+                </div>
+              </div>
+              <div
+                class="card-content"
+                style="height: 46px;"
               >
-                <el-tab-pane
-                  label="销售额"
-                  name="first"
-                >
-                  <el-row :gutter="20">
-                    <el-col :span="16">
-                      <div class="chart-title">销售趋势</div>
-                      <div
-                        id="chartBar1"
-                        style="width: 100%; height: 255px;"
-                      ></div>
-                    </el-col>
-                    <el-col :span="8">
-                      <div class="chart-title">门店销售额排名</div>
-                      <ul class="analysis-ranking-list">
-                        <li
-                          v-for="(item, index) in rankList"
-                          :key="index"
-                        >
-                          <span :class="['ranking-item-number', index < 3 ? 'active': '']">{{ index + 1 }}</span>
-                          <span class="ranking-item-name">{{ item.name }}</span>
-                          <span class="ranking-item-value">{{ item.value }}</span>
-                        </li>
-                      </ul>
-                    </el-col>
-                  </el-row>
-                </el-tab-pane>
-                <el-tab-pane
-                  label="访问量"
-                  name="second"
-                >
-                  <el-row :gutter="20">
-                    <el-col :span="16">
-                      <div class="chart-title">访问量趋势</div>
-                      <div
-                        id="chartBar2"
-                        style="width: 100%; height: 255px;"
-                      ></div>
-                    </el-col>
-                    <el-col :span="8">
-                      <div class="chart-title">投诉类型统计</div>
-                      <div
-                        id="chartPie"
-                        style="width: 100%; height: 255px;"
-                      ></div>
-                    </el-col>
-                  </el-row>
-                </el-tab-pane>
-              </el-tabs>
-            </el-card>
-          </el-col>
-        </el-row>
-        <el-row :gutter="20" style="display:none">
-          <!-- <el-col :span="6">
+                <div class="card-contentFixed">
+                  <div
+                    id="chartTrendLine"
+                    style="height: 30px; width: 100%;"
+                  ></div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <div class="card-field-item">
+                  <span class="card-field-title">日访问量</span>
+                  <span class="card-field-text">1,234</span>
+                </div>
+              </div>
+            </div>
+          </el-card>
+        </el-col>
+        <el-col :span="6">
+          <el-card :body-style="{ padding: '20px 20px 8px 20px' }">
+            <div class="card-wrapper">
+              <div class="card-meta-wrapper">
+                <span class="meta-text">支付笔数</span>
+                <span class="card-actions">
+                  <el-tooltip
+                    class="card-tooltip"
+                    effect="dark"
+                    content="指标说明"
+                    placement="top"
+                  >
+                    <i class="el-icon-tiss-info"></i>
+                  </el-tooltip>
+                </span>
+                <div class="card-total-text">
+                  <span class="total-text">6,560</span>
+                </div>
+              </div>
+              <div
+                class="card-content"
+                style="height: 46px;"
+              >
+                <div class="card-contentFixed">
+                  <div
+                    id="chartColumn"
+                    style="height: 30px; width: 100%;"
+                  ></div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <div class="card-field-item">
+                  <span class="card-field-title">转化率</span>
+                  <span class="card-field-text">60%</span>
+                </div>
+              </div>
+            </div>
+          </el-card>
+        </el-col>
+        <el-col :span="6">
+          <el-card :body-style="{ padding: '20px 20px 8px 20px' }">
+            <div class="card-wrapper">
+              <div class="card-meta-wrapper">
+                <span class="meta-text">运营活动效果</span>
+                <span class="card-actions">
+                  <el-tooltip
+                    class="card-tooltip"
+                    effect="dark"
+                    content="指标说明"
+                    placement="top"
+                  >
+                    <i class="el-icon-tiss-info"></i>
+                  </el-tooltip>
+                </span>
+                <div class="card-total-text">
+                  <span class="total-text">78%</span>
+                </div>
+              </div>
+              <div
+                class="card-content"
+                style="height: 46px;"
+              >
+                <div class="card-contentFixed">
+                  <el-progress
+                    :percentage="78"
+                    :show-text="false"
+                    status="success"
+                  ></el-progress>
+                </div>
+              </div>
+              <div class="card-footer">
+                <div class="trend-item">
+                  <span class="trend-item-title">周同比</span>
+                  <span class="trend-item-text">12%</span>
+                  <span class="trend-item-icon trend-item-icon-up">
+                    <i class="el-icon-caret-top"></i>
+                  </span>
+                </div>
+                <div class="trend-item">
+                  <span class="trend-item-title">日同比</span>
+                  <span class="trend-item-text">11%</span>
+                  <span class="trend-item-icon trend-item-icon-down">
+                    <i class="el-icon-caret-bottom"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </el-card>
+        </el-col>
+      </el-row>
+      <el-row :gutter="20">
+        <el-col :span="24">
+          <el-card
+            class="chart-card"
+            :body-style="{ padding: '10px 20px' }"
+          >
+            <el-tabs
+              v-model="activeName"
+              id="chart-tabs"
+            >
+              <el-tab-pane
+                label="销售额"
+                name="first"
+              >
+                <el-row :gutter="20">
+                  <el-col :span="16">
+                    <div class="chart-title">销售趋势</div>
+                    <div
+                      id="chartBar1"
+                      style="width: 100%; height: 255px;"
+                    ></div>
+                  </el-col>
+                  <el-col :span="8">
+                    <div class="chart-title">门店销售额排名</div>
+                    <ul class="analysis-ranking-list">
+                      <li
+                        v-for="(item, index) in rankList"
+                        :key="index"
+                      >
+                        <span :class="['ranking-item-number', index < 3 ? 'active': '']">{{ index + 1 }}</span>
+                        <span class="ranking-item-name">{{ item.name }}</span>
+                        <span class="ranking-item-value">{{ item.value }}</span>
+                      </li>
+                    </ul>
+                  </el-col>
+                </el-row>
+              </el-tab-pane>
+              <el-tab-pane
+                label="访问量"
+                name="second"
+              >
+                <el-row :gutter="20">
+                  <el-col :span="16">
+                    <div class="chart-title">访问量趋势</div>
+                    <div
+                      id="chartBar2"
+                      style="width: 100%; height: 255px;"
+                    ></div>
+                  </el-col>
+                  <el-col :span="8">
+                    <div class="chart-title">投诉类型统计</div>
+                    <div
+                      id="chartPie"
+                      style="width: 100%; height: 255px;"
+                    ></div>
+                  </el-col>
+                </el-row>
+              </el-tab-pane>
+            </el-tabs>
+          </el-card>
+        </el-col>
+      </el-row>
+      <el-row
+        :gutter="20"
+        style="display:none"
+      >
+        <!-- <el-col :span="6">
             <el-card :body-style="{ padding: '10px 20px' }">
               <div
                 id="chartRadar"
@@ -258,16 +257,15 @@
               ></div>
             </el-card>
           </el-col> -->
-          <el-col :span="24">
-            <el-card :body-style="{ padding: '10px 20px' }">
-              <div
-                id="chartTree"
-                style="height: 800px; width: 100%;"
-              ></div>
-            </el-card>
-          </el-col>
-        </el-row>
-      </div>
+        <el-col :span="24">
+          <el-card :body-style="{ padding: '10px 20px' }">
+            <div
+              id="chartTree"
+              style="height: 800px; width: 100%;"
+            ></div>
+          </el-card>
+        </el-col>
+      </el-row>
     </div>
   </div>
 </template>
@@ -275,14 +273,10 @@
 <script>
 import { test } from '@/api/admin'
 import { EleResize } from '@/utils/EleResize'
-import Left from '../left/Index'
 
 export default {
   name: 'Dashboard',
-  components: {
-    Left
-  },
-  data () {
+  data() {
     return {
       chartColumn: null,
       chartBar1: null,
@@ -405,13 +399,13 @@ export default {
     }
   },
   methods: {
-    test(){
+    test() {
       test().then(response => {
 
       })
     }
   },
-  mounted () {
+  mounted() {
     this.test()
     // 设置图表容器宽高
     let chartBar1 = document.getElementById('chartBar1')
@@ -950,15 +944,5 @@ export default {
       white-space: nowrap;
     }
   }
-}
-
-.left{
-  width: 120px;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-.right{
-  margin-left: 120px;
 }
 </style>
