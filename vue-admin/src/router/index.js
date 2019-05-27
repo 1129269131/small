@@ -63,6 +63,18 @@ const routes = [{
     access: true
   }
 }
+,
+{
+  name: 'Order',
+  path: '/order',
+  component: resolve => require(['@/views/order/Index'], resolve),
+  meta: {
+    title: 'Order',
+    authentication: false,
+    noCache: true,
+    access: true
+  }
+}
 ]
 
 const router = new VueRouter({

@@ -59,3 +59,27 @@ export function deleteSku(sku) {
     })
     return result
 }
+
+/**
+ * 查询订单详情
+ */
+export function queryOrderDetail(ordersDetail) {
+    const result = request({
+        url: '/admin/orderDetail/queryOrderDetail',
+        method: 'post',
+        data: ordersDetail
+    })
+    return result
+}
+
+/**
+ * 删除订单
+ */
+export function deleteOrdersDetail(ordersDetail) {
+    const result = request({
+        url: '/admin/orderDetail/deleteOrdersDetail',
+        method: 'post',
+        data: ordersDetail
+    })
+    return result
+}
