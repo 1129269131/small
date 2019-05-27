@@ -129,3 +129,14 @@ export function queryOrder(order) {
         data: order
     })
 }
+
+/**
+ * 添加商品评价
+ */
+export function addComment(comment) {
+    return request({
+        url: '/admin/comment/addComment',
+        method: 'post',
+        data: comment
+    })
+}

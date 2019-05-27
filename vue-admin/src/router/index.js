@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 // import routes from './routes'
+// const Layout = resolve => require(['@/views/basic_layout/Index'], resolve)
 
 Vue.use(VueRouter)
 
@@ -15,86 +16,19 @@ const routes = [{
     access: true
   }
 },
-// 错误页面
+// 主路由
 {
-  name: 'Error',
-  path: '/error',
-  component: resolve => require(['@/views/basic_layout/Index'], resolve),
+  name: 'Index',
+  path: '/',
+  component: resolve => require(['@/views/dashboard/Index'], resolve),
   meta: {
-    title: 'Error',
-    authentication: false,
-    cache: true,
-    access: true
-  },
-  children: [
-    {
-      name: 'Error403',
-      path: '403',
-      component: resolve => require(['@/views/error_pages/403'], resolve),
-      meta: {
-        title: 'Error403',
-        authentication: false,
-        cache: true,
-        access: true
-      }
-    },
-    {
-      name: 'Error404',
-      path: '404',
-      component: resolve => require(['@/views/error_pages/404'], resolve),
-      meta: {
-        title: 'Error404',
-        authentication: false,
-        cache: true,
-        access: true
-      }
-    },
-    {
-      name: 'Error500',
-      path: '500',
-      component: resolve => require(['@/views/error_pages/500'], resolve),
-      meta: {
-        title: 'Error500',
-        authentication: false,
-        cache: true,
-        access: true
-      }
-    }
-  ]
-},
-{
-  name: 'CommonError403',
-  path: '/403',
-  component: resolve => require(['@/views/error_pages/403'], resolve),
-  meta: {
-    title: 'Error403',
+    title: 'Index',
     authentication: false,
     noCache: true,
     access: true
   }
-},
-{
-  name: 'CommonError404',
-  path: '/404',
-  component: resolve => require(['@/views/error_pages/404'], resolve),
-  meta: {
-    title: 'Error404',
-    authentication: false,
-    noCache: true,
-    access: true
-  }
-},
-{
-  name: 'CommonError500',
-  path: '/500',
-  component: resolve => require(['@/views/error_pages/500'], resolve),
-  meta: {
-    title: 'Error500',
-    authentication: false,
-    noCache: true,
-    access: true
-  }
-}]
+}
+]
 
 const router = new VueRouter({
   routes

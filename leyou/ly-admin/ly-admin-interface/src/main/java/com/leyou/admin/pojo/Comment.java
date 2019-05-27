@@ -17,6 +17,8 @@ public class Comment {
 
     private String commentContent;
 
+    private Integer commentRate;
+
     private String img;
 
     private Date createTime;
@@ -97,5 +99,13 @@ public class Comment {
 
     public void setStringTime(String stringTime) {
         this.stringTime = stringTime;
+    }
+
+    public Integer getCommentRate() {
+        return commentRate;
+    }
+
+    public void setCommentRate(Integer commentRate) {
+        this.commentRate = commentRate;
     }
 }

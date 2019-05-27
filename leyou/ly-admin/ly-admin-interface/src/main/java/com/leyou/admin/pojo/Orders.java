@@ -40,6 +40,12 @@ public class Orders {
     @Transient
     private List<OrdersDetail> ordersDetails;
 
+    @Transient
+    private String orderInfo;
+
+    @Transient
+    private String orderBtnInfo;
+
     public Long getId() {
         return id;
     }
@@ -158,5 +164,21 @@ public class Orders {
 
     public void setStringTime(String stringTime) {
         this.stringTime = stringTime;
+    }
+
+    public String getOrderInfo() {
+        return orderInfo;
+    }
+
+    public void setOrderInfo(String orderInfo) {
+        this.orderInfo = orderInfo;
+    }
+
+    public String getOrderBtnInfo() {
+        return orderBtnInfo;
+    }
+
+    public void setOrderBtnInfo(String orderBtnInfo) {
+        this.orderBtnInfo = orderBtnInfo;
     }
 }

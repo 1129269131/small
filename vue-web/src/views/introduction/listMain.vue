@@ -932,7 +932,6 @@
 
 <script>
 import { goodsDetailList, querySpuById, queryBrandById, queryGroupBySpuId, queryParamByCid, addCart, queryComment } from '@/api/item'
-import { parseTime } from '@/utils/index'
 export default {
   name: 'ListMain',
   data() {

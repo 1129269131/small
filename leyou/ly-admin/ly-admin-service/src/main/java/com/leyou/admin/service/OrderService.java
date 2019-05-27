@@ -9,6 +9,7 @@ import com.leyou.common.vo.Common;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import tk.mybatis.mapper.entity.Example;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -43,14 +44,32 @@ public class OrderService {
     }
 
     public Common<List<Orders>> queryOrder(Orders orders){
+        Orders queryOrders = new Orders();
+        queryOrders.setUid(orders.getUid());
+        if(orders.getOrderStatus()!=4){
+            queryOrders.setOrderStatus(orders.getOrderStatus());
+        }
         Common<List<Orders>> res = new Common<List<Orders>>();
-        List<Orders> orderList = orderMapper.select(orders);
+        List<Orders> orderList = orderMapper.select(queryOrders);
         for (int i =0; i<orderList.size();i++){
-            OrdersDetail ordersDetail = new OrdersDetail();
-            ordersDetail.setOrderId(orderList.get(i).getId());
             orderList.get(i).setStringTime(getNowDate(orderList.get(i).getCreateTime()));
-            List<OrdersDetail> list = orderDetailMapper.select(ordersDetail);
-            orderList.get(i).setOrdersDetails(orderDetailMapper.select(ordersDetail));
+            Example example = new Example(OrdersDetail.class);
+            example.createCriteria().andEqualTo("orderId",orderList.get(i).getId());
+            List<OrdersDetail> list = orderDetailMapper.selectByExample(example);
+            orderList.get(i).setOrdersDetails(list);
+            if(orderList.get(i).getOrderStatus()==0){
+                orderList.get(i).setOrderInfo("待付款");
+                orderList.get(i).setOrderBtnInfo("一键付款");
+            }else if(orderList.get(i).getOrderStatus()==1){
+                orderList.get(i).setOrderInfo("待发货");
+                orderList.get(i).setOrderBtnInfo("提醒发货");
+            }else if(orderList.get(i).getOrderStatus()==2){
+                orderList.get(i).setOrderInfo("待收货");
+                orderList.get(i).setOrderBtnInfo("确认收货");
+            }else{
+                orderList.get(i).setOrderInfo("待评价");
+                orderList.get(i).setOrderBtnInfo("评价商品");
+            }
         }
         res.setResult(orderList);
         res.setCode(0);

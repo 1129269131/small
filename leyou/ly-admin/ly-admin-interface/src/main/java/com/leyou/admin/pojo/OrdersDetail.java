@@ -13,6 +13,8 @@ public class OrdersDetail {
 
     private Long skuId;
 
+    private String title;
+
     @Column(name = "`num`")
     private int num;
 
@@ -21,6 +23,8 @@ public class OrdersDetail {
     private String style;
 
     private String packageStyle;
+
+    private String img;
 
     public Long getId() {
         return id;
@@ -76,5 +80,21 @@ public class OrdersDetail {
 
     public void setPackageStyle(String packageStyle) {
         this.packageStyle = packageStyle;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }
