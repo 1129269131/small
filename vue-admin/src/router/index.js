@@ -27,6 +27,17 @@ const routes = [{
     noCache: true,
     access: true
   }
+},
+{
+  name: 'User',
+  path: '/user',
+  component: resolve => require(['@/views/user/Index'], resolve),
+  meta: {
+    title: 'User',
+    authentication: false,
+    noCache: true,
+    access: true
+  }
 }
 ]
 

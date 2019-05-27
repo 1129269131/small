@@ -1,9 +1,6 @@
 package com.leyou.admin.pojo;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Table(name = "tb_user")
@@ -21,6 +18,12 @@ public class User {
     private Long addressId;
     private Integer role;
     private Date createtime;// 创建时间
+
+    @Transient
+    private String stringTime;
+
+    @Transient
+    private String stringSex;
 
     public Integer getId() {
         return id;
@@ -108,5 +111,21 @@ public class User {
 
     public void setCreatetime(Date createtime) {
         this.createtime = createtime;
+    }
+
+    public String getStringTime() {
+        return stringTime;
+    }
+
+    public void setStringTime(String stringTime) {
+        this.stringTime = stringTime;
+    }
+
+    public String getStringSex() {
+        return stringSex;
+    }
+
+    public void setStringSex(String stringSex) {
+        this.stringSex = stringSex;
     }
 }

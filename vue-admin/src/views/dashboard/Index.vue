@@ -273,6 +273,7 @@
 </template>
 
 <script>
+import { test } from '@/api/admin'
 import { EleResize } from '@/utils/EleResize'
 import Left from '../left/Index'
 
@@ -403,7 +404,15 @@ export default {
       }
     }
   },
+  methods: {
+    test(){
+      test().then(response => {
+
+      })
+    }
+  },
   mounted () {
+    this.test()
     // 设置图表容器宽高
     let chartBar1 = document.getElementById('chartBar1')
     let chartBar2 = document.getElementById('chartBar2')
