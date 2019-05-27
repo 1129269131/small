@@ -34,3 +34,16 @@ export function deleteUser(user) {
     })
     return result
 }
+
+
+/**
+ * 查询sku
+ */
+export function querySku(sku) {
+    const result = request({
+        url: '/admin/querySku',
+        method: 'post',
+        data: sku
+    })
+    return result
+}

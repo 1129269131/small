@@ -2,7 +2,7 @@
   <div class="page-container">
     <div class="page-title-bar-wrapper">
       <div class="page-title-bar-content">
-        <h1 class="page-title-bar-index-title">用户信息管理</h1>
+        <h1 class="page-title-bar-index-title">商品信息管理</h1>
       </div>
     </div>
     <div class="page-content-wrapper">
@@ -18,10 +18,10 @@
             class="demo-form-inline"
           >
             <el-form-item label="">
-              <el-input v-model="user.username" placeholder="请输入用户名"></el-input>
+              <el-input v-model="sku.title" placeholder="请输入商品信息"></el-input>
             </el-form-item>
             <el-form-item>
-              <el-button @click="queryUser()" type="primary">查询</el-button>
+              <el-button @click="querySku()" type="primary">查询</el-button>
               <el-button @click="reset()">重置</el-button>
               <el-button
                 class="export-btn"
@@ -33,37 +33,37 @@
         </div>
         <div class="content-panel">
           <el-table
-            :data="userList"
+            :data="skuList"
             style="width: 100%"
           >
             <el-table-column
-              prop="username"
-              label="用户名"
+              prop="style"
+              label="商品分类"
             >
             </el-table-column>
             <el-table-column
-              prop="truename"
-              label="真实姓名"
+              prop="title"
+              label="商品信息"
             >
             </el-table-column>
             <el-table-column
-              prop="phone"
-              label="手机号码"
+              prop="price"
+              label="商品价格"
             >
             </el-table-column>
             <el-table-column
-              prop="stringSex"
-              label="性别"
+              prop="old_price"
+              label="商品原价"
             >
             </el-table-column>
             <el-table-column
-              prop="email"
-              label="邮箱"
+              prop="img"
+              label="商品图片"
             >
             </el-table-column>
             <el-table-column
               prop="stringTime"
-              label="创建时间"
+              label="添加时间"
             >
             </el-table-column>
             <el-table-column label="操作">
@@ -85,11 +85,11 @@
 </template>
 
 <script>
-import { queryUser,deleteUser } from '@/api/admin'
+import { querySku } from '@/api/admin'
 import BaseBreadcrumb from '@/components/Base/BaseBreadcrumb'
 
 export default {
-  name: 'User',
+  name: 'Goods',
   components: {
     BaseBreadcrumb
   },
@@ -101,35 +101,35 @@ export default {
         region: '',
         expire: new Date()
       },
-      user: {
-          username: null
+      sku: {
+          title: null
       },
-      userList: null
+      skuList: null
     }
   },
   methods:{
-      /* 查询用户 */
-    queryUser() {
-      queryUser(this.user).then(response => {
-        this.userList = response.data.result
+      /* 查询sku */
+    querySku() {
+      querySku(this.sku).then(response => {
+        this.skuList = response.data.result
       })
     },
     /* 删除用户 */
-    deleteUser(row){
+    /* deleteUser(row){
         deleteUser(row).then(response => {
             this.queryUser()
             this.$message.success('用户已删除')
         }).catch(error => {
             this.$message.error('用户删除失败')
         })
-    },
+    }, */
     /* 重置按钮 */
     reset(){
-        this.user.username = null
+        this.sku.title = null
     }
   },
   mounted() {
-    this.queryUser()
+    this.querySku()
   }
 }
 </script>

@@ -16,7 +16,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import tk.mybatis.mapper.entity.Example;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -124,6 +126,34 @@ public class GoodsService {
         res.setCode(0);
         res.setMsg("success");
         return res;
+    }
+
+    public Common<List<Sku>> querySku(Sku sku){
+        Common<List<Sku>> res = new Common<List<Sku>>();
+        // 过滤
+        String skuTitle = sku.getTitle();
+        Example example = new Example(User.class);
+        if (StringUtils.isNotBlank(skuTitle)) {
+            example.createCriteria().andLike("title", "%" + skuTitle + "%");
+        }
+        List<Sku> list = skuMapper.selectByExample(example);
+        for (int i =0; i<list.size();i++){
+            list.get(i).setStringTime(getNowDate(list.get(i).getCreateTime()));
+        }
+        res.setResult(list);
+        res.setCode(0);
+        res.setMsg("success");
+        return res;
+    }
+
+    /**
+     * 转时间类型
+     * @return
+     */
+    public String getNowDate(Date currentTime) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dateString = formatter.format(currentTime);
+        return dateString;
     }
 
 }

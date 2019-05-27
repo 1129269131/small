@@ -22,6 +22,9 @@ public class Sku {
     @Transient
     private Integer stock;
 
+    @Transient
+    private String stringTime;
+
     public Date getLastUpdateTime() {
         return lastUpdateTime;
     }
@@ -100,5 +103,13 @@ public class Sku {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public String getStringTime() {
+        return stringTime;
+    }
+
+    public void setStringTime(String stringTime) {
+        this.stringTime = stringTime;
     }
 }

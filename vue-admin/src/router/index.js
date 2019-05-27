@@ -39,6 +39,30 @@ const routes = [{
     access: true
   }
 }
+,
+{
+  name: 'Category',
+  path: '/category',
+  component: resolve => require(['@/views/category/Index'], resolve),
+  meta: {
+    title: 'Category',
+    authentication: false,
+    noCache: true,
+    access: true
+  }
+}
+,
+{
+  name: 'Goods',
+  path: '/goods',
+  component: resolve => require(['@/views/goods/Index'], resolve),
+  meta: {
+    title: 'Goods',
+    authentication: false,
+    noCache: true,
+    access: true
+  }
+}
 ]
 
 const router = new VueRouter({
