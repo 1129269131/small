@@ -47,3 +47,15 @@ export function querySku(sku) {
     })
     return result
 }
+
+/**
+ * 删除sku
+ */
+export function deleteSku(sku) {
+    const result = request({
+        url: '/admin/deleteSku',
+        method: 'post',
+        data: sku
+    })
+    return result
+}

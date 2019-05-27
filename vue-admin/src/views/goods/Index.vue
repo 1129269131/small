@@ -71,7 +71,7 @@
                 <el-button
                   type="text"
                   size="small"
-                   @click="deleteUser(scope.row)"
+                   @click="deleteSku(scope.row)"
                 >
                   删除
                 </el-button>
@@ -85,7 +85,7 @@
 </template>
 
 <script>
-import { querySku } from '@/api/admin'
+import { querySku,deleteSku } from '@/api/admin'
 import BaseBreadcrumb from '@/components/Base/BaseBreadcrumb'
 
 export default {
@@ -115,14 +115,14 @@ export default {
       })
     },
     /* 删除用户 */
-    /* deleteUser(row){
-        deleteUser(row).then(response => {
-            this.queryUser()
-            this.$message.success('用户已删除')
+    deleteSku(row){
+        deleteSku(row).then(response => {
+            this.querySku()
+            this.$message.success('商品已删除')
         }).catch(error => {
-            this.$message.error('用户删除失败')
+            this.$message.error('商品删除失败')
         })
-    }, */
+    },
     /* 重置按钮 */
     reset(){
         this.sku.title = null

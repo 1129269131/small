@@ -48,4 +48,14 @@ public class GoodsController {
         return ResponseEntity.ok(goodsService.querySku(sku));
     }
 
+    /**
+     * 删除商品
+     * @param sku
+     * @return
+     */
+    @PostMapping("deleteSku")
+    public ResponseEntity<Common<Void>> deleteSku(@RequestBody Sku sku){
+        return ResponseEntity.ok(goodsService.deleteSku(sku));
+    }
+
 }

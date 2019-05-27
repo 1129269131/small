@@ -146,6 +146,14 @@ public class GoodsService {
         return res;
     }
 
+    public Common<Void> deleteSku(Sku sku){
+        Common<Void> res = new Common<Void>();
+        int result = this.skuMapper.delete(sku);
+        res.setCode(0);
+        res.setMsg("success");
+        return res;
+    }
+
     /**
      * 转时间类型
      * @return
