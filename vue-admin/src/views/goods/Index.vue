@@ -28,6 +28,12 @@
                 type="text"
                 icon="el-icon-cms-export"
               ></el-button>
+              <el-button
+                  type="primary"
+                  size="small"
+                >
+                  新增
+                </el-button>
             </el-form-item>
           </el-form>
         </div>
@@ -74,6 +80,12 @@
                    @click="deleteSku(scope.row)"
                 >
                   删除
+                </el-button>
+                <el-button
+                  type="text"
+                  size="small"
+                >
+                  详情
                 </el-button>
               </template>
             </el-table-column>

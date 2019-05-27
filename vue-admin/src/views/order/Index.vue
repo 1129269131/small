@@ -91,6 +91,12 @@
                 >
                   删除
                 </el-button>
+                <el-button
+                  type="text"
+                  size="small"
+                >
+                  详情
+                </el-button>
               </template>
             </el-table-column>
           </el-table>
