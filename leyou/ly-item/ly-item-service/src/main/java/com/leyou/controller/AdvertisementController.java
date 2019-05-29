@@ -1,13 +1,17 @@
-package com.leyou.admin.web;
+package com.leyou.controller;
 
-import com.leyou.admin.pojo.Advertisement;
-import com.leyou.admin.service.AdvertisementService;
 import com.leyou.common.vo.Common;
+import com.leyou.item.pojo.Advertisement;
+import com.leyou.service.AdvertisementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+
 
 @RestController
 @RequestMapping("ad")

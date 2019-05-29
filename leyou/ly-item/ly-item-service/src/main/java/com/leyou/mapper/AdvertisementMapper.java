@@ -1,6 +1,7 @@
-package com.leyou.admin.mapper;
+package com.leyou.mapper;
 
-import com.leyou.admin.pojo.Advertisement;
+
+import com.leyou.item.pojo.Advertisement;
 import tk.mybatis.mapper.common.Mapper;
 
 public interface AdvertisementMapper extends Mapper<Advertisement> {

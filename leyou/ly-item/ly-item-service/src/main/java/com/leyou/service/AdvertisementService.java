@@ -1,13 +1,14 @@
-package com.leyou.admin.service;
+package com.leyou.service;
 
-import com.leyou.admin.mapper.AdvertisementMapper;
-import com.leyou.admin.pojo.Advertisement;
 import com.leyou.common.vo.Common;
+import com.leyou.item.pojo.Advertisement;
+import com.leyou.mapper.AdvertisementMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
+
 
 @Service
 public class AdvertisementService {
