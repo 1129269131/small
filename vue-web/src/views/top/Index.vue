@@ -111,4 +111,7 @@ export default {
 .regist-tip:hover{
   color: #f22e00;
 }
+.nav{
+  background: #fff;
+}
 </style>

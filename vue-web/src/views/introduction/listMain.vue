@@ -173,11 +173,11 @@
           <div class="tb-detail-price">
             <li class="price iteminfo_price">
               <dt>促销价</dt>
-              <dd><em>¥</em><b class="sys_item_price">{{skus[0].price}}</b> </dd>
+              <dd><em>¥</em><b class="sys_item_price">{{skus[0].price/100}}</b> </dd>
             </li>
             <li class="price iteminfo_mktprice">
               <dt>原价</dt>
-              <dd><em>¥</em><b class="sys_item_mktprice">98.00</b></dd>
+              <dd><em>¥</em><b class="sys_item_mktprice">{{skus[0].old_price/100}}</b></dd>
             </li>
             <div class="clear"></div>
           </div>
@@ -229,12 +229,12 @@
                   >
                   </el-option>
                 </el-select>
-              </div>
-              <div
-                class="pay-logis"
-                style="display:inline-block"
-              >
-                快递<b class="sys_item_freprice">10</b>元
+                <div
+                  class="pay-logis"
+                  style="display:inline-block;margin-left: 15px"
+                >
+                  快递<b class="sys_item_freprice">10</b>元
+                </div>
               </div>
             </div>
           </dl>
@@ -243,13 +243,13 @@
           <!--销量-->
           <ul class="tm-ind-panel">
             <li class="tm-ind-item tm-ind-sellCount canClick">
-              <div class="tm-indcon"><span class="tm-label">月销量</span><span class="tm-count">1015</span></div>
+              <div class="tm-indcon"><span class="tm-label">月销量</span><span class="tm-count">115</span></div>
             </li>
             <li class="tm-ind-item tm-ind-sumCount canClick">
-              <div class="tm-indcon"><span class="tm-label">累计销量</span><span class="tm-count">6015</span></div>
+              <div class="tm-indcon"><span class="tm-label">累计销量</span><span class="tm-count">615</span></div>
             </li>
             <li class="tm-ind-item tm-ind-reviewCount canClick tm-line3">
-              <div class="tm-indcon"><span class="tm-label">累计评价</span><span class="tm-count">640</span></div>
+              <div class="tm-indcon"><span class="tm-label">累计评价</span><span class="tm-count">236</span></div>
             </li>
           </ul>
           <div class="clear"></div>
@@ -936,9 +936,9 @@ export default {
   name: 'ListMain',
   data() {
     return {
-      value2: null,
-      value3: null,
-      value4: null,
+      value2: '福建省',
+      value3: '厦门市',
+      value4: '集美区',
       activeName: 'first',
       commondityNum: 1,
       stock: 1,
@@ -1047,29 +1047,42 @@ export default {
         this.skus = data.skus
         this.skuImg = data.img.split(',')
         this.queryGroupBySpuId(data.id)
+      }).catch(error => {
+        this.$message.error(`spu数据获取失败：${error.message}`);
       })
     },
+    /* 查询商品信息 */
     queryBrandById(brandId) {
       queryBrandById(brandId).then(response => {
 
+      }).catch(error => {
+        this.$message.error(`商品信息获取失败：${error.message}`);
       })
     },
+    /* 查询规格组信息 */
     queryGroupBySpuId(spuId) {
       queryGroupBySpuId(spuId).then(response => {
         let data = response.result
         this.parameters = data
+      }).catch(error => {
+        this.$message.error(`规格组信息获取失败：${error.message}`);
       })
     },
+    /* 查询参数值信息 */
     queryParamByCid(cid) {
       queryParamByCid(cid).then(response => {
         let data = response.result
         this.parameters.params = data
+      }).catch(error => {
+        this.$message.error(`参数值信息获取失败：${error.message}`);
       })
     },
+    /* 口味选择 */
     isSelect(index) {
       this.$('.skus').removeClass('selected')
       this.$('.skus').eq(index).addClass('selected')
     },
+    /* 包装选择 */
     isPackagesSelect(index) {
       if (index === 0) {
         this.packageStyle = '手袋单人份'
@@ -1081,13 +1094,14 @@ export default {
       this.$('.packages').removeClass('selected')
       this.$('.packages').eq(index).addClass('selected')
     },
-    // 购物车数据加入redis中
+    /* 登录状态下购物车数据加入redis中 */
     addCart(cart) {
       addCart(cart).then(response => {
-
+      }).catch(error => {
+        this.$message.error(`购物车数据加入redis失败：${error.message}`);
       })
     },
-    /* 加入购物车 */
+    /* 未登录状态下加入购物车 */
     addCar() {
       if (localStorage.getItem('user')) {
         this.cart.skuId = this.spu.id
@@ -1132,18 +1146,26 @@ export default {
       if (this.commentActiveName === 'allComment') {
         queryComment(1, 3).then(response => {
           this.commentList = response.result
+        }).catch(error => {
+          this.$message.error(`全部评价信息获取失败：${error.message}`);
         })
       } else if (this.commentActiveName === 'goodComment') {
         queryComment(1, 0).then(response => {
           this.commentList = response.result
+        }).catch(error => {
+          this.$message.error(`差评信息获取失败：${error.message}`);
         })
       } else if (this.commentActiveName === 'midComment') {
         queryComment(1, 1).then(response => {
           this.commentList = response.result
+        }).catch(error => {
+          this.$message.error(`中评信息获取失败：${error.message}`);
         })
       } else {
         queryComment(1, 2).then(response => {
           this.commentList = response.result
+        }).catch(error => {
+          this.$message.error(`差评信息获取失败：${error.message}`);
         })
       }
     }
@@ -1168,5 +1190,14 @@ export default {
 .am-comments-list .am-comment {
   display: block;
   width: 100%;
+}
+.listMain {
+  background: #fff;
+}
+body {
+  background: #fff;
+}
+.am-form-content {
+  margin-left: 0 !important;
 }
 </style>

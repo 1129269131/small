@@ -269,4 +269,7 @@ export default {
 .am-btn-warning{
   color: #fff;
 }
+.shopNav{
+  background: #fff;
+}
 </style>
