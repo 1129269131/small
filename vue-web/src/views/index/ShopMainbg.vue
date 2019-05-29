@@ -12,7 +12,7 @@
           <img src="@/assets/images/2016.png" />
           <p>今日<br>推荐</p>
         </div>
-        <div class="am-u-sm-4 am-u-lg-3" v-for="ad in adverses">
+        <div class="am-u-sm-4 am-u-lg-3" v-for="ad in adverses1">
           <div class="info">
               <h3>{{ad.content}}</h3>
               <h4>{{ad.subContent}}</h4>
@@ -40,47 +40,14 @@
           </span>
         </div>
         <div class="am-g am-g-fixed ">
-          <div class="am-u-sm-3 ">
+          <div class="am-u-sm-3 " v-for="ad in adverses2">
             <div class="icon-sale one "></div>
-            <h4>秒杀</h4>
+            <h4>{{ad.subContent}}</h4>
             <div class="activityMain ">
-              <img src="@/assets/images/activity1.jpg">
+              <img :src="require('@/assets/images/'+ad.img)">
             </div>
             <div class="info ">
-              <h3>春节送礼优选</h3>
-            </div>
-          </div>
-
-          <div class="am-u-sm-3 ">
-            <div class="icon-sale two "></div>
-            <h4>特惠</h4>
-            <div class="activityMain ">
-              <img src="@/assets/images/activity2.jpg" />
-            </div>
-            <div class="info ">
-              <h3>春节送礼优选</h3>
-            </div>
-          </div>
-
-          <div class="am-u-sm-3 ">
-            <div class="icon-sale three "></div>
-            <h4>团购</h4>
-            <div class="activityMain ">
-              <img src="@/assets/images/activity3.jpg">
-            </div>
-            <div class="info ">
-              <h3>春节送礼优选</h3>
-            </div>
-          </div>
-
-          <div class="am-u-sm-3 last ">
-            <div class="icon-sale "></div>
-            <h4>超值</h4>
-            <div class="activityMain ">
-              <img src="@/assets/images/activity.jpg">
-            </div>
-            <div class="info ">
-              <h3>春节送礼优选</h3>
+              <h3>{{ad.content}}</h3>
             </div>
           </div>
 
@@ -246,16 +213,25 @@ export default {
   name: 'ShopMainbg',
   data() {
     return {
-      adverses: []
+      adverses1: [],
+      adverses2: []
     }
   },
   methods: {
+    /* 获取广告列表 */
     queryAdvertisement () {
       queryAdvertisement(1).then(response => {
-        this.adverses = response.result;
-        console.log(this.adverses)
+        this.adverses1 = response.result;
+      }).catch(error =>{
+        this.$message.error(`广告数据获取失败：${error.message}`);
+      })
+      queryAdvertisement(2).then(response => {
+        this.adverses2 = response.result;
+      }).catch(error =>{
+        this.$message.error(`广告数据获取失败：${error.message}`);
       })
     },
+    /* 跳转商品详情页 */
     toIntroduction(spuId){
       localStorage.setItem('spuId', spuId)
       this.$router.push({ path: '/introduction' })
