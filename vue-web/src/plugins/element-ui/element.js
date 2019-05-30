@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { Dropdown, DropdownMenu, DropdownItem, Menu, Submenu, MenuItem, MenuItemGroup, Input, Button, DatePicker, TimePicker, Popover, Breadcrumb, BreadcrumbItem, Tabs, TabPane, Alert, Slider, Row, Col, Progress, Badge, Card, Steps, Step, Form, FormItem, Select, Option, OptionGroup, Radio, RadioGroup, RadioButton, Checkbox, CheckboxButton, CheckboxGroup, Switch, Table, TableColumn, Tooltip, Tree, Message, Notification, MessageBox,Carousel,CarouselItem,InputNumber,Dialog,Rate } from 'element-ui'
+import { Dropdown, DropdownMenu, DropdownItem, Menu, Submenu, MenuItem, MenuItemGroup, Input, Button, DatePicker, TimePicker, Popover, Breadcrumb, BreadcrumbItem, Tabs, TabPane, Alert, Slider, Row, Col, Progress, Badge, Card, Steps, Step, Form, FormItem, Select, Option, OptionGroup, Radio, RadioGroup, RadioButton, Checkbox, CheckboxButton, CheckboxGroup, Switch, Table, TableColumn, Tooltip, Tree, Message, Notification, MessageBox,Carousel,CarouselItem,InputNumber,Dialog,Rate,Pagination } from 'element-ui'
 
 Vue.use(Dropdown)
 Vue.use(DropdownMenu)
@@ -47,6 +47,7 @@ Vue.use(CarouselItem)
 Vue.use(InputNumber)
 Vue.use(Dialog)
 Vue.use(Rate)
+Vue.use(Pagination)
 
 Vue.prototype.$notify = Notification
 Vue.prototype.$message = Message

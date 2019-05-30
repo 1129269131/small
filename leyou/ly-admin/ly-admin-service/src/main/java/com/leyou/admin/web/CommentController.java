@@ -6,6 +6,7 @@ import com.leyou.admin.pojo.Orders;
 import com.leyou.admin.service.CartService;
 import com.leyou.admin.service.CommentService;
 import com.leyou.common.vo.Common;
+import com.leyou.common.vo.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,10 +30,19 @@ public class CommentController {
      * @return
      */
     @PostMapping("queryComment")
-    public ResponseEntity<Common<List<Comment>>> queryComment(@RequestParam(value = "skuId") Long skuId,@RequestParam(value = "commentType", defaultValue = "3") Integer commentType){
-        return ResponseEntity.ok(commentService.queryComment(skuId,commentType));
+    public ResponseEntity<PageResult<Comment>> queryComment(@RequestParam(value = "page", defaultValue = "1") Integer page,
+                                                            @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
+                                                            @RequestParam(value = "skuId") Long skuId,
+                                                            @RequestParam(value = "commentType", defaultValue = "3") Integer commentType){
+        PageResult<Comment> result = commentService.queryComment(page,pageSize,skuId,commentType);
+        return ResponseEntity.ok(result);
     }
 
+    /**
+     * 新增评价
+     * @param comment
+     * @return
+     */
     @PostMapping("addComment")
     public ResponseEntity<Common<Void>> addComment(@RequestBody Comment comment){
         return ResponseEntity.ok(commentService.addComment(comment));

@@ -32,7 +32,7 @@ public class AuthController {
         String token = authService.login(username, password);
 
         //将token写入cookie
-        CookieUtils.setCookie(request,response,properties.getCookieName(),token,properties.getCookieMaxAge(),true);
+        /*CookieUtils.setCookie(request,response,properties.getCookieName(),token,properties.getCookieMaxAge(),true);*/
 
         Common<String> res = new Common<String>();
         res.setResult(token);

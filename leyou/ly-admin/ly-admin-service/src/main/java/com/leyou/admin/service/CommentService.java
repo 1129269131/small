@@ -1,13 +1,17 @@
 package com.leyou.admin.service;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.leyou.admin.mapper.CommentMapper;
 import com.leyou.admin.mapper.UserMapper;
+import com.leyou.admin.pojo.Brand;
 import com.leyou.admin.pojo.Comment;
-import com.leyou.admin.pojo.Orders;
 import com.leyou.admin.pojo.User;
 import com.leyou.common.vo.Common;
+import com.leyou.common.vo.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,31 +26,27 @@ public class CommentService {
     @Autowired
     private UserMapper userMapper;
 
-    public Common<List<Comment>> queryComment(Long skuId,int commentType) {
-        Comment comment = new Comment();
+    public PageResult<Comment> queryComment(Integer page, Integer pageSize,Long skuId, int commentType) {
+        // 开始分页
+        PageHelper.startPage(page, pageSize);
+        Example example = new Example(Comment.class);
         if(commentType != 3){
-            comment.setCommentType(commentType);
+            example.createCriteria().andEqualTo("commentType",commentType);
         }
-        comment.setSkuId(skuId);
-        Common<List<Comment>> res = new Common<List<Comment>>();
+        example.setOrderByClause("create_time DESC");
         List<Comment> list = null;
-        try {
-            list = this.commentMapper.select(comment);
-            for (int i =0; i<list.size();i++){
-                User user = new User();
-                user = userMapper.selectByPrimaryKey(list.get(i).getUid());
-                String userName = user.getUsername();
-                userName = userName.replaceFirst(userName.substring(1,userName.length()-1) ,"*");
-                list.get(i).setUserName(userName);
-                list.get(i).setStringTime(getNowDate(list.get(i).getCreateTime()));
-            }
-            res.setResult(list);
-            res.setCode(0);
-            res.setMsg("success");
-        } catch (Exception e) {
-//            logger.error(this.getClass().getName(),e);
+        // 查询
+        Page<Comment> pageInfo = (Page<Comment>) commentMapper.selectByExample(example);
+        list = pageInfo;
+        for (int i =0; i<pageInfo.size();i++){
+            User user = new User();
+            user = userMapper.selectByPrimaryKey(list.get(i).getUid());
+            String userName = user.getUsername();
+            userName = userName.replaceFirst(userName.substring(1,userName.length()-1) ,"*");
+            list.get(i).setUserName(userName);
+            list.get(i).setStringTime(getNowDate(list.get(i).getCreateTime()));
         }
-        return res;
+        return new PageResult<>(pageInfo.getTotal(), pageInfo,0,"success");
     }
 
     public Common<Void> addComment(Comment comment) {
@@ -62,7 +62,7 @@ public class CommentService {
         try {
             commentMapper.insertSelective(comment);
         } catch (Exception e) {
-//            logger.error(this.getClass().getName(),e);
+            System.out.println(e);
         }
         res.setCode(0);
         res.setMsg("success");

@@ -22,7 +22,6 @@ public class UserService {
      * @return
      */
     public Common<Boolean> regist(User user){
-//        Logger logger = Logger.getLogger(this.getClass());
         Common<Boolean> res = new Common<Boolean>();
         Boolean boo = null;
         try {
@@ -33,7 +32,7 @@ public class UserService {
             res.setCode(0);
             res.setMsg("success");
         } catch (Exception e) {
-//            logger.error(this.getClass().getName(),e);
+            System.out.println(e);
         }
         return res;
     }
@@ -44,7 +43,6 @@ public class UserService {
      * @return
      */
     public Common<Boolean> login(User user){
-//        Logger logger = Logger.getLogger(this.getClass());
         Common<Boolean> res = new Common<Boolean>();
         Boolean boo = null;
         try {
@@ -61,7 +59,7 @@ public class UserService {
             res.setCode(0);
             res.setMsg("success");
         } catch (Exception e) {
-//            logger.error(this.getClass().getName(),e);
+            System.out.println(e);
         }
         return res;
     }

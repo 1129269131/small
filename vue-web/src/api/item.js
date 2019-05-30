@@ -101,9 +101,9 @@ export function addOrder(orders) {
 /**
  * 查询评价信息
  */
-export function queryComment(skuId,commentType) {
+export function queryComment(page,pageSize,skuId,commentType) {
     return request({
-        url: '/admin/comment/queryComment?skuId='+skuId+'&commentType='+commentType,
+        url: '/admin/comment/queryComment?page='+page+'&pageSize='+pageSize+'&skuId='+skuId+'&commentType='+commentType,
         method: 'post'
     })
 }

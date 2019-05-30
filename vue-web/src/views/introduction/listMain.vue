@@ -1,6 +1,5 @@
 <template>
   <div class="listMain">
-
     <!--分类-->
     <div class="nav-table">
       <div class="long-title"><span class="all-goods">全部分类</span></div>
@@ -243,13 +242,13 @@
           <!--销量-->
           <ul class="tm-ind-panel">
             <li class="tm-ind-item tm-ind-sellCount canClick">
-              <div class="tm-indcon"><span class="tm-label">月销量</span><span class="tm-count">115</span></div>
+              <div class="tm-indcon"><span class="tm-label">月销量</span><span class="tm-count">11</span></div>
             </li>
             <li class="tm-ind-item tm-ind-sumCount canClick">
-              <div class="tm-indcon"><span class="tm-label">累计销量</span><span class="tm-count">615</span></div>
+              <div class="tm-indcon"><span class="tm-label">累计销量</span><span class="tm-count">23</span></div>
             </li>
             <li class="tm-ind-item tm-ind-reviewCount canClick tm-line3">
-              <div class="tm-indcon"><span class="tm-label">累计评价</span><span class="tm-count">236</span></div>
+              <div class="tm-indcon"><span class="tm-label">累计评价</span><span class="tm-count">15</span></div>
             </li>
           </ul>
           <div class="clear"></div>
@@ -589,15 +588,15 @@
                 <dl>
                   <dt>买家印象</dt>
                   <dd class="p-bfc">
-                    <q class="comm-tags"><span>味道不错</span><em>(2177)</em></q>
-                    <q class="comm-tags"><span>颗粒饱满</span><em>(1860)</em></q>
-                    <q class="comm-tags"><span>口感好</span><em>(1823)</em></q>
-                    <q class="comm-tags"><span>商品不错</span><em>(1689)</em></q>
-                    <q class="comm-tags"><span>香脆可口</span><em>(1488)</em></q>
-                    <q class="comm-tags"><span>个个开口</span><em>(1392)</em></q>
-                    <q class="comm-tags"><span>价格便宜</span><em>(1119)</em></q>
-                    <q class="comm-tags"><span>特价买的</span><em>(865)</em></q>
-                    <q class="comm-tags"><span>皮很薄</span><em>(831)</em></q>
+                    <q class="comm-tags"><span>味道不错</span><em>(9)</em></q>
+                    <q class="comm-tags"><span>颗粒饱满</span><em>(6)</em></q>
+                    <q class="comm-tags"><span>口感好</span><em>(2)</em></q>
+                    <q class="comm-tags"><span>商品不错</span><em>(5)</em></q>
+                    <q class="comm-tags"><span>香脆可口</span><em>(6)</em></q>
+                    <q class="comm-tags"><span>个个开口</span><em>(12)</em></q>
+                    <q class="comm-tags"><span>价格便宜</span><em>(13)</em></q>
+                    <q class="comm-tags"><span>特价买的</span><em>(2)</em></q>
+                    <q class="comm-tags"><span>皮很薄</span><em>(1)</em></q>
                   </dd>
                 </dl>
               </div>
@@ -669,12 +668,25 @@
                             </div>
                           </div>
                         </li>
+                        <li>
+                          <el-pagination
+                        :page-size="pageSize"
+                        :page-sizes="[5,10,20,30]"
+                        :current-page="page"
+                        layout="prev, pager, next"
+                        :total="total"
+                        @current-change="pageChange"
+                      >
+                      </el-pagination>
+                        </li>
                       </ul>
+                      
                     </el-tab-pane>
                     <el-tab-pane
                       label="好评"
                       name="goodComment"
                     >
+                    
                       <ul
                         data-v-6a88d622=""
                         class="am-comments-list am-comments-list-flip"
@@ -912,6 +924,9 @@ export default {
   name: 'ListMain',
   data() {
     return {
+      page: 1,
+      pageSize: 5,
+      total: 10,
       value2: '福建省',
       value3: '厦门市',
       value4: '集美区',
@@ -1120,30 +1135,36 @@ export default {
     /* 获取评价信息 */
     commentTabClick() {
       if (this.commentActiveName === 'allComment') {
-        queryComment(1, 3).then(response => {
+        queryComment(this.page,this.pageSize,1, 3).then(response => {
           this.commentList = response.result
+          this.total = response.total
         }).catch(error => {
           this.$message.error(`全部评价信息获取失败：${error.message}`);
         })
       } else if (this.commentActiveName === 'goodComment') {
-        queryComment(1, 0).then(response => {
+        queryComment(1,10,1, 0).then(response => {
           this.commentList = response.result
         }).catch(error => {
           this.$message.error(`差评信息获取失败：${error.message}`);
         })
       } else if (this.commentActiveName === 'midComment') {
-        queryComment(1, 1).then(response => {
+        queryComment(1,10,1, 1).then(response => {
           this.commentList = response.result
         }).catch(error => {
           this.$message.error(`中评信息获取失败：${error.message}`);
         })
       } else {
-        queryComment(1, 2).then(response => {
+        queryComment(1,10,1, 2).then(response => {
           this.commentList = response.result
         }).catch(error => {
           this.$message.error(`差评信息获取失败：${error.message}`);
         })
       }
+    },
+    /* 分页 */
+    pageChange(value){
+      this.page = value
+      this.commentTabClick()
     }
   },
   mounted() {
@@ -1175,5 +1196,17 @@ body {
 }
 .am-form-content {
   margin-left: 0 !important;
+}
+</style>
+<style lang="less">
+.el-pagination{
+  margin: 15px 0 15px 700px;
+  background: #fafafa!important;
+  button{
+    background: #fafafa!important;
+  }
+  li{
+    background: #fafafa!important;
+  }
 }
 </style>
