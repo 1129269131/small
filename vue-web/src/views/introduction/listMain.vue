@@ -22,9 +22,9 @@
       </div>
     </div>
     <ol class="am-breadcrumb am-breadcrumb-slash">
-      <li><a href="#">首页</a></li>
-      <li><a href="#">分类</a></li>
-      <li class="am-active">内容</li>
+      <li><a href="#">特产</a></li>
+      <li><a href="#">休闲食品</a></li>
+      <li class="am-active">坚果炒货</li>
     </ol>
     <div class="scoll">
       <section class="slider">
@@ -475,17 +475,43 @@
                 【三只松鼠_开口松子】零食坚果特产炒货东北红松子原味
               </a>
             </div>
-            <div class="p-price"><strong>￥35.90</strong></div>
+            <div class="p-price"><strong>￥35.13</strong></div>
           </li>
           <li>
             <div class="p-img">
               <a href="#"> <img
                   class=""
-                  src="@/assets/images/browse1.jpg"
+                  src="@/assets/images1/yg2.jpg"
+                > </a>
+            </div>
+            <div class="p-name"><a href="#">
+                三只松鼠 手剥松子125g坚果炒货零食特产开口松子
+              </a>
+            </div>
+            <div class="p-price"><strong>￥69.89</strong></div>
+          </li>
+          <li>
+            <div class="p-img">
+              <a href="#"> <img
+                  class=""
+                  src="@/assets/images1/yg1.jpg"
                 > </a>
             </div>
             <div class="p-name"><a href="#">
                 【三只松鼠_开口松子】零食坚果特产炒货东北红松子原味
+              </a>
+            </div>
+            <div class="p-price"><strong>￥23.59</strong></div>
+          </li>
+          <li>
+            <div class="p-img">
+              <a href="#"> <img
+                  class=""
+                  src="@/assets/images1/yg3.jpg"
+                > </a>
+            </div>
+            <div class="p-name"><a href="#">
+                【如水手剥松籽500g】 熟手剥松子坚果干果特产零食
               </a>
             </div>
             <div class="p-price"><strong>￥35.90</strong></div>
@@ -494,37 +520,11 @@
             <div class="p-img">
               <a href="#"> <img
                   class=""
-                  src="@/assets/images/browse1.jpg"
+                  src="@/assets/images1/yg4.jpg"
                 > </a>
             </div>
             <div class="p-name"><a href="#">
-                【三只松鼠_开口松子】零食坚果特产炒货东北红松子原味
-              </a>
-            </div>
-            <div class="p-price"><strong>￥35.90</strong></div>
-          </li>
-          <li>
-            <div class="p-img">
-              <a href="#"> <img
-                  class=""
-                  src="@/assets/images/browse1.jpg"
-                > </a>
-            </div>
-            <div class="p-name"><a href="#">
-                【三只松鼠_开口松子】零食坚果特产炒货东北红松子原味
-              </a>
-            </div>
-            <div class="p-price"><strong>￥35.90</strong></div>
-          </li>
-          <li>
-            <div class="p-img">
-              <a href="#"> <img
-                  class=""
-                  src="@/assets/images/browse1.jpg"
-                > </a>
-            </div>
-            <div class="p-name"><a href="#">
-                【三只松鼠_开口松子218g】零食坚果特产炒货东北红松子原味
+                新货手剥松子500g原味松子孕妇坚果零食独立小包装盒装
               </a>
             </div>
             <div class="p-price"><strong>￥35.90</strong></div>
@@ -665,12 +665,6 @@
                                 >
                                   {{item.commentContent}}
                                 </div>
-                                <!-- <div
-                                  data-v-6a88d622=""
-                                  class="tb-r-act-bar"
-                                >
-                                  颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
-                                </div> -->
                               </div>
                             </div>
                           </div>
@@ -734,12 +728,6 @@
                                 >
                                   {{item.commentContent}}
                                 </div>
-                                <!-- <div
-                                  data-v-6a88d622=""
-                                  class="tb-r-act-bar"
-                                >
-                                  颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
-                                </div> -->
                               </div>
                             </div>
                           </div>
@@ -804,12 +792,6 @@
                                 >
                                   {{item.commentContent}}
                                 </div>
-                                <!-- <div
-                                  data-v-6a88d622=""
-                                  class="tb-r-act-bar"
-                                >
-                                  颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
-                                </div> -->
                               </div>
                             </div>
                           </div>
@@ -874,12 +856,6 @@
                                 >
                                   {{item.commentContent}}
                                 </div>
-                                <!-- <div
-                                  data-v-6a88d622=""
-                                  class="tb-r-act-bar"
-                                >
-                                  颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
-                                </div> -->
                               </div>
                             </div>
                           </div>
