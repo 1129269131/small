@@ -1,8 +1,6 @@
 package com.leyou.admin.web;
 
-import com.leyou.admin.pojo.Orders;
 import com.leyou.admin.pojo.OrdersDetail;
-import com.leyou.admin.pojo.User;
 import com.leyou.admin.service.OrderDetailService;
 import com.leyou.common.vo.Common;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,22 +1,16 @@
 package com.leyou.admin.web;
 
-import com.leyou.admin.pojo.Cart;
 import com.leyou.admin.pojo.Comment;
-import com.leyou.admin.pojo.Orders;
-import com.leyou.admin.service.CartService;
 import com.leyou.admin.service.CommentService;
 import com.leyou.common.vo.Common;
 import com.leyou.common.vo.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("comment")

@@ -4,7 +4,6 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.leyou.admin.mapper.CommentMapper;
 import com.leyou.admin.mapper.UserMapper;
-import com.leyou.admin.pojo.Brand;
 import com.leyou.admin.pojo.Comment;
 import com.leyou.admin.pojo.User;
 import com.leyou.common.vo.Common;

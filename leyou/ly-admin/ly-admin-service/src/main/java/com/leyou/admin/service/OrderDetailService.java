@@ -1,19 +1,14 @@
 package com.leyou.admin.service;
 
 import com.leyou.admin.mapper.OrderDetailMapper;
-import com.leyou.admin.mapper.OrderMapper;
-import com.leyou.admin.pojo.Orders;
 import com.leyou.admin.pojo.OrdersDetail;
-import com.leyou.admin.pojo.Sku;
 import com.leyou.admin.pojo.User;
 import com.leyou.common.vo.Common;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
-import java.util.Date;
 import java.util.List;
 
 @Service

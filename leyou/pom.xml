@@ -12,6 +12,7 @@
         <module>leyou-user</module>
         <module>ly-admin</module>
         <module>test</module>
+        <module>ly-cart</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

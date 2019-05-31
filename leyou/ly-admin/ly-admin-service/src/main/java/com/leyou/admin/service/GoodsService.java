@@ -9,7 +9,6 @@ import com.leyou.admin.mapper.StockMapper;
 import com.leyou.admin.pojo.*;
 import com.leyou.common.vo.Common;
 import com.leyou.common.vo.PageResult;
-import com.netflix.discovery.converters.Auto;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -75,7 +74,7 @@ public class GoodsService {
         return  detail;
     }
 
-    public PageResult<Spu> querySpuByPage(Integer page,Integer rows,Boolean saleable,String key){
+    public PageResult<Spu> querySpuByPage(Integer page, Integer rows, Boolean saleable, String key){
         PageHelper.startPage(page, rows);
         Example example = new Example(Spu.class);
         Example.Criteria criteria = example.createCriteria();

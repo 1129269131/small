@@ -2,7 +2,6 @@ package com.leyou.admin.web;
 
 import com.leyou.admin.pojo.Sku;
 import com.leyou.admin.pojo.Spu;
-import com.leyou.admin.pojo.User;
 import com.leyou.admin.service.GoodsService;
 import com.leyou.common.vo.Common;
 import com.leyou.common.vo.PageResult;

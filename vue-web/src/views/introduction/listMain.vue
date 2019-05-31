@@ -1088,8 +1088,6 @@ export default {
     /* 登录状态下购物车数据加入redis中 */
     addCart(cart) {
       addCart(cart).then(response => {
-      }).catch(error => {
-        this.$message.error(`购物车数据加入redis失败：${error.message}`);
       })
     },
     /* 未登录状态下加入购物车 */

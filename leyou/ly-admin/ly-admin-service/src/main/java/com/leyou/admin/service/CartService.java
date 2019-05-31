@@ -2,7 +2,6 @@ package com.leyou.admin.service;
 
 import com.leyou.admin.pojo.Cart;
 import com.leyou.auth.entity.UserInfo;
-import com.leyou.common.vo.Common;
 import com.leyou.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.BoundHashOperations;

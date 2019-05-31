@@ -4,7 +4,6 @@ import com.leyou.admin.mapper.OrderDetailMapper;
 import com.leyou.admin.mapper.OrderMapper;
 import com.leyou.admin.pojo.Orders;
 import com.leyou.admin.pojo.OrdersDetail;
-import com.leyou.admin.pojo.User;
 import com.leyou.common.vo.Common;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

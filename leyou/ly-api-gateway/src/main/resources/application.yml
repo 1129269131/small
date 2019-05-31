@@ -20,6 +20,7 @@ zuul:
       auth-service: /auth/** # 授权中心微服务
       admin-service: /admin/** #外部接口微服务
       user-service: /user/** #用户信息管理微服务
+      cart-service: /cart/** #购物车微服务
       test-service: /test/** #测试微服务
 ribbon:
   ConnectTimeout: 250 # 连接超时时间(ms)

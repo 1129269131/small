@@ -61,7 +61,7 @@ export function queryParamByCid(cId) {
  */
 export function addCart(cart) {
     return request({
-        url: '/admin/cart/addCart',
+        url: '/cart/cart/addCart',
         method: 'post',
         data: cart
     })
@@ -72,7 +72,7 @@ export function addCart(cart) {
  */
 export function queryCartList() {
     return request({
-        url: '/admin/cart/queryCartList',
+        url: '/cart/cart/queryCartList',
         method: 'post'
     })
 }
