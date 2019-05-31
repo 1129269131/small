@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50556
 File Encoding         : 65001
 
-Date: 2019-04-22 23:19:19
+Date: 2019-06-01 00:32:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,21 +20,60 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_address`;
 CREATE TABLE `tb_address` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) DEFAULT NULL,
-  `consignee` varchar(255) DEFAULT NULL,
-  `phone` varchar(255) DEFAULT NULL,
-  `province` varchar(255) DEFAULT NULL,
-  `city` varchar(255) DEFAULT NULL,
-  `area` varchar(255) DEFAULT NULL,
-  `detail_area` varchar(100) DEFAULT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `uid` bigint(20) DEFAULT NULL,
+  `receiver_state` varchar(100) DEFAULT NULL,
+  `receiver_city` varchar(255) DEFAULT NULL,
+  `receiver_distric` varchar(255) DEFAULT NULL,
+  `receiver_address` varchar(255) DEFAULT NULL,
+  `receiver_mobile` varchar(12) DEFAULT NULL,
+  `receiver_zip` varchar(15) DEFAULT NULL,
+  `receiver` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_address
 -- ----------------------------
-INSERT INTO `tb_address` VALUES ('1', '1', '小王', '15259284087', '福建省', '莆田市', '秀屿区', '平海');
+INSERT INTO `tb_address` VALUES ('1', '1', '福建省', '莆田市', '秀屿区', '平海镇', '15359284087', null, '唐家河');
+INSERT INTO `tb_address` VALUES ('2', '1', '福建省', '厦门市', '集美区', '港口', '15659953575', null, '李云龙');
+
+-- ----------------------------
+-- Table structure for `tb_advertisement`
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_advertisement`;
+CREATE TABLE `tb_advertisement` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `spu_id` bigint(20) DEFAULT NULL,
+  `classification` tinyint(1) DEFAULT NULL COMMENT '广告分类位置,0表示轮播图,1表示文字广告',
+  `content` varchar(100) DEFAULT NULL,
+  `sub_content` varchar(100) DEFAULT NULL,
+  `img` varchar(20) DEFAULT NULL,
+  `price` bigint(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tb_advertisement
+-- ----------------------------
+INSERT INTO `tb_advertisement` VALUES ('1', '2', '0', '由内而外', '爱自己', 'ad1.jpg', '456');
+INSERT INTO `tb_advertisement` VALUES ('2', '2', '0', '吃货联盟', '3.8折起', 'ad2.jpg', '236');
+INSERT INTO `tb_advertisement` VALUES ('3', '2', '0', '鲜货直达', '满199减15', 'ad3.jpg', '526');
+INSERT INTO `tb_advertisement` VALUES ('4', '1', '0', '以肉换肉', '节后甩肉', 'ad1.jpg', '169');
+INSERT INTO `tb_advertisement` VALUES ('5', '1', '1', '真的有鱼', '开年福利篇', 'tj.png', '199');
+INSERT INTO `tb_advertisement` VALUES ('6', '1', '1', '囤货过冬', '让爱早回家', 'tj1.png', '299');
+INSERT INTO `tb_advertisement` VALUES ('7', '1', '1', '浪漫情人节', '甜甜蜜蜜', 'tj2.png', '399');
+INSERT INTO `tb_advertisement` VALUES ('8', '3', '2', '好礼不停', '秒杀', 'activity1.jpg', '765');
+INSERT INTO `tb_advertisement` VALUES ('9', '4', '2', '6.1狂欢', '特惠', 'activity2.jpg', '632');
+INSERT INTO `tb_advertisement` VALUES ('10', '5', '2', '送礼优选', '团购', 'activity3.jpg', '9635');
+INSERT INTO `tb_advertisement` VALUES ('11', '7', '2', '美味不断', '超值', 'activity.jpg', '9634');
+INSERT INTO `tb_advertisement` VALUES ('12', '6', '3', '美味核桃', '零食大礼包', 'act1.png', '6354');
+INSERT INTO `tb_advertisement` VALUES ('13', '6', '3', '雪之恋和风大福', '甜蜜樱桃', '1.jpg', '6348');
+INSERT INTO `tb_advertisement` VALUES ('14', '7', '3', '美味龙眼', '香甜龙眼', '2.jpg', '3649');
+INSERT INTO `tb_advertisement` VALUES ('15', '8', '3', '美味橙子', '好吃不过橙子', '3.jpg', '6648');
+INSERT INTO `tb_advertisement` VALUES ('16', '9', '3', '美味蓝莓', '酸甜蓝莓', '4.jpg', '6645');
+INSERT INTO `tb_advertisement` VALUES ('17', '4', '3', '小优布丁', '好吃的布丁', '5.jpg', '9878');
+INSERT INTO `tb_advertisement` VALUES ('18', '5', '3', '美味橙子', '好吃不过橙子', '6.jpg', '95441');
 
 -- ----------------------------
 -- Table structure for `tb_brand`
@@ -43,10 +82,10 @@ DROP TABLE IF EXISTS `tb_brand`;
 CREATE TABLE `tb_brand` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '品牌id',
   `name` varchar(50) NOT NULL COMMENT '品牌名称',
-  `image` varchar(200) DEFAULT '' COMMENT '品牌图片地址',
+  `img` varchar(200) DEFAULT '' COMMENT '品牌图片地址',
   `letter` char(1) DEFAULT '' COMMENT '品牌的首字母',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=325402 DEFAULT CHARSET=utf8 COMMENT='品牌表，一个品牌下有多个商品（spu），一对多关系';
+) ENGINE=InnoDB AUTO_INCREMENT=325405 DEFAULT CHARSET=utf8 COMMENT='品牌表，一个品牌下有多个商品（spu），一对多关系';
 
 -- ----------------------------
 -- Records of tb_brand
@@ -216,6 +255,9 @@ INSERT INTO `tb_brand` VALUES ('325396', '飞利浦（PHILIPS）', '', 'P');
 INSERT INTO `tb_brand` VALUES ('325398', '比亚兹（ESK）', '', 'B');
 INSERT INTO `tb_brand` VALUES ('325399', '亿色(ESR)', '', 'Y');
 INSERT INTO `tb_brand` VALUES ('325401', '黑马', 'http://image.leyou.com/group1/M00/00/00/wKg4ZVro8haAdtRLAALAv4YTyno368.png', 'H');
+INSERT INTO `tb_brand` VALUES ('325402', '香蕉皮', 'a', 'x');
+INSERT INTO `tb_brand` VALUES ('325403', '香蕉皮', '', 'x');
+INSERT INTO `tb_brand` VALUES ('325404', '香蕉皮', '', 'x');
 
 -- ----------------------------
 -- Table structure for `tb_category`
@@ -1857,183 +1899,244 @@ INSERT INTO `tb_category_brand` VALUES ('170', '6742');
 INSERT INTO `tb_category_brand` VALUES ('324', '18374');
 INSERT INTO `tb_category_brand` VALUES ('326', '18374');
 INSERT INTO `tb_category_brand` VALUES ('327', '18374');
+INSERT INTO `tb_category_brand` VALUES ('327', '325402');
+INSERT INTO `tb_category_brand` VALUES ('327', '325403');
+INSERT INTO `tb_category_brand` VALUES ('327', '325404');
 
 -- ----------------------------
 -- Table structure for `tb_comment`
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_comment`;
 CREATE TABLE `tb_comment` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) DEFAULT NULL,
-  `good_id` int(11) DEFAULT NULL,
-  `comment_type` int(1) DEFAULT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `uid` bigint(20) DEFAULT NULL,
+  `sku_id` bigint(20) DEFAULT NULL,
+  `comment_type` tinyint(1) DEFAULT NULL,
   `comment_content` text,
+  `comment_rate` int(2) DEFAULT NULL,
   `img` varchar(255) DEFAULT NULL,
-  `create_time` varchar(255) DEFAULT NULL,
+  `create_time` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_comment
 -- ----------------------------
-INSERT INTO `tb_comment` VALUES ('1', '1', '1', '0', '很好吃', 'a', '2019');
-INSERT INTO `tb_comment` VALUES ('2', '2', '1', '1', '很难吃', 'b', '2017');
-INSERT INTO `tb_comment` VALUES ('3', '3', '1', '2', '还好', 'c', '2018');
-
--- ----------------------------
--- Table structure for `tb_coupon`
--- ----------------------------
-DROP TABLE IF EXISTS `tb_coupon`;
-CREATE TABLE `tb_coupon` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '优惠卷id',
-  `name` varchar(20) NOT NULL COMMENT '优惠卷名称',
-  `type` enum('1','2') NOT NULL COMMENT '优惠卷类型,1、抵扣  2、折扣(打折）',
-  `condition` bigint(20) DEFAULT '0' COMMENT '抵扣或折扣条件，如果没有限制，则设置为0',
-  `reduction` bigint(20) DEFAULT '0' COMMENT '优惠金额',
-  `discount` int(3) DEFAULT '100' COMMENT '如果没有折扣，为100。如果是八五折，折扣为85',
-  `targets` varchar(255) NOT NULL DEFAULT '' COMMENT '优惠券可以生效的sku的id拼接，以,分割',
-  `stock` int(6) NOT NULL COMMENT '剩余优惠券数量',
-  `start_time` datetime NOT NULL COMMENT '优惠券生效时间',
-  `end_time` datetime NOT NULL COMMENT '优惠券失效时间',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='优惠卷表';
-
--- ----------------------------
--- Records of tb_coupon
--- ----------------------------
-
--- ----------------------------
--- Table structure for `tb_goods`
--- ----------------------------
-DROP TABLE IF EXISTS `tb_goods`;
-CREATE TABLE `tb_goods` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `chaping` int(11) DEFAULT NULL,
-  `createtime` varchar(255) DEFAULT NULL,
-  `deletestatus` int(11) DEFAULT NULL,
-  `haoping` int(11) DEFAULT NULL,
-  `imgpath` varchar(255) DEFAULT NULL,
-  `info` text,
-  `kucun` int(11) DEFAULT NULL,
-  `pname` varchar(255) DEFAULT NULL,
-  `price1` double DEFAULT NULL,
-  `price2` double DEFAULT NULL,
-  `tuijian` varchar(255) DEFAULT NULL,
-  `xiaoliang` int(11) DEFAULT NULL,
-  `zhongping` int(11) DEFAULT NULL,
-  `cateid` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of tb_goods
--- ----------------------------
-INSERT INTO `tb_goods` VALUES ('1', '1', '1', '1', '1', '1', '1', null, '1', '1', '1', '1', '1', '1', '1');
-INSERT INTO `tb_goods` VALUES ('2', '24', null, null, null, 'c', 'fhfd', null, '榴莲', '899', '366', null, null, null, null);
-INSERT INTO `tb_goods` VALUES ('3', '59', null, null, null, 'b', 'sdf', null, '香蕉', '999', '567', null, null, null, null);
+INSERT INTO `tb_comment` VALUES ('1', '1', '1', '0', '做活动买的，包邮。收到后感觉比我想象中要少些。不过日期很新鲜，手剥松子味道也不错。', '5', 'js5h.png', '2019-05-26');
+INSERT INTO `tb_comment` VALUES ('2', '2', '1', '0', '这松子颗粒饱满，味道不错！', '5', 'bsd.png', '2019-05-24');
+INSERT INTO `tb_comment` VALUES ('3', '3', '1', '0', '味道不错，满意，全五分，好评！\r\n松子还不错的吧，味道还是可以的，不过还是喜欢吃东北红松哦。品橙 品莓 品樱 品菇 服务好 ，好零食，挑良品', '5', '51da.png', '2019-05-02');
+INSERT INTO `tb_comment` VALUES ('4', '4', '1', '0', '买了一箱子的零食，味道都还不错', '5', 'ds5.png', '2019-03-06');
+INSERT INTO `tb_comment` VALUES ('5', '1', '1', '0', '松子还不错的吧，味道还是可以的，不过还是喜欢吃东北红松哦。品橙 品莓 品樱 品菇 服务好 ，好零食，挑良品', '5', 'ds84d.png', '2019-05-10');
+INSERT INTO `tb_comment` VALUES ('6', '3', '1', '1', '宝贝已收，很小的一包，不合算', '3', 's4s.png', '2019-03-27');
+INSERT INTO `tb_comment` VALUES ('7', '1', '1', '1', '值得～～ 价格贵 难剥开 好多烂的. 剥的手疼 用牙齿开 吃一牙齿的灰.. 挺不满意的', '3', 'sdf465d.png', '2019-03-26');
+INSERT INTO `tb_comment` VALUES ('8', '2', '1', '1', '好吃，味道好，价格有些小贵', '3', 'd2dd.png', '2019-04-18');
+INSERT INTO `tb_comment` VALUES ('9', '1', '1', '1', '比较好吃，就是价格小贵，发货和物流很快。', '3', 'sd66.png', '2019-05-02');
+INSERT INTO `tb_comment` VALUES ('10', '2', '1', '1', '好轻好小的一包，价格比较高，买来尝个鲜。和普通松子口感区别是更酥但是没那么油，松子香味稍淡，皮薄。', '3', 'dx2d.png', '2019-05-13');
+INSERT INTO `tb_comment` VALUES ('11', '2', '1', '2', '买的良品铺子 发的三只松鼠', '2', 'dsdx5.png', '2019-02-20');
+INSERT INTO `tb_comment` VALUES ('12', '3', '1', '2', '怪我太年轻，直接就买了，才这么一点点', '1', 'dac5d.png', '2019-03-13');
+INSERT INTO `tb_comment` VALUES ('13', '1', '1', '2', '别说大颗粒了真是虚假广告。那颗粒就和瓜子粒大小', '1', 'xvd.png', '2019-05-05');
+INSERT INTO `tb_comment` VALUES ('14', '2', '1', '2', '什么玩意儿 松子仁大小不一还很碎', '2', 'd689.png', '2019-03-20');
+INSERT INTO `tb_comment` VALUES ('15', '5', '1', '2', '吃的有很重的发霉的味道！', '1', 'zd5524f.png', '2019-04-10');
 
 -- ----------------------------
 -- Table structure for `tb_order`
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_order`;
 CREATE TABLE `tb_order` (
-  `order_id` bigint(20) NOT NULL COMMENT '订单id',
-  `total_pay` bigint(20) NOT NULL COMMENT '总金额，单位为分',
-  `actual_pay` bigint(20) NOT NULL COMMENT '实付金额。单位:分。如:20007，表示:200元7分',
-  `promotion_ids` varchar(255) COLLATE utf8_bin DEFAULT '',
-  `payment_type` tinyint(1) unsigned zerofill NOT NULL COMMENT '支付类型，1、在线支付，2、货到付款',
-  `post_fee` bigint(20) NOT NULL COMMENT '邮费。单位:分。如:20007，表示:200元7分',
-  `create_time` datetime DEFAULT NULL COMMENT '订单创建时间',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '订单id',
+  `address_id` bigint(20) DEFAULT NULL,
+  `uid` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT '用户id',
+  `total_pay` bigint(20) DEFAULT NULL COMMENT '总金额，单位为分',
+  `actual_pay` bigint(20) DEFAULT NULL COMMENT '实付金额。单位:分。如:20007，表示:200元7分',
+  `payment_type` tinyint(1) unsigned zerofill DEFAULT NULL COMMENT '支付类型，1、在线支付，2、货到付款',
+  `post_fee` bigint(20) DEFAULT NULL COMMENT '邮费。单位:分。如:20007，表示:200元7分',
   `shipping_name` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '物流名称',
   `shipping_code` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '物流单号',
-  `user_id` varchar(50) COLLATE utf8_bin NOT NULL COMMENT '用户id',
   `buyer_message` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT '买家留言',
-  `buyer_nick` varchar(50) COLLATE utf8_bin NOT NULL COMMENT '买家昵称',
-  `buyer_rate` tinyint(1) DEFAULT NULL COMMENT '买家是否已经评价,0未评价，1已评价',
-  `receiver_state` varchar(100) COLLATE utf8_bin DEFAULT '' COMMENT '收获地址（省）',
-  `receiver_city` varchar(255) COLLATE utf8_bin DEFAULT '' COMMENT '收获地址（市）',
-  `receiver_district` varchar(255) COLLATE utf8_bin DEFAULT '' COMMENT '收获地址（区/县）',
-  `receiver_address` varchar(255) COLLATE utf8_bin DEFAULT '' COMMENT '收获地址（街道、住址等详细地址）',
-  `receiver_mobile` varchar(12) COLLATE utf8_bin DEFAULT NULL COMMENT '收货人手机',
-  `receiver_zip` varchar(15) COLLATE utf8_bin DEFAULT NULL COMMENT '收货人邮编',
-  `receiver` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT '收货人',
-  `invoice_type` int(1) DEFAULT '0' COMMENT '发票类型(0无发票1普通发票，2电子发票，3增值税发票)',
-  `source_type` int(1) DEFAULT '2' COMMENT '订单来源：1:app端，2：pc端，3：M端，4：微信端，5：手机qq端',
-  PRIMARY KEY (`order_id`),
-  KEY `create_time` (`create_time`),
-  KEY `buyer_nick` (`buyer_nick`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `order_status` tinyint(1) DEFAULT NULL COMMENT '0 待付款 1待发货 2 待收货 3 待评价',
+  `create_time` datetime DEFAULT NULL COMMENT '订单创建时间',
+  PRIMARY KEY (`id`),
+  KEY `create_time` (`create_time`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of tb_order
 -- ----------------------------
-INSERT INTO `tb_order` VALUES ('992320617728577536', '199900', '199900', '', '2', '0', '2018-05-04 16:30:46', null, null, '16', null, 'huge', '0', '上海', '上海', '浦东新区', '航头镇航头路18号传智播客 3号楼', '15800000000', '210000', '虎哥', '0', '2');
-INSERT INTO `tb_order` VALUES ('992320724226150400', '169900', '169900', '', '2', '0', '2018-05-04 16:31:12', null, null, '16', null, 'huge', '0', '上海', '上海', '浦东新区', '航头镇航头路18号传智播客 3号楼', '15800000000', '210000', '虎哥', '0', '2');
-INSERT INTO `tb_order` VALUES ('992320901993336832', '142900', '142900', '', '2', '0', '2018-05-04 16:31:54', null, null, '16', null, 'huge', '0', '上海', '上海', '浦东新区', '航头镇航头路18号传智播客 3号楼', '15800000000', '210000', '虎哥', '0', '2');
-INSERT INTO `tb_order` VALUES ('992342776106586112', '322800', '322800', '', '2', '0', '2018-05-04 17:58:49', null, null, '16', null, 'huge', '0', '上海', '上海', '浦东新区', '航头镇航头路18号传智播客 3号楼', '15800000000', '210000', '虎哥', '0', '2');
+INSERT INTO `tb_order` VALUES ('1', '2', '9', '63699', null, null, '10', null, null, null, '2', null);
+INSERT INTO `tb_order` VALUES ('2', '3', '3', '55465', null, null, '20', null, null, null, '2', null);
+INSERT INTO `tb_order` VALUES ('3', '1', '2', '1194', '11946', null, '30', '申通', null, '666', '3', null);
+INSERT INTO `tb_order` VALUES ('4', '1', '6', '1393', '13693', null, '20', '申通', null, '65656', '1', '2019-05-26 11:14:05');
+INSERT INTO `tb_order` VALUES ('5', '1', '12', '1393', '13793', null, '10', '申通', null, '65656', '0', '2019-05-26 11:16:18');
+INSERT INTO `tb_order` VALUES ('6', '1', '1', '1194', '11994', '2', '20', '申通', null, '666', '1', '2019-05-26 11:21:30');
+INSERT INTO `tb_order` VALUES ('7', '1', '1', '1194', '60310', '2', '25', '申通', null, '666', '3', '2019-05-26 11:32:49');
+INSERT INTO `tb_order` VALUES ('8', '1', '1', '995', '99588', '1', '36', '圆通', null, '666', '1', '2019-05-26 11:33:40');
+INSERT INTO `tb_order` VALUES ('9', '1', '63', '1194', '11694', '1', '14', '申通', null, 'jjj', '1', '2019-05-26 11:37:42');
+INSERT INTO `tb_order` VALUES ('10', '1', '23', '1194', '11394', '2', '25', '申通', null, '666', '2', '2019-05-26 11:40:15');
+INSERT INTO `tb_order` VALUES ('11', '1', '19', '1393', '13493', '2', '33', '申通', null, '666', '3', '2019-05-26 11:42:00');
+INSERT INTO `tb_order` VALUES ('12', '2', '69', '1791', '17691', '2', '22', '圆通', null, '155', '1', '2019-05-26 11:46:09');
+INSERT INTO `tb_order` VALUES ('13', '1', '16', '1791', '17961', '0', '23', '韵达', null, 'lll5455', '0', '2019-05-26 11:54:36');
+INSERT INTO `tb_order` VALUES ('15', '1', '36', '1194', '11914', '3', '13', '韵达', null, 'gg', '2', '2019-05-26 11:57:15');
+INSERT INTO `tb_order` VALUES ('16', null, '59', '796', '79698', null, '15', null, null, '', '1', '2019-05-26 13:37:31');
+INSERT INTO `tb_order` VALUES ('17', '1', '49', '1194', '11934', '2', '36', '韵达', null, 'asd', '3', '2019-05-26 13:37:58');
+INSERT INTO `tb_order` VALUES ('18', '2', '52', '1194', '11964', '1', '14', '圆通', null, 'asd', '1', '2019-05-26 13:42:39');
+INSERT INTO `tb_order` VALUES ('19', '1', '67', '1194', '12194', '1', '15', '申通', null, 'sda', '2', '2019-05-26 13:49:45');
+INSERT INTO `tb_order` VALUES ('20', '1', '37', '94615', '946165', '1', '13', '申通', null, '', '1', '2019-05-31 22:10:42');
+INSERT INTO `tb_order` VALUES ('21', null, '1', '18923', '18923', null, null, null, null, '', '1', '2019-06-01 00:27:14');
 
 -- ----------------------------
 -- Table structure for `tb_order_detail`
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_order_detail`;
 CREATE TABLE `tb_order_detail` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '订单详情id ',
-  `order_id` bigint(20) NOT NULL COMMENT '订单id',
-  `sku_id` bigint(20) NOT NULL COMMENT 'sku商品id',
-  `num` int(11) NOT NULL COMMENT '购买数量',
-  `title` varchar(200) NOT NULL COMMENT '商品标题',
-  `own_spec` varchar(1000) DEFAULT '' COMMENT '商品动态属性键值集',
-  `price` bigint(20) NOT NULL COMMENT '价格,单位：分',
-  `image` varchar(200) DEFAULT '' COMMENT '商品图片',
-  PRIMARY KEY (`id`),
-  KEY `key_order_id` (`order_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COMMENT='订单详情表';
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `order_id` bigint(20) DEFAULT NULL,
+  `sku_id` bigint(20) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `num` int(11) DEFAULT NULL,
+  `price` bigint(20) DEFAULT NULL,
+  `style` varchar(10) DEFAULT NULL,
+  `package_style` varchar(10) DEFAULT NULL,
+  `img` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_order_detail
 -- ----------------------------
-INSERT INTO `tb_order_detail` VALUES ('19', '992320617728577536', '27179308371', '1', '锤子（smartisan） 坚果32 手机  4GB 4GB 炫黑色特别版 27179308371', '{\"机身颜色\":\"炫黑色特别版\",\"内存\":\"4GB\",\"机身存储\":\"64GB\"}', '199900', 'http://image.leyou.com/images/1/5/1524297608684.jpg');
-INSERT INTO `tb_order_detail` VALUES ('20', '992320724226150400', '27038143959', '1', '锤子（smartisan） 坚果32 手机  4GB 4GB 酒红色 27038143959', '{\"机身颜色\":\"酒红色\",\"内存\":\"4GB\",\"机身存储\":\"64GB\"}', '169900', 'http://image.leyou.com/images/8/14/1524297608290.jpg');
-INSERT INTO `tb_order_detail` VALUES ('21', '992320901993336832', '10987960993', '1', '华为（HUAWEI） nova 智能手机 4G手机 皓月银 (4G+64G)高配', '{\"机身颜色\":\"皓月银\",\"内存\":\"4GB\",\"机身存储\":\"64GB\"}', '142900', 'http://image.leyou.com/images/10/5/1524297467695.jpg');
-INSERT INTO `tb_order_detail` VALUES ('22', '992342776106586112', '27179308373', '1', '锤子（smartisan） 坚果32 手机  4GB 4GB 炫红色特别版 27179308373', '{\"机身存储\":\"4GB\",\"内存\":\"4GB\",\"机身颜色\":\"炫红色特别版\"}', '179900', 'http://image.leyou.com/images/5/11/1524297608996.jpg');
-INSERT INTO `tb_order_detail` VALUES ('23', '992342776106586112', '10987960993', '1', '华为（HUAWEI） nova 智能手机 4G手机 皓月银 (4G+64G)高配', '{\"机身颜色\":\"皓月银\",\"内存\":\"4GB\",\"机身存储\":\"64GB\"}', '142900', 'http://image.leyou.com/images/10/5/1524297467695.jpg');
+INSERT INTO `tb_order_detail` VALUES ('1', '1', '1', '坚果零食干果开口松子手剥松子新', '5', '6563', '原味', '手袋单人份', 'browse1.jpg');
+INSERT INTO `tb_order_detail` VALUES ('2', '7', '1', '雪松子野生湿俄罗斯咸味散装500g包邮', '6', '9635', '原味', '手袋单人份', 'browse1.jpg');
+INSERT INTO `tb_order_detail` VALUES ('3', '6', '1', '【憨豆熊 东北松子2袋500g】新货手剥开口大松子红松坚果散装批发', '9', '6312', '原味', '手袋单人份', 'browse1.jpg');
+INSERT INTO `tb_order_detail` VALUES ('4', '6', '1', '新货野生东北开口松子散装5斤 原味手剥特大红松子整箱坚果零食', '9', '6546', '原味', '手袋单人份', 'browse1.jpg');
+INSERT INTO `tb_order_detail` VALUES ('5', '8', '1', '新货手剥巴西特大颗粒大松子连罐500g薄壳孕妇特产零食', '5', '6236', '原味', '手袋单人份', 'browse1.jpg');
+INSERT INTO `tb_order_detail` VALUES ('6', '8', '1', '新货东北散装无壳松子原味生松子仁生鲜农产品松仁特价500g包邮', '6', '6364', '原味', '手袋单人份', 'browse1.jpg');
+INSERT INTO `tb_order_detail` VALUES ('7', '3', '1', '贝脆思 东北松子178g 手剥红松仁孕妇儿童坚果仁特产干果追剧零食', '4', '1365', '原味', '手袋单人份', 'browse1.jpg');
+INSERT INTO `tb_order_detail` VALUES ('8', '5', '1', '农村淘宝，好货到村\r\n18年新货大兴安岭大松子盐水煮松子野生俄罗斯雪松子250g一份', '6', '3655', '原味', '手袋单人份', 'browse1.jpg');
+INSERT INTO `tb_order_detail` VALUES ('9', '5', '1', '良品铺子 手剥松子218g 坚果炒货 巴西松子', '5', '18923', '原味', '全家福礼包', 'browse1.jpg');
+INSERT INTO `tb_order_detail` VALUES ('10', '21', '1', '良品铺子 手剥松子218g 坚果炒货 巴西松子', '1', '18923', '原味', '全家福礼包', 'browse1.jpg');
 
 -- ----------------------------
--- Table structure for `tb_packing`
+-- Table structure for `tb_sku`
 -- ----------------------------
-DROP TABLE IF EXISTS `tb_packing`;
-CREATE TABLE `tb_packing` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `good_id` int(11) DEFAULT NULL,
-  `type` varchar(255) DEFAULT NULL,
+DROP TABLE IF EXISTS `tb_sku`;
+CREATE TABLE `tb_sku` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'sku id',
+  `spu_id` bigint(20) NOT NULL COMMENT 'spu id',
+  `style` varchar(10) DEFAULT NULL,
+  `title` varchar(255) NOT NULL COMMENT '商品标题',
+  `price` bigint(15) NOT NULL DEFAULT '0' COMMENT '销售价格，单位为分',
+  `old_price` bigint(15) DEFAULT NULL,
+  `img` varchar(20) DEFAULT NULL,
+  `create_time` datetime NOT NULL COMMENT '添加时间',
+  `last_update_time` datetime NOT NULL COMMENT '最后修改时间',
+  PRIMARY KEY (`id`),
+  KEY `key_spu_id` (`spu_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='sku表,该表表示具体的商品实体,如黑色的64GB的iphone 8';
+
+-- ----------------------------
+-- Records of tb_sku
+-- ----------------------------
+INSERT INTO `tb_sku` VALUES ('1', '1', '原味', '5月新货炭烧海苔腰果500g越南腰果仁盐焗特大颗粒坚果零食特产', '18923', '19933', 'browse1.jpg', '2019-05-13 19:55:51', '2019-05-07 19:55:54');
+INSERT INTO `tb_sku` VALUES ('2', '1', '奶油', '干果坚果零食果仁碳烧味休闲食品袋装', '18923', '19933', 'browse2.jpg', '2019-05-14 22:23:16', '2019-05-14 22:23:20');
+INSERT INTO `tb_sku` VALUES ('3', '1', '炭烧', '原味带皮烘焙腰果特大颗粒腰果仁2斤1000g净含量散装整箱干果零食', '18923', '19933', 'browse3.jpg', '2019-05-14 22:24:06', '2019-05-14 22:24:09');
+INSERT INTO `tb_sku` VALUES ('4', '2', '原味', '原味腰果仁500g 烘焙熟腰果成人孕妇零食坚果干果袋装雪花酥原料', '645564', '96323', 'a1.png', '2019-04-11 22:37:45', '2019-05-31 22:37:50');
+INSERT INTO `tb_sku` VALUES ('5', '2', '奶油', '新货炭烧盐焗腰果仁零食坚果小吃干果腰果连罐500g分2罐装大颗粒', '65546', '65659', 'a2.png', '2019-03-14 22:38:20', '2019-05-31 22:38:26');
+INSERT INTO `tb_sku` VALUES ('6', '2', '炭烧', '休闲零食坚果干果炒货特产无盐焗烘焙', '68596', '654847', 'a3.png', '2019-03-04 22:38:58', '2019-03-14 22:39:03');
+INSERT INTO `tb_sku` VALUES ('7', '3', '原味', '零食坚果干果特产炒货小吃食品香酥果仁', '656362', '21555', 'deli1.png', '2019-03-12 22:39:51', '2019-05-02 22:39:55');
+INSERT INTO `tb_sku` VALUES ('8', '3', '奶油', '坚果炒货休闲零食小吃特产果仁', '65689', '65485', 'deli2.png', '2019-02-05 22:40:14', '2019-03-21 22:40:18');
+INSERT INTO `tb_sku` VALUES ('9', '3', '炭烧', '天虹牌原味腰果仁熟500g烘焙培干果坚果孕妇零食W320大颗批发散装', '99652', '105665', 'deli3.ong', '2019-04-03 22:40:50', '2019-04-17 22:40:54');
+INSERT INTO `tb_sku` VALUES ('10', '4', '原味', '可茜原味腰果仁生熟腰果坚果孕妇零食新货坚果仁带皮盐焗腰果500g', '956632', '656526', 'aiq1.png', '2019-03-13 22:41:32', '2019-03-22 22:41:36');
+INSERT INTO `tb_sku` VALUES ('11', '4', '奶油', '特产零食干果炒货坚果仁腰果仁', '95633', '21221', 'aiq2.png', '2019-02-13 22:41:59', '2019-03-14 22:42:02');
+INSERT INTO `tb_sku` VALUES ('12', '4', '炭烧', '5月新货带衣腰果500g原味炭烧熟越南紫皮特大腰果仁盐焗坚果特产', '69565', '635659', 'aiq3.png', '2019-01-11 22:42:32', '2019-04-04 22:42:38');
+INSERT INTO `tb_sku` VALUES ('13', '5', '原味', '散装原味烘焙腰果仁1000g净含量袋装带皮越南腰果仁2斤', '659656', '65932', 'bnm.png', '2019-02-21 22:43:32', '2019-04-18 22:43:36');
+INSERT INTO `tb_sku` VALUES ('14', '5', '奶油', '坚果零食果仁特产 干果炒货袋装批发', '68965', '63546', 'bnm.png', '2019-02-14 22:44:11', '2019-03-28 22:44:16');
+INSERT INTO `tb_sku` VALUES ('15', '5', '炭烧', '休闲坚果零食小吃特产干果腰果仁', '359685', '541656', 'bnm.png', '2019-03-06 22:44:37', '2019-04-03 22:44:41');
+
+-- ----------------------------
+-- Table structure for `tb_spec_group`
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_spec_group`;
+CREATE TABLE `tb_spec_group` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `spu_id` bigint(20) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `value` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of tb_packing
+-- Records of tb_spec_group
 -- ----------------------------
-INSERT INTO `tb_packing` VALUES ('1', '1', '手袋单人份');
-INSERT INTO `tb_packing` VALUES ('2', '1', '礼盒双人份');
-INSERT INTO `tb_packing` VALUES ('3', '1', '全家福礼包');
+INSERT INTO `tb_spec_group` VALUES ('1', '1', '产品类型', '烘炒类');
+INSERT INTO `tb_spec_group` VALUES ('2', '1', '原料产地', '巴基斯坦');
+INSERT INTO `tb_spec_group` VALUES ('3', '1', '产地', '湖北省武汉市');
+INSERT INTO `tb_spec_group` VALUES ('4', '1', '配料表', '进口松子、食用盐');
+INSERT INTO `tb_spec_group` VALUES ('5', '1', '产品规格', '210g');
+INSERT INTO `tb_spec_group` VALUES ('6', '1', '保质期', '180天');
+INSERT INTO `tb_spec_group` VALUES ('7', '1', '产品标准号', 'GB/T 22165');
+INSERT INTO `tb_spec_group` VALUES ('8', '1', '生产许可证编号', 'QS420 1801 0226');
+INSERT INTO `tb_spec_group` VALUES ('9', '1', '储存方法', '请放置于常温、阴凉、通风、干燥');
+INSERT INTO `tb_spec_group` VALUES ('10', '1', '食用方法', '开袋去壳即食');
+INSERT INTO `tb_spec_group` VALUES ('11', '2', '产品类型', '烘炒类');
+INSERT INTO `tb_spec_group` VALUES ('12', '2', '原料产地', '美国');
+INSERT INTO `tb_spec_group` VALUES ('13', '2', '产地', '江苏');
+INSERT INTO `tb_spec_group` VALUES ('14', '2', '配料表', '进口松子、食用盐');
+INSERT INTO `tb_spec_group` VALUES ('15', '2', '产品规格', '220g');
+INSERT INTO `tb_spec_group` VALUES ('16', '2', '保质期', '360天');
+INSERT INTO `tb_spec_group` VALUES ('17', '2', '产品标准号', 'GB/T 22165');
+INSERT INTO `tb_spec_group` VALUES ('18', '2', '生产许可证编号', 'QS420 1801 0226');
+INSERT INTO `tb_spec_group` VALUES ('19', '2', '储存方法', '请放置于常温、阴凉、通风、干燥');
+INSERT INTO `tb_spec_group` VALUES ('20', '2', '食用方法', '开袋即食');
+INSERT INTO `tb_spec_group` VALUES ('21', '3', '产品类型', '烘炒类');
+INSERT INTO `tb_spec_group` VALUES ('22', '3', '原料产地', '意大利');
+INSERT INTO `tb_spec_group` VALUES ('23', '3', '产地', '福建南平');
+INSERT INTO `tb_spec_group` VALUES ('24', '3', '配料表', '进口松子、食用盐');
+INSERT INTO `tb_spec_group` VALUES ('25', '3', '产品规格', '120g');
+INSERT INTO `tb_spec_group` VALUES ('26', '3', '保质期', '260天');
+INSERT INTO `tb_spec_group` VALUES ('27', '3', '产品标准号', 'GB/T 22165');
+INSERT INTO `tb_spec_group` VALUES ('28', '3', '生产许可证编号', 'QS420 1801 0226');
+INSERT INTO `tb_spec_group` VALUES ('29', '3', '储存方法', '请放置于常温、阴凉、通风、干燥');
+INSERT INTO `tb_spec_group` VALUES ('30', '3', '食用方法', '开袋即食');
 
 -- ----------------------------
--- Table structure for `tb_taste`
+-- Table structure for `tb_spu`
 -- ----------------------------
-DROP TABLE IF EXISTS `tb_taste`;
-CREATE TABLE `tb_taste` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `good_id` int(11) DEFAULT NULL,
-  `type` varchar(255) DEFAULT NULL,
+DROP TABLE IF EXISTS `tb_spu`;
+CREATE TABLE `tb_spu` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'spu id',
+  `brand_id` bigint(20) NOT NULL COMMENT '商品所属品牌id',
+  `title` varchar(255) NOT NULL DEFAULT '' COMMENT '标题',
+  `sub_title` varchar(255) DEFAULT '' COMMENT '子标题',
+  `cid1` bigint(20) NOT NULL COMMENT '1级类目id',
+  `cid2` bigint(20) NOT NULL COMMENT '2级类目id',
+  `cid3` bigint(20) NOT NULL COMMENT '3级类目id',
+  `img` varchar(500) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL COMMENT '添加时间',
+  `last_update_time` datetime DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='spu表，该表描述的是一个抽象的商品，比如 iphone8';
 
 -- ----------------------------
--- Records of tb_taste
+-- Records of tb_spu
 -- ----------------------------
-INSERT INTO `tb_taste` VALUES ('1', '1', '原味');
-INSERT INTO `tb_taste` VALUES ('2', '1', '奶油');
-INSERT INTO `tb_taste` VALUES ('3', '1', '炭烧');
-INSERT INTO `tb_taste` VALUES ('4', '1', '咸香');
+INSERT INTO `tb_spu` VALUES ('1', '1115', '良品铺子 手剥松子218g 坚果炒货 巴西松子', '购物满2件打8折，满3件7折', '1', '2', '76', 'tw1.jpg,tw2.jpg,tw3.jpg,tw4.jpg,tw5.jpg,tw6.jpg,tw7.jpg', '2019-05-11 16:59:50', '2019-05-11 16:59:55');
+INSERT INTO `tb_spu` VALUES ('2', '1632', 'coch可茜焙烤熟腰果碎原味腰果坚果碎饼干蛋糕烘焙原料', '新货越南带皮烘焙腰果连罐500g干果散装坚果炒货核桃零食', '2', '5', '69', 'zj.jpg', '2019-03-14 23:02:12', '2019-04-05 23:02:17');
+INSERT INTO `tb_spu` VALUES ('3', '3694', '恒康食品 香酥腰果400g桶装奶香味 果仁坚果炒货干果零食新货越南腰果仁原味带衣熟腰果总重500g罐装炭烧腰果带皮虎皮坚果', '新货越南腰果仁原味带衣熟腰果总重500g罐装炭烧腰果带皮虎皮坚果', '9', '12', '32', 'p5da.jpg', '2019-02-05 23:03:16', '2019-03-20 23:03:23');
+INSERT INTO `tb_spu` VALUES ('4', '9614', '新货烘焙干果仁原味腰果坚果炭烧腰果连罐500g分2罐装带皮腰果新货越南带皮烘焙腰果连罐500g干果散装坚果炒货核桃零食', '新货越南带皮烘焙腰果连罐500g干果散装坚果炒货核桃零食', '23', '54', '96', 'df52d.jpg', '2019-03-06 23:04:23', '2019-04-23 23:04:31');
+INSERT INTO `tb_spu` VALUES ('5', '8436', '5月新货越南大粒生腰果仁熟原味烘焙孕妇坚果干果500g散装1斤包邮', '5月新货越南大粒生腰果仁熟原味烘焙孕妇坚果干果500g散装1斤包邮', '36', '32', '87', '3sd3.jpg', '2019-03-06 23:05:27', '2019-05-02 23:05:32');
+
+-- ----------------------------
+-- Table structure for `tb_stock`
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_stock`;
+CREATE TABLE `tb_stock` (
+  `sku_id` bigint(20) NOT NULL COMMENT '库存对应的商品sku id',
+  `stock` int(9) NOT NULL COMMENT '库存数量',
+  PRIMARY KEY (`sku_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='库存表，代表库存，秒杀库存等信息';
+
+-- ----------------------------
+-- Records of tb_stock
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `tb_user`
@@ -2041,28 +2144,24 @@ INSERT INTO `tb_taste` VALUES ('4', '1', '咸香');
 DROP TABLE IF EXISTS `tb_user`;
 CREATE TABLE `tb_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `address` varchar(255) DEFAULT NULL,
-  `createtime` varchar(255) DEFAULT NULL,
-  `deletestatus` int(11) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `phone` varchar(255) DEFAULT NULL,
-  `role` int(11) DEFAULT NULL,
-  `truename` varchar(255) DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
+  `truename` varchar(255) DEFAULT NULL,
+  `sex` int(1) DEFAULT NULL,
+  `birthday` date DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `email` varchar(320) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `address_id` bigint(20) DEFAULT NULL,
+  `role` tinyint(1) DEFAULT NULL,
+  `createtime` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_user
 -- ----------------------------
-INSERT INTO `tb_user` VALUES ('1', '999', null, null, null, null, null, null, null);
-INSERT INTO `tb_user` VALUES ('2', '9tttt99', null, null, null, null, null, null, null);
-INSERT INTO `tb_user` VALUES ('3', '9tttt99', null, null, null, null, null, null, null);
-INSERT INTO `tb_user` VALUES ('4', '9tttt99', null, null, null, null, null, null, null);
-INSERT INTO `tb_user` VALUES ('5', '9tttt99', null, null, null, null, null, null, null);
-INSERT INTO `tb_user` VALUES ('6', '9刚刚更换t99', null, null, null, null, null, null, null);
-INSERT INTO `tb_user` VALUES ('7', '9刚刚更换t99', null, null, 'a', null, null, null, 'a');
-INSERT INTO `tb_user` VALUES ('8', '9刚刚更换t99', null, null, null, null, null, null, null);
-INSERT INTO `tb_user` VALUES ('9', '9刚刚555t99', null, null, null, null, null, null, null);
-INSERT INTO `tb_user` VALUES ('10', '9刚刚更换t99', null, null, null, null, null, null, null);
-INSERT INTO `tb_user` VALUES ('11', '9刚刚更换t99', null, null, null, null, null, null, null);
+INSERT INTO `tb_user` VALUES ('1', 'user', '张三', '0', '1999-01-01', '15359284087', '1129269131@qq.com', 'user123', '1', '0', '2019-05-27');
+INSERT INTO `tb_user` VALUES ('2', 'admin', '管理员', '2', '1999-02-01', '15659983575', '26835123@qq.com', 'admin123', '2', '1', '2019-04-03');
+INSERT INTO `tb_user` VALUES ('3', '流浪地球', '李四', '1', '1990-05-30', '13859883554', '236598413@qq.com', 'userlisi', '3', '0', '2019-05-08');
+INSERT INTO `tb_user` VALUES ('4', '破冰行动', '王五', '2', '1993-04-01', '15653329658', '236536548@qq.com', 'userwwu', '4', '0', '2019-05-08');
+INSERT INTO `tb_user` VALUES ('5', '疯狂外星人', '王麻子', '1', '1993-03-30', '13856993256', '2236516@qq.com', 'wanmazi', '5', '0', '2019-03-06');
