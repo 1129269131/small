@@ -78,13 +78,13 @@
                   <div class="item-price price-promo-promo">
                     <div class="price-content">
                       <div class="price-line">
-                        <em class="price-original">{{item.oldPrice}}</em>
+                        <em class="price-original">{{item.oldPrice/100}}</em>
                       </div>
                       <div class="price-line">
                         <em
                           class="J_Price price-now"
                           tabindex="0"
-                        >{{item.newPrice}}</em>
+                        >{{item.newPrice/100}}</em>
                       </div>
                     </div>
                   </div>
@@ -93,14 +93,14 @@
                   <el-input-number
                     v-model="item.num"
                     :min="1"
-                    :max="10"
+                    :max="80"
                     @change="numberChange()"
                     style="width: 130px;margin-top: 15px"
                   ></el-input-number>
                 </li>
                 <li>
                   <div class="td-inner amountNumber">
-											<em tabindex="0" class="J_ItemSum number">{{item.newPrice*item.num}}</em>
+											<em tabindex="0" class="J_ItemSum number">{{item.newPrice*item.num/100}}</em>
 									</div>
                 </li>
                 <li>
@@ -154,18 +154,16 @@
             </div>
             <div class="price-sum">
               <span class="txt">合计:</span>
-              <strong class="price">¥<em id="J_Total">{{item.total}}</em></strong>
+              <strong class="price">¥<em id="J_Total">{{item.total/100}}</em></strong>
             </div>
             <div class="btn-area">
-              <router-link :to="{ name: 'Pay', params: checkItems}">
-              <a
-                href="@"
-                id="J_Go"
+              <div
+                @click="toPay"
                 class="submit-btn submit-btn-disabled"
                 aria-label="请注意如果没有选择宝贝，将无法结算"
+                style="color: #fff"
               >
-                <span>结&nbsp;算</span></a>
-              </router-link>
+                <span>结&nbsp;算</span></div>
             </div>
           </div>
 
@@ -257,7 +255,6 @@ export default {
           })
           $this.item.total = total
         }else{
-          // $this.$('.toCheck').attr("checked","false")
           $this.$('.toCheck').prop("checked",false);
           $this.checkItems = []
           //获取已选商品数量
@@ -266,6 +263,11 @@ export default {
           $this.item.total = 0
         }
       })
+    },
+    /* 跳转支付页面 */
+    toPay(){
+      localStorage.setItem('checkItems', JSON.stringify(this.checkItems))
+      this.$router.push({ path: '/pay' })
     }
   },
   mounted() {

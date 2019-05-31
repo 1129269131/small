@@ -235,7 +235,7 @@
             <!--含运费小计 -->
             <div class="buy-point-discharge ">
               <p class="price g_price ">
-                合计（含运费） <span>¥</span><em class="pay-sum">{{total}}</em>
+                合计（含运费） <span>¥</span><em class="pay-sum">{{(total+10)/100}}</em>
               </p>
             </div>
 
@@ -252,7 +252,7 @@
                       <span>¥</span> <em
                         class="style-large-bold-red "
                         id="J_ActualFee"
-                      >{{total}}</em>
+                      >{{(total+10)/100}}</em>
                     </span>
                   </div>
 
@@ -396,7 +396,7 @@ export default {
         }
   },
   mounted(){
-      this.commoditys = this.$route.params
+      this.commoditys = JSON.parse(localStorage.getItem('checkItems'))
       this.numberChange()
       this.queryAddress()
   }

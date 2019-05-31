@@ -670,23 +670,23 @@
                         </li>
                         <li>
                           <el-pagination
-                        :page-size="pageSize"
-                        :page-sizes="[5,10,20,30]"
-                        :current-page="page"
-                        layout="prev, pager, next"
-                        :total="total"
-                        @current-change="pageChange"
-                      >
-                      </el-pagination>
+                            :page-size="pageSize"
+                            :page-sizes="[5,10,20,30]"
+                            :current-page="page"
+                            layout="prev, pager, next"
+                            :total="total"
+                            @current-change="pageChange"
+                          >
+                          </el-pagination>
                         </li>
                       </ul>
-                      
+
                     </el-tab-pane>
                     <el-tab-pane
                       label="好评"
                       name="goodComment"
                     >
-                    
+
                       <ul
                         data-v-6a88d622=""
                         class="am-comments-list am-comments-list-flip"
@@ -914,7 +914,24 @@
       </div>
     </div>
   </div>
-
+  <el-dialog
+    title=""
+    :visible.sync="dialogVisible"
+    width="30%"
+    :before-close="handleClose"
+  >
+    <span>加入购物成功，是否前去清空购物车？</span>
+    <span
+      slot="footer"
+      class="dialog-footer"
+    >
+      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button
+        type="primary"
+        @click="toShopCart"
+      >确 定</el-button>
+    </span>
+  </el-dialog>
   </div>
 </template>
 
@@ -927,6 +944,7 @@ export default {
       page: 1,
       pageSize: 5,
       total: 10,
+      dialogVisible: false,
       value2: '福建省',
       value3: '厦门市',
       value4: '集美区',
@@ -1089,6 +1107,7 @@ export default {
     addCart(cart) {
       addCart(cart).then(response => {
       })
+      this.dialogVisible = true
     },
     /* 加入购物车 */
     addCar() {
@@ -1133,32 +1152,33 @@ export default {
           }
           carts.push(cart)
           localStorage.setItem('cars', JSON.stringify(carts))
+          this.dialogVisible = true
         }
       }
     },
     /* 获取评价信息 */
     commentTabClick() {
       if (this.commentActiveName === 'allComment') {
-        queryComment(this.page,this.pageSize,1, 3).then(response => {
+        queryComment(this.page, this.pageSize, 1, 3).then(response => {
           this.commentList = response.result
           this.total = response.total
         }).catch(error => {
           this.$message.error(`全部评价信息获取失败：${error.message}`);
         })
       } else if (this.commentActiveName === 'goodComment') {
-        queryComment(1,10,1, 0).then(response => {
+        queryComment(1, 10, 1, 0).then(response => {
           this.commentList = response.result
         }).catch(error => {
           this.$message.error(`差评信息获取失败：${error.message}`);
         })
       } else if (this.commentActiveName === 'midComment') {
-        queryComment(1,10,1, 1).then(response => {
+        queryComment(1, 10, 1, 1).then(response => {
           this.commentList = response.result
         }).catch(error => {
           this.$message.error(`中评信息获取失败：${error.message}`);
         })
       } else {
-        queryComment(1,10,1, 2).then(response => {
+        queryComment(1, 10, 1, 2).then(response => {
           this.commentList = response.result
         }).catch(error => {
           this.$message.error(`差评信息获取失败：${error.message}`);
@@ -1166,9 +1186,13 @@ export default {
       }
     },
     /* 分页 */
-    pageChange(value){
+    pageChange(value) {
       this.page = value
       this.commentTabClick()
+    },
+    /* 跳转购物车页面 */
+    toShopCart(){
+      this.$router.push({ path: '/shopcart' })
     }
   },
   mounted() {
@@ -1203,14 +1227,14 @@ body {
 }
 </style>
 <style lang="less">
-.el-pagination{
+.el-pagination {
   margin: 15px 0 15px 700px;
-  background: #fafafa!important;
-  button{
-    background: #fafafa!important;
+  background: #fafafa !important;
+  button {
+    background: #fafafa !important;
   }
-  li{
-    background: #fafafa!important;
+  li {
+    background: #fafafa !important;
   }
 }
 </style>
