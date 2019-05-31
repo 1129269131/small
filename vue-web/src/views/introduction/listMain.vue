@@ -1090,12 +1090,18 @@ export default {
       addCart(cart).then(response => {
       })
     },
-    /* 未登录状态下加入购物车 */
+    /* 加入购物车 */
     addCar() {
       if (localStorage.getItem('user')) {
+        // 用户已登录状态下加入购物车
+        let carts = localStorage.getItem('cars') || []
+        let cart = JSON.parse(localStorage.getItem('cars'))
+        if (cart && cart[0].skuId === this.spu.id) {
+          this.cart.num = cart[0].num
+        }
         this.cart.skuId = this.spu.id
         this.cart.price = this.spu.skus[0].price
-        this.cart.num = this.commondityNum
+        this.cart.num += this.commondityNum
         this.cart.title = this.spu.title
         this.cart.newPrice = this.spu.skus[0].price
         this.cart.oldPrice = this.spu.skus[0].old_price
@@ -1104,12 +1110,12 @@ export default {
         this.cart.img = this.spu.skus[0].img
         this.addCart(this.cart)
       } else {
+        // 用户未登录状态下加入购物车
         let $this = this
         let carts = localStorage.getItem('cars') || []
         let cart = JSON.parse(localStorage.getItem('cars'))
         let spu = this.spu
         let commondityNum = this.commondityNum
-
         if (cart && cart[0].skuId === spu.id) {
           cart[0].num += commondityNum
           localStorage.setItem('cars', JSON.stringify(cart))
