@@ -206,7 +206,7 @@
                     ></div>
                   </el-col>
                   <el-col :span="8">
-                    <div class="chart-title">门店销售额排名</div>
+                    <div class="chart-title">商品销售额排名</div>
                     <ul class="analysis-ranking-list">
                       <li
                         v-for="(item, index) in rankList"
@@ -249,14 +249,6 @@
         :gutter="20"
         style="display:none"
       >
-        <!-- <el-col :span="6">
-            <el-card :body-style="{ padding: '10px 20px' }">
-              <div
-                id="chartRadar"
-                style="height: 350px; width: 100%;"
-              ></div>
-            </el-card>
-          </el-col> -->
         <el-col :span="24">
           <el-card :body-style="{ padding: '10px 20px' }">
             <div
@@ -289,32 +281,32 @@ export default {
       activeName: 'first',
       rankList: [
         {
-          name: '工专路 0 号店',
-          value: '323,234'
+          name: '开口松子',
+          value: '3,234'
         },
         {
-          name: '工专路 1 号店',
-          value: '323,234'
+          name: '甘源蒜香青豌豆',
+          value: '2,269'
         },
         {
-          name: '工专路 2 号店',
-          value: '323,234'
+          name: '观龙井茶酥绿茶糕',
+          value: '1,989'
         },
         {
-          name: '工专路 3 号店',
-          value: '323,234'
+          name: '蚕豆兰花豆',
+          value: '1,893'
         },
         {
-          name: '工专路 4 号店',
-          value: '323,234'
+          name: '脆皮特产猪肉猪油渣',
+          value: '1,265'
         },
         {
-          name: '工专路 5 号店',
-          value: '323,234'
+          name: '小胡鸭香辣卤味 ',
+          value: '1,255'
         },
         {
-          name: '工专路 6 号店',
-          value: '323,234'
+          name: '零食小米锅巴',
+          value: '1,126'
         }
       ],
       treeData: {

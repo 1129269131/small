@@ -14,9 +14,9 @@
           <p class="module"> 
             <router-link to="/lay/order">订单管理</router-link>
           </p>
-          <p class="module"> 
+          <!-- <p class="module"> 
             <router-link to="/lay/category">分类管理</router-link>
-          </p>
+          </p> -->
         </div>
       </div>
       <div class="right main-wrap">

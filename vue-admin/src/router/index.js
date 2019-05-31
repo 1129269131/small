@@ -7,7 +7,7 @@ Vue.use(VueRouter)
 
 const routes = [{
   name: 'Login',
-  path: '/login',
+  path: '/',
   component: resolve => require(['@/views/login/Index'], resolve),
   meta: {
     title: 'Login',
