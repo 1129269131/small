@@ -92,7 +92,7 @@
                       data-v-6df06484=""
                       class="item-price"
                     >
-                      {{list.price}}
+                      {{list.price/100}}
                     </div>
                   </li>
                   <li
@@ -124,7 +124,7 @@
                     data-v-6df06484=""
                     class="item-amount"
                   >
-                    合计：{{item.actualPay}}
+                    合计：{{item.actualPay/100}}
                     <p data-v-6df06484="">含运费：<span data-v-6df06484="">{{item.postFee}}</span></p>
                   </div>
                 </li>
@@ -240,7 +240,7 @@
                       data-v-6df06484=""
                       class="item-price"
                     >
-                      {{list.price}}
+                      {{list.price/100}}
                     </div>
                   </li>
                   <li
@@ -272,7 +272,7 @@
                     data-v-6df06484=""
                     class="item-amount"
                   >
-                    合计：{{item.actualPay}}
+                    合计：{{item.actualPay/100}}
                     <p data-v-6df06484="">含运费：<span data-v-6df06484="">{{item.postFee}}</span></p>
                   </div>
                 </li>
@@ -388,7 +388,7 @@
                       data-v-6df06484=""
                       class="item-price"
                     >
-                      {{list.price}}
+                      {{list.price/100}}
                     </div>
                   </li>
                   <li
@@ -420,7 +420,7 @@
                     data-v-6df06484=""
                     class="item-amount"
                   >
-                    合计：{{item.actualPay}}
+                    合计：{{item.actualPay/100}}
                     <p data-v-6df06484="">含运费：<span data-v-6df06484="">{{item.postFee}}</span></p>
                   </div>
                 </li>
@@ -459,7 +459,7 @@
           </div>
         </el-tab-pane>
         <el-tab-pane
-          label="待评价"
+          label="待收货"
           name="fourth"
         >
           <div
@@ -535,7 +535,7 @@
                       data-v-6df06484=""
                       class="item-price"
                     >
-                      {{list.price}}
+                      {{list.price/100}}
                     </div>
                   </li>
                   <li
@@ -567,7 +567,154 @@
                     data-v-6df06484=""
                     class="item-amount"
                   >
-                    合计：{{item.actualPay}}
+                    合计：{{item.actualPay/100}}
+                    <p data-v-6df06484="">含运费：<span data-v-6df06484="">{{item.postFee}}</span></p>
+                  </div>
+                </li>
+                <div
+                  data-v-6df06484=""
+                  class="move-right"
+                >
+                  <li
+                    data-v-6df06484=""
+                    class="td td-status"
+                  >
+                    <div
+                      data-v-6df06484=""
+                      class="item-status"
+                    >
+                      <p
+                        data-v-6df06484=""
+                        class="Mystatus"
+                      >{{item.orderInfo}}</p>
+                    </div>
+                  </li>
+                  <li
+                    data-v-6df06484=""
+                    class="td td-change"
+                  >
+                    <div
+                      data-v-6df06484=""
+                      class="am-btn am-btn-danger anniu"
+                      @click="orderOperator(item)"
+                    >
+                      {{item.orderBtnInfo}}</div>
+                  </li>
+                </div>
+              </div>
+            </div>
+          </div>
+        </el-tab-pane>
+        <el-tab-pane
+          label="待评价"
+          name="fifth"
+        >
+          <div
+            data-v-6df06484=""
+            class="order-status3"
+            v-for="(item,index) in orderList"
+          >
+            <div
+              data-v-6df06484=""
+              class="order-title"
+            >
+              <div
+                data-v-6df06484=""
+                class="dd-num"
+              >订单编号：<a
+                  data-v-6df06484=""
+                  href="javascript:;"
+                >{{item.id}}</a></div><span data-v-6df06484="">成交时间：{{item.stringTime}}</span>
+            </div>
+            <div
+              data-v-6df06484=""
+              class="order-content"
+              v-for="(list,index) in item.ordersDetails"
+            >
+              <div
+                data-v-6df06484=""
+                class="order-left"
+              >
+                <ul
+                  data-v-6df06484=""
+                  class="item-list"
+                >
+                  <li
+                    data-v-6df06484=""
+                    class="td td-item"
+                  >
+                    <div
+                      data-v-6df06484=""
+                      class="item-pic"
+                    ><a
+                        data-v-6df06484=""
+                        href="#"
+                        class="J_MakePoint"
+                      ><img
+                          data-v-6df06484=""
+                          :src="require('@/assets/images/'+list.img)"
+                          class="itempic J_ItemImg"
+                        ></a></div>
+                    <div
+                      data-v-6df06484=""
+                      class="item-info"
+                    >
+                      <div
+                        data-v-6df06484=""
+                        class="item-basic-info"
+                      ><a
+                          data-v-6df06484=""
+                          href="#"
+                        >
+                          <p data-v-6df06484="">{{list.title}} </p>
+                          <p
+                            data-v-6df06484=""
+                            class="info-little"
+                          >口味：{{list.style}} 包装：{{list.packageStyle}}</p>
+                        </a></div>
+                    </div>
+                  </li>
+                  <li
+                    data-v-6df06484=""
+                    class="td td-price"
+                  >
+                    <div
+                      data-v-6df06484=""
+                      class="item-price"
+                    >
+                      {{list.price/100}}
+                    </div>
+                  </li>
+                  <li
+                    data-v-6df06484=""
+                    class="td td-number"
+                  >
+                    <div
+                      data-v-6df06484=""
+                      class="item-number"
+                    ><span data-v-6df06484="">×</span>{{list.num}}
+                    </div>
+                  </li>
+                  <li
+                    data-v-6df06484=""
+                    class="td td-operation"
+                  >
+                  </li>
+                </ul>
+              </div>
+              <div
+                data-v-6df06484=""
+                class="order-right"
+              >
+                <li
+                  data-v-6df06484=""
+                  class="td td-amount"
+                >
+                  <div
+                    data-v-6df06484=""
+                    class="item-amount"
+                  >
+                    合计：{{item.actualPay/100}}
                     <p data-v-6df06484="">含运费：<span data-v-6df06484="">{{item.postFee}}</span></p>
                   </div>
                 </li>
@@ -666,11 +813,16 @@ export default {
           this.orderList = response.result
         })
       } else if (this.activeName === 'second') {
-        this.order.orderStatus = 1
+        this.order.orderStatus = 0
         queryOrder(this.order).then(response => {
           this.orderList = response.result
         })
       } else if (this.activeName === 'third') {
+        this.order.orderStatus = 1
+        queryOrder(this.order).then(response => {
+          this.orderList = response.result
+        })
+      } else if (this.activeName === 'fourth') {
         this.order.orderStatus = 2
         queryOrder(this.order).then(response => {
           this.orderList = response.result
@@ -692,8 +844,6 @@ export default {
 
       } else if (item.orderStatus === 3) {
         this.dialogVisible = true
-        console.log('---item----')
-        console.log(item)
         this.ratingItem.uid = item.uid
         this.ratingItem.skuId = item.ordersDetails[0].skuId
       }
@@ -704,7 +854,9 @@ export default {
       this.ratingItem.commentRate = this.rateValue
       this.ratingItem.commentContent = this.textarea
       addComment(this.ratingItem).then(response => {
-        console.log(response)
+        this.$message.success(`评价成功`)
+      }).catch(error => {
+        this.$message.error(`评价失败：${error.message}`)
       })
     }
   },
