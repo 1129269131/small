@@ -12,16 +12,16 @@
         <li class="user-addresslist defaultAddr">
           <span class="new-option-r"><i class="am-icon-check-circle"></i>默认地址</span>
           <p class="new-tit new-p-re">
-            <span class="new-txt">小叮当</span>
-            <span class="new-txt-rd2">159****1622</span>
+            <span class="new-txt">唐家河</span>
+            <span class="new-txt-rd2">153****4087</span>
           </p>
           <div class="new-mu_l2a new-p-re">
             <p class="new-mu_l2cw">
               <span class="title">地址：</span>
-              <span class="province">湖北</span>省
-              <span class="city">武汉</span>市
-              <span class="dist">洪山</span>区
-              <span class="street">雄楚大道666号(中南财经政法大学)</span></p>
+              <span class="province">福建</span>省
+              <span class="city">莆田</span>市
+              <span class="dist">秀屿</span>区
+              <span class="street">平海镇</span></p>
           </div>
           <div class="new-addr-btn">
             <a href="#"><i class="am-icon-edit"></i>编辑</a>
@@ -36,39 +36,16 @@
         <li class="user-addresslist">
           <span class="new-option-r"><i class="am-icon-check-circle"></i>设为默认</span>
           <p class="new-tit new-p-re">
-            <span class="new-txt">小叮当</span>
-            <span class="new-txt-rd2">159****1622</span>
+            <span class="new-txt">李云龙</span>
+            <span class="new-txt-rd2">156****156</span>
           </p>
           <div class="new-mu_l2a new-p-re">
             <p class="new-mu_l2cw">
               <span class="title">地址：</span>
-              <span class="province">湖北</span>省
-              <span class="city">武汉</span>市
-              <span class="dist">洪山</span>区
-              <span class="street">雄楚大道666号(中南财经政法大学)</span></p>
-          </div>
-          <div class="new-addr-btn">
-            <a href="#"><i class="am-icon-edit"></i>编辑</a>
-            <span class="new-addr-bar">|</span>
-            <a
-              href="javascript:void(0);"
-              onclick="delClick(this);"
-            ><i class="am-icon-trash"></i>删除</a>
-          </div>
-        </li>
-        <li class="user-addresslist">
-          <span class="new-option-r"><i class="am-icon-check-circle"></i>设为默认</span>
-          <p class="new-tit new-p-re">
-            <span class="new-txt">小叮当</span>
-            <span class="new-txt-rd2">159****1622</span>
-          </p>
-          <div class="new-mu_l2a new-p-re">
-            <p class="new-mu_l2cw">
-              <span class="title">地址：</span>
-              <span class="province">湖北</span>省
-              <span class="city">武汉</span>市
-              <span class="dist">洪山</span>区
-              <span class="street">雄楚大道666号(中南财经政法大学)</span></p>
+              <span class="province">福建</span>省
+              <span class="city">厦门</span>市
+              <span class="dist">集美</span>区
+              <span class="street">港口</span></p>
           </div>
           <div class="new-addr-btn">
             <a href="#"><i class="am-icon-edit"></i>编辑</a>
@@ -183,53 +160,20 @@
                     <option
                       value="b"
                       selected=""
-                    >武汉市</option>
+                    >武汉市666</option>
                   </select>
-                  <div
-                    class="am-selected am-dropdown "
-                    id="am-selected-wjlo4"
-                    data-am-dropdown=""
-                  > <button
-                      type="button"
-                      class="am-selected-btn am-btn am-dropdown-toggle am-btn-default"
-                    > <span class="am-selected-status am-fl">武汉市</span> <i class="am-selected-icon am-icon-caret-down"></i> </button>
-                    <div class="am-selected-content am-dropdown-content">
-                      <h2 class="am-selected-header"><span class="am-icon-chevron-left">返回</span></h2>
-                      <ul class="am-selected-list">
-                        <li
-                          class=""
-                          data-index="0"
-                          data-group="0"
-                          data-value="a"
-                        > <span class="am-selected-text">温州市</span> <i class="am-icon-check"></i></li>
-                        <li
-                          class="am-checked"
-                          data-index="1"
-                          data-group="0"
-                          data-value="b"
-                        > <span class="am-selected-text">武汉市</span> <i class="am-icon-check"></i></li>
-                      </ul>
-                      <div class="am-selected-hint"></div>
-                    </div>
-                  </div>
                   <select
                     data-am-selected=""
                     style="display: none;"
                   >
                     <option value="a">瑞安区</option>
-                    <option
-                      value="b"
-                      selected=""
-                    >洪山区</option>
+                    
                   </select>
                   <div
                     class="am-selected am-dropdown "
                     id="am-selected-bqeiq"
                     data-am-dropdown=""
-                  > <button
-                      type="button"
-                      class="am-selected-btn am-btn am-dropdown-toggle am-btn-default"
-                    > <span class="am-selected-status am-fl">洪山区</span> <i class="am-selected-icon am-icon-caret-down"></i> </button>
+                  > 
                     <div class="am-selected-content am-dropdown-content">
                       <h2 class="am-selected-header"><span class="am-icon-chevron-left">返回</span></h2>
                       <ul class="am-selected-list">
