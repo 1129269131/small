@@ -16,7 +16,7 @@ zuul:
   prefix: /api # 添加路由前缀
   retryable: true
   routes:
-      item-service: /item/** # 将商品微服务映射到/item/**
+      item-service: /item/** # 商品微服务
       auth-service: /auth/** # 授权中心微服务
       admin-service: /admin/** #外部接口微服务
       user-service: /user/** #用户信息管理微服务
